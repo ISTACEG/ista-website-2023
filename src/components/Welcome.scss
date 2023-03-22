@@ -1,0 +1,234 @@
+@import '../UTILS/color.scss';
+@import '../UTILS/function.scss';
+
+
+
+
+
+div.Welcome {
+  
+    @media only screen and (min-width: 768px) {
+
+      display: flex;
+      flex-direction: column;
+      background-color: $primary;
+      min-height: pxe(760);
+      width: 100%;
+  
+  
+  
+      max-width: pxe(1536);
+  
+      color: $white;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+  
+      // padding-top: pxe(100);
+      // position: relative;
+  
+      z-index: 0;
+      overflow: hidden;
+  
+      // padding: pxe(100);
+  
+    }
+
+    @media only screen and (max-width: 768px) {
+
+      display: flex;
+      flex-direction: column;
+      background-color: $primary;
+      min-height: 100vh;
+      width: 100%;
+  
+      padding-top: pxe(100);
+
+  
+      color: $white;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+  
+      // padding-top: pxe(100);
+      // position: relative;
+  
+      z-index: 0;
+      overflow: hidden;
+  
+      // padding: pxe(100);
+  
+    }
+    
+
+
+    div.bg {
+      position: absolute;
+
+      @media only screen and (min-width: 768px) {
+        bottom: pxe(-300);
+        left: pxe(-250);  
+      }
+      
+      @media only screen and (max-width: 768px) {
+        bottom: pxe(-300);
+        left: pxe(-250);  
+      }
+      
+
+      z-index: 1;
+      overflow: hidden;
+      width: pxe(1000);
+      height: pxe(600);
+
+      transform: rotate(30deg);
+
+
+
+      div.bg-end {
+        height: 50%;
+        width: 100%;
+
+        position: absolute;
+        top: 0;
+        background-image: linear-gradient(to bottom, $primary, transparent);
+
+      }
+
+    }
+
+    div.bg-top {
+      position: absolute;
+      
+      @media only screen and (min-width: 768px) {
+        top: pxe(-300);
+        right: pxe(-250);  
+      }
+      
+      @media only screen and (max-width: 768px) {
+        top: pxe(-300);
+        right: pxe(-250);  
+      }
+      
+
+      z-index: 1;
+      overflow: hidden;
+      width: pxe(1000);
+      height: pxe(600);
+
+      transform: rotate(-150deg);
+
+
+
+      div.bg-end {
+        height: 50%;
+        width: 100%;
+
+        position: absolute;
+        top: 0;
+        background-image: linear-gradient(to bottom, $primary, transparent);
+
+      }
+
+    }
+
+
+
+
+
+
+
+
+    
+    * {
+      z-index: 2;
+    }
+    
+
+
+    div.social-div {
+      display: block;
+      // height: fit-content;
+      width: fit-content;
+      padding: pxe(16) pxe(36) pxe(24);
+
+
+      img.ista-logo {
+          display: block;
+          height: max-content;
+          width: pxe(263);
+          object-fit: contain;
+          object-position: center;
+      }
+
+
+      div.social-handles {
+          display: flex;
+          margin: pxe(16) 0 0;
+          width: 100%;
+          justify-content: space-between;
+
+          a {
+            margin: 0 pxe(16);
+
+            img {    
+              display: block;
+              height: max-content;
+              width: pxe(32);
+              object-fit: cover;
+              object-position: center;
+          }
+
+          img.email-logo {
+              display: block;
+              height: max-content;
+              width: pxe(45);
+              object-fit: contain;
+              object-position: center;
+
+          }
+          }
+          
+      }
+
+  }
+
+    h1 {
+        font-size: pxe(58);
+        font-weight: 400;
+        z-index: 2;
+    }
+
+    div.intro {
+        
+        font-size: pxe(24);
+
+
+        font-weight: 400;
+        margin-top: pxe(48);
+        width: 100%;
+        max-width: pxe(1096);
+        z-index: 2;
+    }
+
+
+
+    button.explore {
+        font-size: pxe(24);
+        font-weight: 400;
+        padding: pxe(10) pxe(24);
+        background-color: $white;
+        color: $black;
+        width: max-content;
+        border-radius: pxe(5);
+        margin-top: pxe(36);
+        z-index: 2;
+    }
+
+
+}
+
+
+
+
+

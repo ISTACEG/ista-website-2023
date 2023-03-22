@@ -1,0 +1,141 @@
+@import '../UTILS/color.scss';
+@import '../UTILS/function.scss';
+
+
+
+
+
+@media only screen and (min-width: 768px) {
+
+
+    div.Magazine {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    
+        width: 100%;
+    
+        max-width: pxe(1203);
+        background-color: $primary;
+        color: $white;
+    
+        padding: pxe(100)  pxe(40);
+    
+    
+    
+    
+        div.magazine-sec {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            margin-top: pxe(54);
+            column-gap: pxe(48);
+    
+    
+            div.sec-desc {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+    
+    
+                h2 {
+                    font-weight: 400;
+                    font-size: pxe(36);
+                }
+    
+                p {
+                    margin: pxe(16) 0;
+                    font-size: pxe(18);
+                    font-weight: 400;
+                }
+    
+                p.goto-p {
+                    align-self: flex-end;
+                    font-size: pxe(18);
+                    font-weight: 400;
+                    color: $tertiary-blue;
+                }
+    
+    
+            }
+        }
+    
+    
+    }
+    
+    
+    
+    
+
+}
+
+@media only screen and (max-width: 768px) {
+
+
+    div.Magazine {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    
+        width: 100%;
+    
+        max-width: pxe(1203);
+        background-color: $primary;
+        color: $white;
+    
+        padding: pxe(100)  0;
+    
+    
+    
+    
+        div.magazine-sec {
+            display: flex;
+            flex-direction: column;
+
+
+
+            div.mag-caraousal-container {
+                order: 2;
+
+            }
+    
+            div.sec-desc {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                order: 1;
+
+
+    
+                h2 {
+                    font-weight: 400;
+                    font-size: pxe(36);
+                }
+    
+                p {
+                    margin: pxe(16) 0;
+                    font-size: pxe(18);
+                    font-weight: 400;
+                    line-height: pxe(24);
+                }
+    
+                p.goto-p {
+                    align-self: flex-end;
+                    font-size: pxe(18);
+                    font-weight: 400;
+                    color: $tertiary-blue;
+                }
+    
+    
+            }
+        }
+    
+    
+    }
+    
+    
+    
+    
+}

@@ -1,0 +1,17 @@
+@import '../UTILS/color.scss';
+@import '../UTILS/function.scss';
+
+
+
+
+div.Home {
+    // position: relative;
+
+    background-color: $primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    padding: 0 pxe(16);
+
+}

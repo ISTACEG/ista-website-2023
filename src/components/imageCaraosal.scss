@@ -1,0 +1,280 @@
+@import '../UTILS/color.scss';
+@import '../UTILS/function.scss';
+
+
+
+
+$h: pxe(477);
+// $w: pxe(684);
+$w: 44.53125vw;
+$w-m: 80vw;
+
+            
+@media only screen and (min-width: 768px) {
+    
+    div.img-caraousal-container {
+        display: flex;
+        position: relative;
+        // min-height: calc(var(--h)*pxe-1(1));
+        // min-width:  calc(var(--w)*pxe-1(1));
+
+        // height={477} width={684}
+
+        height: $h;
+        width:  $w;
+
+        max-width: pxe(684);
+
+        // background-color: $white;
+
+
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(pxe-1(41.5127));
+        /* Note: backdrop-filter has minimal browser support */
+        border-radius: pxe-1(18.1618);
+        overflow: hidden;
+
+        color: $white;
+
+
+        // div.img-slider-dots {
+        //     position: absolute;
+        //     display: flex;
+        //     width: 100%;
+        //     justify-content: center;
+        //     bottom: pxe(-24);
+
+
+        //     [class ^= img-slider-dots-] {
+        //         display: block;
+        //         height: pxe(14);
+        //         width: pxe(14);
+        //         background-color: #bbb;
+        //         border-radius: 100%;
+        //         margin: 0 pxe(4);
+        //         cursor: pointer;
+        //         transition: background-color 0.6s ease;
+
+        //         &:hover {                    
+        //             background-color: rgba(0,0,0,0.8);
+        //         }
+        //     }
+
+        //     [class ^= img-slider-dots-].active {
+        //         background-color: rgba(0,0,0,0.8);
+        //     }
+        // }
+
+        div.img-caraousal {
+            // display: grid;
+            height: $h;
+            width:  $w;
+            max-width: pxe(684);
+
+            position: relative;
+            overflow: hidden;
+
+
+
+            
+
+            div.img-slider {
+                position: absolute;
+                display: flex;
+                left: 0;
+                transition: 1s;
+
+
+                div.img-caro-item {
+                    height: $h;
+                    width:  $w;
+                    max-width: pxe(684);
+        
+                    img {
+                        display: block;
+                        height: 100%;
+                        width: 100%;
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                }
+            }
+
+            
+
+
+            button {
+                display: block;
+                height: pxe-1(48);
+                width: pxe-1(48);
+                font-size: pxe-1(36);
+                position: absolute;
+                top: 50%;
+                margin: pxe-1(-24) pxe-1(4);
+                
+
+                span {
+                    background-color: rgba(#000, 0.25);
+                    display: block;
+                    height: pxe-1(48);
+                    border-radius: pxe-1(1000);
+                    
+
+                    &:hover {
+                            
+                        background-color: rgba(#000, 0.5);
+                    }
+                }
+            }
+
+            
+            button.next {
+                right: 0;
+            }
+            button.prev {
+                left: 0;
+            }
+
+
+        }
+
+
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    div.img-caraousal-container {
+        display: flex;
+        position: relative;
+        
+        align-self: center;
+        margin-top: pxe(24);
+
+        // min-height: calc(var(--h)*pxe-1(1));
+        // min-width:  calc(var(--w)*pxe-1(1));
+    
+        // height={477} width={684}
+    
+        height: $h;
+        width:  $w-m;
+    
+        max-width: pxe(684);
+    
+        // background-color: $white;
+    
+    
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(pxe-1(41.5127));
+        /* Note: backdrop-filter has minimal browser support */
+        border-radius: pxe-1(18.1618);
+        overflow: hidden;
+    
+        color: $white;
+    
+    
+        // div.img-slider-dots {
+        //     position: absolute;
+        //     display: flex;
+        //     width: 100%;
+        //     justify-content: center;
+        //     bottom: pxe(-24);
+    
+    
+        //     [class ^= img-slider-dots-] {
+        //         display: block;
+        //         height: pxe(14);
+        //         width: pxe(14);
+        //         background-color: #bbb;
+        //         border-radius: 100%;
+        //         margin: 0 pxe(4);
+        //         cursor: pointer;
+        //         transition: background-color 0.6s ease;
+    
+        //         &:hover {                    
+        //             background-color: rgba(0,0,0,0.8);
+        //         }
+        //     }
+    
+        //     [class ^= img-slider-dots-].active {
+        //         background-color: rgba(0,0,0,0.8);
+        //     }
+        // }
+    
+        div.img-caraousal {
+            // display: grid;
+            height: $h;
+            width:  $w-m;
+            max-width: pxe(684);
+    
+            position: relative;
+            overflow: hidden;
+    
+    
+    
+            
+    
+            div.img-slider {
+                position: absolute;
+                display: flex;
+                left: 0;
+                transition: 1s;
+    
+    
+                div.img-caro-item {
+                    height: $h;
+                    width:  $w-m;
+                    max-width: pxe(684);
+        
+                    img {
+                        display: block;
+                        height: 100%;
+                        width: 100%;
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                }
+            }
+    
+            
+    
+    
+            button {
+                display: block;
+                height: pxe-1(48);
+                width: pxe-1(48);
+                font-size: pxe-1(36);
+                position: absolute;
+                top: 50%;
+                margin: pxe-1(-24) pxe-1(4);
+                
+    
+                span {
+                    background-color: rgba(#000, 0.25);
+                    display: block;
+                    height: pxe-1(48);
+                    border-radius: pxe-1(1000);
+                    
+    
+                    &:hover {
+                            
+                        background-color: rgba(#000, 0.5);
+                    }
+                }
+            }
+    
+            
+            button.next {
+                right: 0;
+            }
+            button.prev {
+                left: 0;
+            }
+    
+    
+        }
+    
+    
+    }
+}
+

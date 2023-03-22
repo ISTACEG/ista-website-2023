@@ -1,0 +1,86 @@
+@use 'sass:math';
+
+
+
+// $v-w : 50;
+// $v-h : 100;
+// $clc-height : 760;
+
+
+
+$v-w : 50;
+$v-h : 100;
+$clc-height : 760;
+$k: 1;
+
+
+
+@function pxe( $p-x ) {
+    @return #{$p-x/16}rem;
+}
+
+
+@function pxe-1( $p-x ) {
+    @return #{$p-x/16}rem;
+}
+
+
+// @function pxe( $p-x ) {    
+    // $zoom-adjust-value: 1rem;
+    // $global_height: calc(min(#{$v-w}vw, #{$v-h}vh));
+    
+    // @return calc(((#{$global_height} * (#{$p-x/16})) / (#{$clc-height/16})) * $k);
+// }
+
+
+// @function pxe( $p-x ) {
+    // $zoom-adjust-value: 1rem;
+    // $global_height: calc(min(#{$v-w}vw, #{$v-h}vh));
+    
+    // @return calc(((#{$global_height} * (#{$p-x/16})) / (#{$clc-height/16})) * $k);
+// }
+
+
+
+
+// @function pxe( $p-x ) {
+//     $zoom-adjust-value: 1rem;
+//     $global_height: #{'calc( min(#{$v-w}vw  , #{$v-h}vh ) ) '};
+    
+//     @if ($p-x < 0) {
+//         $temp_p-x: (-1 * $p-x);
+//         @return #{'calc( -1 * (#{$global_height}) * (#{$temp_p-x} / #{$clc-height})  )'} ;
+//     }
+//     @else {
+//         @return #{'calc( (#{$global_height}) * (#{$p-x} / #{$clc-height}) )'} ;
+//     }
+
+//     // @return #{'#{$p-x/16}rem'};
+// }
+
+
+
+
+
+
+
+
+
+
+// @function pxe( $p-x ) {
+
+
+//     $zoom-adjust-value: 1rem;
+//     $global_height: #{'calc( min(#{$v-w}vw  , #{$v-h}vh ) ) '};
+    
+//     @if ($p-x < 0) {
+//         $temp_p-x: (-1 * $p-x);
+//         @return #{'calc( -1 * (#{$global_height}) * (#{$temp_p-x} / #{$clc-height})  )'} ;
+//     }
+//     @else {
+//         @return #{'calc( (#{$global_height}) * (#{$p-x} / #{$clc-height}) )'} ;
+//     }
+
+
+//     // @return #{'#{($p-x / 16)}rem'};
+// }
