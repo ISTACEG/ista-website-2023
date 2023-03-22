@@ -1,6 +1,5 @@
 import './ipp.scss'
 import ImageCaraosal from './imageCaraosal'
-import {ippImgList} from '../resources/imglist'
 
 import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
@@ -30,6 +29,14 @@ function Ipp(props) {
 
     }, [location])
 
+
+    function importAll(r) {
+        return r.keys().reverse().map(r);
+    }
+
+    var ippImgList = importAll(require.context(process.env.PUBLIC_URL+'/public/gallery/ipp/', true, /\.(png|jpe?g|svg)$/));
+
+    var tr = require.context(process.env.PUBLIC_URL+'/public/gal/ipp/', true, /\.(png|jpe?g|svg)$/)
 
 
 

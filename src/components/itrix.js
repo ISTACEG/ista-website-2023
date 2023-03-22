@@ -1,6 +1,5 @@
 import './itrix.scss'
 import ImageCaraosal from './imageCaraosal'
-import {itrixImgList} from '../resources/imglist'
 
 import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
@@ -27,6 +26,16 @@ function Itrix(props) {
 
 
     }, [location])
+
+
+    function importAll(r) {
+        return r.keys().reverse().map(r);
+    }
+  
+
+
+    var itrixImgList = importAll(require.context(process.env.PUBLIC_URL+'/public/gallery/itrix/', true, /\.(png|jpe?g|svg)$/));
+
 
 
 
