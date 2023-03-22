@@ -36,7 +36,6 @@ function Ipp(props) {
 
     var ippImgList = importAll(require.context(process.env.PUBLIC_URL+'/public/gallery/ipp/', true, /\.(png|jpe?g|svg)$/));
 
-    var tr = require.context(process.env.PUBLIC_URL+'/public/gal/ipp/', true, /\.(png|jpe?g|svg)$/)
 
 
 
