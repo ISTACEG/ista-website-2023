@@ -19,7 +19,7 @@ var staffList = [
 
 var teamList = [
     {
-    img: 'ISTA OB/akashram.PNG',
+    img: 'ISTA OB/akashram.jpg',
     name: 'Akashram J',
     position: 'Chairman'
     },
@@ -89,7 +89,7 @@ var teamList = [
     position: 'General Secretary'
     },
     {
-    img: 'ISTA OB/nishanth.jpg',
+    img: 'ISTA OB/Nishanth.jpg',
     name: 'Nishanth S D',
     position: 'Deputy General Secretary'
     },
