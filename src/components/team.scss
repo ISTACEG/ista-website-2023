@@ -30,99 +30,18 @@
         }
     
     
-    
-    
-        div.staff-sec {
-            display: flex;
-            justify-content: center;
-            flex-wrap: nowrap;
-    
-    
-            div.avatar-container { 
+        div.team-wrapper {
+            margin-top: pxe(16);
+            padding: pxe(10) pxe(24);
+            background-color: $secondary;
+            border-radius: pxe(18.25);
+
+
+            div.staff-sec {
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: pxe(380);
-                height: max-content;
-                padding: pxe(18);
-    
-    
-    
-                img.avatart-img {
-                    display: block;
-                    height: pxe(200);
-                    width:  pxe(200);
-                    object-position: center;
-                    object-fit: cover;
-                    border-radius: 100%;
-                    background-color: $white;
-                }
-    
-    
-                div.nm-pos-div {
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
-    
-                    span.name {
-                        font-size: pxe(24);
-                        font-weight: 400;
-                        color: $white;
-                        margin-top: pxe(16);
-                    }
-                    span {
-                        font-size: pxe(20);
-                        margin-top: pxe(4);
-                        font-weight: 400;
-                        color: $white;
-                    }
-                }
-            }
-        }
-    
-    
-        div.itrix-sec {
-            // display: grid;
-            // grid-template-columns: repeat(auto-fill, max-content);
-            // justify-content: center;
-            // justify-items: center;
-            // align-items: center;
-            // margin-top: 52px;
-            overflow: hidden;
-    
-            display: flex;
-            flex-direction: row;
-            // flex-shrink: 0;
-    
-    
-    
-            div.avatar-caraosal-slider {
-                display: flex;
-                // flex-direction: row;
-                // flex-wrap: nowrap;
-    
-                // min-width: 1200px;
-    
-                // min-width: 100%;
-                width: max-content;
-                // margin-left: 500px;
-    
-    
-                // position: absolute;
-                // left: 0;
-    
-                // transform: translateX(-80%);
-    
-                animation-name: running-carousel;
-                animation-duration: 60s;
-                animation-timing-function: linear;
-                animation-iteration-count: infinite;
-                animation-direction: reverse;
-                animation-fill-mode: forwards;
-                animation-play-state: inherit;
-    
-    
-    
+                justify-content: center;
+                flex-wrap: nowrap;
+        
                 div.avatar-container { 
                     display: flex;
                     flex-direction: column;
@@ -130,9 +49,9 @@
                     width: pxe(380);
                     height: max-content;
                     padding: pxe(18);
-    
-    
-    
+        
+        
+        
                     img.avatart-img {
                         display: block;
                         height: pxe(200);
@@ -164,12 +83,101 @@
                     }
                 }
             }
-    
-    
+        
+        
+            div.itrix-sec {
+                // display: grid;
+                // grid-template-columns: repeat(auto-fill, max-content);
+                // justify-content: center;
+                // justify-items: center;
+                // align-items: center;
+                // margin-top: 52px;
+                overflow: hidden;
+        
+                display: flex;
+                flex-direction: row;
+                // flex-shrink: 0;
+        
+        
+        
+        
+                div.avatar-caraosal-slider {
+                    display: flex;
+                    // flex-direction: row;
+                    // flex-wrap: nowrap;
+        
+                    // min-width: 1200px;
+        
+                    // min-width: 100%;
+                    width: max-content;
+                    // margin-left: 500px;
+        
+        
+                    // position: absolute;
+                    // left: 0;
+        
+                    // transform: translateX(-80%);
+        
+                    animation-name: running-carousel;
+                    animation-duration: 60s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                    animation-direction: reverse;
+                    animation-fill-mode: forwards;
+                    animation-play-state: inherit;
+        
+        
+        
+                    div.avatar-container { 
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: pxe(380);
+                        height: max-content;
+                        padding: pxe(18);
+        
+        
+        
+                        img.avatart-img {
+                            display: block;
+                            height: pxe(200);
+                            width:  pxe(200);
+                            object-position: center;
+                            object-fit: cover;
+                            border-radius: 100%;
+                            background-color: $white;
+                        }
             
-    
-    
+            
+                        div.nm-pos-div {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+            
+                            span.name {
+                                font-size: pxe(24);
+                                font-weight: 400;
+                                color: $white;
+                                margin-top: pxe(16);
+                            }
+                            span {
+                                font-size: pxe(20);
+                                margin-top: pxe(4);
+                                font-weight: 400;
+                                color: $white;
+                            }
+                        }
+                    }
+                }
+        
+        
+                
+        
+        
+            }
         }
+    
+        
     
     }
 }

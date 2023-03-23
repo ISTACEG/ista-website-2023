@@ -140,68 +140,70 @@ function Team(props) {
             <h1>Our Team</h1>
 
             
+            <div className="team-wrapper">
+                
+                <div className="staff-sec">
+                    <div className="avatar-container">
+                        <img src={staffList[0].img} alt="" className="avatart-img" />
+                        <div className="nm-pos-div">
+                            <span className="name">{staffList[0].name}</span>
+                            <span className="position">{staffList[0].position}</span>
+                        </div>
+                    </div>
 
-            <div className="staff-sec">
-                <div className="avatar-container">
-                    <img src={staffList[0].img} alt="" className="avatart-img" />
-                    <div className="nm-pos-div">
-                        <span className="name">{staffList[0].name}</span>
-                        <span className="position">{staffList[0].position}</span>
+                    
+                    <div className="avatar-container">
+                        <img src={staffList[1].img} alt="" className="avatart-img" />
+                        <div className="nm-pos-div">
+                            <span className="name">{staffList[1].name}</span>
+                            <span className="position">{staffList[1].position}</span>
+                        </div>
                     </div>
                 </div>
 
-                
-                <div className="avatar-container">
-                    <img src={staffList[1].img} alt="" className="avatart-img" />
-                    <div className="nm-pos-div">
-                        <span className="name">{staffList[1].name}</span>
-                        <span className="position">{staffList[1].position}</span>
+                <div className='itrix-sec' ref={elemRef} onMouseEnter={mousenterfunc} onMouseLeave={mouseleavefunc}>
+
+
+                    <div className="avatar-caraosal-slider">
+                    
+                        {
+                            teamList.map((itm, ind) => (
+                                
+                                <div className="avatar-container">
+                                    <img src={itm.img} alt="" className="avatart-img" />
+                                    <div className="nm-pos-div">
+                                        <span className="name">{itm.name}</span>
+                                        <span className="position">{itm.position}</span>
+                                    </div>
+                                </div>
+
+
+                            ))
+                        }
                     </div>
-                </div>
-            </div>
 
-            <div className='itrix-sec' ref={elemRef} onMouseEnter={mousenterfunc} onMouseLeave={mouseleavefunc}>
-
-
-                <div className="avatar-caraosal-slider">
-                
-                    {
-                        teamList.map((itm, ind) => (
-                            
-                            <div className="avatar-container">
-                                <img src={itm.img} alt="" className="avatart-img" />
-                                <div className="nm-pos-div">
-                                    <span className="name">{itm.name}</span>
-                                    <span className="position">{itm.position}</span>
+                    <div className="avatar-caraosal-slider">
+                    
+                        {
+                            teamList.map((itm, ind) => (
+                                
+                                <div className="avatar-container">
+                                    <img src={itm.img} alt="" className="avatart-img" />
+                                    <div className="nm-pos-div">
+                                        <span className="name">{itm.name}</span>
+                                        <span className="position">{itm.position}</span>
+                                    </div>
                                 </div>
-                            </div>
 
 
-                        ))
-                    }
-                </div>
+                            ))
+                        }
 
-                <div className="avatar-caraosal-slider">
-                
-                    {
-                        teamList.map((itm, ind) => (
-                            
-                            <div className="avatar-container">
-                                <img src={itm.img} alt="" className="avatart-img" />
-                                <div className="nm-pos-div">
-                                    <span className="name">{itm.name}</span>
-                                    <span className="position">{itm.position}</span>
-                                </div>
-                            </div>
-
-
-                        ))
-                    }
+                    </div>
 
                 </div>
 
             </div>
-
 
         </div>
     )
