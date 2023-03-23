@@ -64,10 +64,12 @@ div.Welcome {
 
     div.welcome-wrapper {
 
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.10);
       backdrop-filter: blur(pxe(41.5127));
-      /* Note: backdrop-filter has minimal browser support */
+
       border-radius: pxe(18.16);
+
+
       padding: pxe(16);
       display: flex;
       flex-direction: column;
