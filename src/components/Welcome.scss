@@ -15,7 +15,8 @@ div.Welcome {
       min-height: pxe(760);
       width: 100%;
   
-  
+      
+
   
       max-width: pxe(1536);
   
@@ -61,6 +62,18 @@ div.Welcome {
     }
     
 
+    div.welcome-wrapper {
+
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(pxe(41.5127));
+      /* Note: backdrop-filter has minimal browser support */
+      border-radius: pxe(18.16);
+      padding: pxe(16);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+    }
 
     div.bg {
       position: absolute;
