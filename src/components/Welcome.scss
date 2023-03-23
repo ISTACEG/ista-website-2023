@@ -15,9 +15,7 @@ div.Welcome {
       min-height: pxe(760);
       width: 100%;
   
-      
 
-  
       max-width: pxe(1536);
   
       color: $white;
@@ -43,8 +41,6 @@ div.Welcome {
       min-height: 100vh;
       width: 100%;
   
-      padding-top: pxe(100);
-
   
       color: $white;
       align-items: center;
@@ -64,16 +60,118 @@ div.Welcome {
 
     div.welcome-wrapper {
 
-      background: rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(pxe(41.5127));
+
+      // background: hsla(0, 0%, 100%, .3);
 
       border-radius: pxe(18.16);
 
+      position: relative;
 
-      padding: pxe(16);
+      padding: pxe(24);
       display: flex;
       flex-direction: column;
       align-items: center;
+      z-index: 2;
+      overflow: hidden;
+
+
+
+
+
+
+      div.social-div {
+        display: block;
+        // height: fit-content;
+        width: fit-content;
+        padding: pxe(16) pxe(36) pxe(24);
+  
+  
+        img.ista-logo {
+            display: block;
+            height: max-content;
+            width: pxe(263);
+            object-fit: contain;
+            object-position: center;
+        }
+  
+  
+        div.social-handles {
+            display: flex;
+            margin: pxe(16) 0 0;
+            width: 100%;
+            justify-content: space-between;
+  
+            a {
+              margin: 0 pxe(16);
+  
+              img {    
+                display: block;
+                height: max-content;
+                width: pxe(32);
+                object-fit: cover;
+                object-position: center;
+            }
+  
+            img.email-logo {
+                display: block;
+                height: max-content;
+                width: pxe(45);
+                object-fit: contain;
+                object-position: center;
+  
+            }
+            }
+            
+        }
+  
+    }
+  
+      h1 {
+          font-size: pxe(58);
+          font-weight: 400;
+          z-index: 2;
+      }
+  
+      div.intro {
+          
+          
+          @media only screen and (min-width: 768px) {
+            font-size: pxe(24);
+            margin-top: pxe(48);
+          
+          }
+          
+          @media only screen and (max-width: 768px) {
+            font-size: pxe(18);
+            line-height: pxe(28);
+            margin-top: pxe(36);
+            
+          }
+          
+  
+  
+          font-weight: 400;
+          width: 100%;
+          max-width: pxe(1096);
+          z-index: 2;
+      }
+  
+  
+  
+      button.explore {
+          font-size: pxe(24);
+          font-weight: 400;
+          padding: pxe(10) pxe(24);
+          background-color: $white;
+          color: $black;
+          width: max-content;
+          border-radius: pxe(5);
+          margin-top: pxe(36);
+          z-index: 2;
+      }
+  
 
     }
 
@@ -155,90 +253,8 @@ div.Welcome {
 
 
     
-    * {
-      z-index: 2;
-    }
     
 
-
-    div.social-div {
-      display: block;
-      // height: fit-content;
-      width: fit-content;
-      padding: pxe(16) pxe(36) pxe(24);
-
-
-      img.ista-logo {
-          display: block;
-          height: max-content;
-          width: pxe(263);
-          object-fit: contain;
-          object-position: center;
-      }
-
-
-      div.social-handles {
-          display: flex;
-          margin: pxe(16) 0 0;
-          width: 100%;
-          justify-content: space-between;
-
-          a {
-            margin: 0 pxe(16);
-
-            img {    
-              display: block;
-              height: max-content;
-              width: pxe(32);
-              object-fit: cover;
-              object-position: center;
-          }
-
-          img.email-logo {
-              display: block;
-              height: max-content;
-              width: pxe(45);
-              object-fit: contain;
-              object-position: center;
-
-          }
-          }
-          
-      }
-
-  }
-
-    h1 {
-        font-size: pxe(58);
-        font-weight: 400;
-        z-index: 2;
-    }
-
-    div.intro {
-        
-        font-size: pxe(24);
-
-
-        font-weight: 400;
-        margin-top: pxe(48);
-        width: 100%;
-        max-width: pxe(1096);
-        z-index: 2;
-    }
-
-
-
-    button.explore {
-        font-size: pxe(24);
-        font-weight: 400;
-        padding: pxe(10) pxe(24);
-        background-color: $white;
-        color: $black;
-        width: max-content;
-        border-radius: pxe(5);
-        margin-top: pxe(36);
-        z-index: 2;
-    }
 
 
 }
