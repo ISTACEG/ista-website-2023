@@ -45,7 +45,7 @@ function Itrix(props) {
 
             <h1>What we do</h1>
             <div className='itrix-sec'>
-                <ImageCaraosal imgList={itrixImgList} height={477} width={684} /> 
+                <ImageCaraosal imgList={itrixImgList} delay={2} /> 
                 
                 <div className='sec-desc'>
                     <h2>ITrix</h2>

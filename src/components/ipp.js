@@ -59,7 +59,7 @@ function Ipp(props) {
                     </p>
                 </div>
 
-                <ImageCaraosal imgList={ippImgList} /> 
+                <ImageCaraosal imgList={ippImgList} delay={3} /> 
                 
             </div>
             

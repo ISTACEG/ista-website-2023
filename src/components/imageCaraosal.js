@@ -1,12 +1,15 @@
 import './imageCaraosal.scss'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 
 
 
 
 
 
-
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
 
 
 
@@ -19,16 +22,33 @@ function ImageCaraosal(props) {
 
     var imgList = props.imgList    
     var caroSliderRef = useRef()
+    var nextRef = useRef()
 
+    let location = useLocation();
 
     // var height = props.height;
     // var width  = (props.width / 1536)* 100;
+
+    var isPaused = false;
+
+
+        
+    function pauseScroll () {
+        isPaused = true
+
+        setTimeout(() => {
+            isPaused = false
+        }, 1000 * 60);
+    }
 
 
     var curcarInd=0;
     
 
     const next = (e) => {
+
+        pauseScroll()
+
 
         var height = caroSliderRef.current.children[0].clientHeight
         var width  = caroSliderRef.current.children[0].clientWidth
@@ -53,6 +73,8 @@ function ImageCaraosal(props) {
     }
     
     const prev = (e) => {
+        
+        pauseScroll()
 
         var height = caroSliderRef.current.children[0].clientHeight
         var width  = caroSliderRef.current.children[0].clientWidth
@@ -80,6 +102,54 @@ function ImageCaraosal(props) {
     }
 
 
+    useEffect(() => {
+
+
+        setTimeout(() => {
+            setInterval(() => {
+
+                // if (!isPaused) {                    
+                //     nextRef.current.click() 
+                // }
+    
+                if (!isPaused) {
+                    var height = caroSliderRef.current.children[0].clientHeight
+                    var width  = caroSliderRef.current.children[0].clientWidth
+    
+    
+                    if (curcarInd < imgList.length) {
+                        curcarInd = (curcarInd+1)
+                        caroSliderRef.current.style.left = `-${curcarInd*width}px`
+                    }
+                    else if (curcarInd == imgList.length) {
+                        curcarInd = 1
+                        caroSliderRef.current.style.transition = '0s'
+                        caroSliderRef.current.style.left = 0
+    
+                        setTimeout(() => {
+                            caroSliderRef.current.style.transition = '1s'
+                            caroSliderRef.current.style.left = `-${curcarInd*width}px`
+                        }, 10)
+            
+                    }
+                }
+                    
+    
+            }, 1000 * 5)
+        }, 1000 * props.delay)
+        
+
+
+        
+
+    
+    }, [location]) 
+    
+
+
+
+    
+
     return (
         <div className="img-caraousal-container">
             <div className="img-caraousal">
@@ -103,7 +173,7 @@ function ImageCaraosal(props) {
                 </div>
 
 
-                <button onClick={next} className="next"><span>{'>'}</span></button>
+                <button onClick={next} ref={nextRef} className="next"><span>{'>'}</span></button>
                 <button onClick={prev} className="prev"><span>{'<'}</span></button>
 
             </div>
