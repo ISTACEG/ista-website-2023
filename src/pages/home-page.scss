@@ -1,17 +1,13 @@
-@import '../UTILS/color.scss';
-@import '../UTILS/function.scss';
-
-
-
+@import "../UTILS/color.scss";
+@import "../UTILS/function.scss";
 
 div.Home {
-    // position: relative;
+  // position: relative;
 
-    background-color: $primary;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  
-    padding: 0 pxe(16);
+  background-color: $primary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  padding: 0 pxe(16);
 }
