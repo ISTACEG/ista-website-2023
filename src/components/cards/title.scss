@@ -1,0 +1,8 @@
+@import "../../UTILS/color.scss";
+@import "../../UTILS/function.scss";
+
+div.title {
+  color: $white;
+  font-family: "Roboto Mono" monospace;
+  font-size: 5vh;
+}

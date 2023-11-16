@@ -2,8 +2,9 @@
 @import "../../UTILS/function.scss";
 
 @media only screen and (min-width: 768px) {
-  button.whole {
+  .whole {
     background-color: $primary;
+    color: #ffffff;
     border: solid white 2pt;
     border-radius: 3vh;
     padding: 2vh;
@@ -26,8 +27,9 @@
 }
 
 @media only screen and (max-width: 768px) {
-  button.whole {
+  .whole {
     background-color: $primary;
+    color: #ffffff;
     border: solid white 2pt;
     border-radius: 3vh;
     padding: 2vh;
