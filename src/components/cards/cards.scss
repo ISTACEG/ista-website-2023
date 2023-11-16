@@ -1,0 +1,26 @@
+@import "../../UTILS/color.scss";
+@import "../../UTILS/function.scss";
+
+@media only screen and (min-width: 768px) {
+  div.cards {
+    margin-top: 15vh;
+    display: grid;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  div.cards {
+    margin-top: 15vh;
+    display: grid;
+    max-width: 100%;
+    margin-inline: auto;
+    padding-inline: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+}

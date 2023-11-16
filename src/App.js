@@ -1,28 +1,24 @@
-import './App.scss';
-import {Routes, Route} from 'react-router-dom';
-import Home from './pages/home-page';
+import "./App.scss";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/home-page";
 // import ItrixPage from './pages/Itrix-page';
-import Footer from './components/footer';
-
-
+import Footer from "./components/footer";
+import Ipp23Page from "./pages/ipp23-page";
 
 function App() {
   return (
     <>
-    
       <div className="App">
-          <Routes>
-            <Route path='/' element={<Home />}/>
-            {/* <Route path='/itrix' element={<ItrixPage />}/> */}
-            {/* <Route path='/ipp' element={<Ipp />}/> */}
-          </Routes>
-          
-          <Footer />
-      </div>
-    
-    
-    </>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ipp23" element={<Ipp23Page />} />
+          {/* <Route path='/itrix' element={<ItrixPage />}/> */}
+          {/* <Route path='/ipp' element={<Ipp />}/> */}
+        </Routes>
 
+        <Footer />
+      </div>
+    </>
   );
 }
 
