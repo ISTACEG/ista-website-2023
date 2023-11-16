@@ -1,0 +1,52 @@
+@import "../../UTILS/color.scss";
+@import "../../UTILS/function.scss";
+
+@media only screen and (min-width: 768px) {
+  .whole {
+    background-color: $primary;
+    color: #ffffff;
+    border: solid white 2pt;
+    border-radius: 3vh;
+    padding: 2vh;
+    margin-top: 5vh;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    font-size: 5vh;
+    // opacity: 0.6;
+
+    &:hover,
+    &:active {
+      background-color: rgba($primary, 0.6);
+      color: rgba(255, 255, 255, 0.8);
+      border-color: rgba(#ffffff, 0.8);
+    }
+  }
+  div.hap {
+    font-size: 3vh;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .whole {
+    background-color: $primary;
+    color: #ffffff;
+    border: solid white 2pt;
+    border-radius: 3vh;
+    padding: 2vh;
+    margin-top: 5vh;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    font-size: 5vh;
+    // opacity: 0.6;
+
+    &:hover,
+    &:active {
+      background-color: rgba($primary, 0.6);
+      color: rgba(255, 255, 255, 0.8);
+      border-color: rgba(#ffffff, 0.8);
+    }
+  }
+  div.hap {
+    font-size: 3vh;
+  }
+}

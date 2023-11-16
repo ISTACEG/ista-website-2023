@@ -1,275 +1,227 @@
-@import '../UTILS/color.scss';
-@import '../UTILS/function.scss';
-
-
-
+@import "../UTILS/color.scss";
+@import "../UTILS/function.scss";
 
 @media only screen and (min-width: 768px) {
-    
-    Nav.navbar {
+  Nav.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: pxe(100);
+    position: absolute;
+
+    position: fixed;
+    background-color: $primary;
+
+    top: 0;
+    left: 0;
+    z-index: 10000;
+
+    // background-color: rgba($primary, 0.97);
+
+    color: $white;
+
+    div.nav-logo {
+      font-size: pxe(36);
+      font-weight: 700;
+
+      margin: 0 pxe(16);
+    }
+
+    div.nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 85%;
+      min-height: inherit;
+
+      div.menu-btn {
+        display: none;
+      }
+
+      div.link-wrapper {
+        display: flex;
+        align-items: center;
+
+        a {
+          font-size: pxe(18);
+          font-weight: 600;
+          color: $white;
+          margin: 0 pxe(20) 0;
+        }
+
+        a div {
+          background-color: $white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: pxe(1000);
+          height: pxe(40);
+          width: pxe(146);
+          color: $primary;
+        }
+      }
+    }
+
+    .active {
+      padding: pxe(16) pxe(16) pxe(12);
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        height: pxe(4);
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(
+          to right,
+          $tertiary-green,
+          $tertiary-blue
+        );
+        border-radius: pxe(5000);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  Nav.navbar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    // position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    // background-color: rgba($primary, 0.97);
+    color: $white;
+    background-color: $primary;
+
+    div.logo-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: pxe(16);
+
+      div.nav-logo {
+        font-size: pxe(36);
+        font-weight: 700;
+      }
+
+      div.menu-btn-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        height: pxe(100);
-        position: absolute;
-    
+        height: pxe(48);
+        width: pxe(48);
 
-        position: fixed;
-        background-color: $primary;
+        div.menu-btn {
+          display: flex;
+          height: pxe(6);
+          width: pxe(48);
+          background-color: $white;
+          position: relative;
+          border-radius: pxe(5000);
 
-        
-        top: 0;
-        left: 0;
-        z-index: 10000;
+          &::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: block;
+            width: pxe(48);
+            height: pxe(6);
+            background-color: $white;
 
-        // background-color: rgba($primary, 0.97);
+            margin-top: pxe(-12);
+            border-radius: pxe(5000);
+          }
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
 
-        color: $white;
-        
-        
-        div.nav-logo {
-            font-size: pxe(36);
-            font-weight: 700;
-            
-            margin: 0 pxe(16);
+            right: 0;
+            top: 0;
+            margin-top: pxe(12);
+
+            width: pxe(48);
+            height: pxe(6);
+            background-color: $white;
+            border-radius: pxe(5000);
+          }
         }
 
-        
+        div.menu-btn.open {
+          background-color: transparent;
 
+          &::before {
+            transform: rotate(-45deg);
+            margin-top: 0;
 
+            transition: transform 0.5s ease;
+          }
 
+          &::after {
+            transform: rotate(45deg);
+            margin-top: 0;
 
-
-        div.nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            width: 85%;
-            min-height: inherit;
-    
-        
-            div.menu-btn {
-                display: none;
-            }
-
-
-            div.link-wrapper {
-                display: flex;
-                align-items: center;
-
-                a {
-                    font-size: pxe(18);
-                    font-weight: 600;
-                    color: $white;
-                    margin: 0 pxe(20) 0;
-                }
-            
-                a div {
-                    background-color: $white;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: pxe(1000);
-                    height: pxe(40);
-                    width:  pxe(146);
-                    color: $primary;
-                }
-            }
-            
+            transition: transform 0.5s ease;
+          }
         }
-
-        
-        .active {
-            padding: pxe(16) pxe(16) pxe(12);
-            position: relative;
-
-            &::before {
-                content: "";
-                position: absolute;
-                display: block;
-                height: pxe(4);
-                width: 100%;
-                bottom: 0;
-                left: 0;
-                background-image: linear-gradient(to right, $tertiary-green, $tertiary-blue);
-                border-radius: pxe(5000);
-            }
-        }
-
+      }
     }
 
+    div.nav-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+      height: max-content;
 
-}
+      div.link-wrapper.open {
+        max-height: pxe(500);
+        transition: max-height 1s ease;
+      }
 
-
-
-@media only screen and (max-width: 768px) {
-    
-
-
-    Nav.navbar {
+      div.link-wrapper {
         display: flex;
+        align-items: center;
         flex-direction: column;
         width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        padding-bottom: pxe(16);
 
-        // position: absolute;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 10000;
-        // background-color: rgba($primary, 0.97);
-        color: $white;
-        background-color: $primary;
-
-        
-        
-        div.logo-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: pxe(16);
-
-
-            div.nav-logo {
-                font-size: pxe(36);
-                font-weight: 700;
-            }
-
-            div.menu-btn-wrapper {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: pxe(48);
-                width: pxe(48);
-
-                div.menu-btn {
-                    display: flex;
-                    height: pxe(6);
-                    width: pxe(48);
-                    background-color: $white;
-                    position: relative;
-                    border-radius: pxe(5000);
-    
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        right: 0;
-                        top: 0;
-                        display: block;
-                        width: pxe(48);
-                        height: pxe(6);
-                        background-color: $white;
-                
-                        margin-top: pxe(-12);
-                        border-radius: pxe(5000);
-                    }
-                    &::after {
-                        content: "";
-                        display: block;
-                        position: absolute;
-
-                        right: 0;
-                        top: 0;
-                        margin-top: pxe(12);
-                
-                        width: pxe(48);
-                        height: pxe(6);
-                        background-color: $white;
-                        border-radius: pxe(5000);
-                    }
-                
-                }
-
-                div.menu-btn.open {
-        
-                    background-color: transparent;
-
-        
-                    &::before {    
-                        transform: rotate(-45deg);
-                        margin-top: 0;
-                            
-                        transition: transform 0.5s ease;
-                    }
-
-                    &::after {    
-                        transform: rotate(45deg);
-                        margin-top: 0;
-                        
-                        transition: transform 0.5s ease;
-                    }
-                        
-        
-                }
-            }
-
-            
-        }
-        
-        
-
-    
-
-        div.nav-container {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            position: relative;
-            height: max-content;
-                
-
-            
-
-           
-
-        
-            div.link-wrapper.open {
-                max-height: pxe(500);
-                transition: max-height 1s ease;
-            }
-
-
-            div.link-wrapper {
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                width: 100%;
-                max-height: 0;
-                overflow: hidden;
-                padding-bottom: pxe(16);
-
-                a {
-                    font-size: pxe(24);
-                    font-weight: 600;
-                    color: $white;
-                    margin: pxe(20);
-                }
-            
-                a div {
-                    background-color: $white;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: pxe(1000);
-                    height: pxe(40);
-                    width:  pxe(146);
-                    color: $primary;
-                }
-            }
-            
+        a {
+          font-size: pxe(24);
+          font-weight: 600;
+          color: $white;
+          margin: pxe(20);
         }
 
-        
-
+        a div {
+          background-color: $white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: pxe(1000);
+          height: pxe(40);
+          width: pxe(146);
+          color: $primary;
+        }
+      }
     }
+  }
 }
 
-
-
 @keyframes open-animation {
-    100% {
-        height: max-content;
-    }
+  100% {
+    height: max-content;
+  }
 }

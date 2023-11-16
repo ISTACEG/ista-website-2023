@@ -1,0 +1,26 @@
+@import "../../UTILS/color.scss";
+@import "../../UTILS/function.scss";
+
+div.main {
+  margin-top: 15vh;
+}
+
+div.desc {
+  @media only screen and (min-width: 768px) {
+    font-size: pxe(20);
+    margin-top: pxe(48);
+  }
+
+  @media only screen and (max-width: 768px) {
+    font-size: pxe(18);
+    line-height: pxe(28);
+    margin-top: pxe(36);
+  }
+
+  font-weight: 400;
+  width: 100%;
+  max-width: pxe(1096);
+  z-index: 2;
+  color: #ffffff;
+  margin-top: 5vh;
+}
