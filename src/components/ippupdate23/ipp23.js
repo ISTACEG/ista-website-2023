@@ -5,9 +5,10 @@ import "./ipp23.scss";
 const Ipp23 = () => {
   const navigate = useNavigate();
   return (
-    <Link className="whole" to="/ipp23">
-      <div>i++23</div>
-      <div className="hap">Happening now!</div>
+    <Link className="whole" to="https://cache.istaceg.in/">
+      <div>CACHE</div>
+      <br></br>
+      <div className="hap">Feb '24 Edition is out now!</div>
     </Link>
   );
 };
