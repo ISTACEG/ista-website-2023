@@ -4,8 +4,8 @@ import { useLocation } from "react-router-dom";
 
 var staffList = [
   {
-    img: "ISTA OB/swaminathan.jpg",
-    name: "DR.S.Swamynathan",
+    img: "ISTA OB/Vani_IST.webp",
+    name: "DR.K.Vani",
     position: "President",
   },
   {
