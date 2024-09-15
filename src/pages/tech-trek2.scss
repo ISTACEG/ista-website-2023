@@ -20,4 +20,24 @@ p.text1{
     margin-top: 20rem;
     margin-bottom: 2rem;
 }
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6rem;
+    color: #fff;
+    
+    th, td {
+      border: 1px solid #fff; 
+      padding: 8px;
+      text-align: left;
+    }
+  
+    th {
+      background-color: #333; 
+    }
+
+    tr:hover {
+      background-color: #555; 
+    }
+  }
   
