@@ -12,7 +12,6 @@ function Techtrek2() {
     console.log("techtrek2");
     const API_KEY = process.env.REACT_APP_API_KEY;
     const spreadsheetId = process.env.REACT_APP_SHEET_ID;
-    console.log(API_KEY);
     const range = "Sheet1!A1:H50";
     axios
       .get(
