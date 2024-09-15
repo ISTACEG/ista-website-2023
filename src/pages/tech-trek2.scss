@@ -1,0 +1,11 @@
+@import "../UTILS/color.scss";
+@import "../UTILS/function.scss";
+
+div.text1 {
+    background-color: $primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    padding: 0 pxe(16);
+}
