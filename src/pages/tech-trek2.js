@@ -9,10 +9,10 @@ function Techtrek2() {
       }, []);
     
   return(
-    <>
+    <div className="tech-trek2">
     <Navbar/>
     <p className="text1">Table here</p>
-  </>
+  </div>
 )
 }
 

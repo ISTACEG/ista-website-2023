@@ -1,10 +1,23 @@
 @import "../UTILS/color.scss";
 @import "../UTILS/function.scss";
 
-p.text1 {
-    
-    
-    padding: 0 pxe(50);
+
+  
+ 
+div.tech-trek2 {
+      background-color: $primary;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 pxe(16);
+    }
+
+
+p.text1{
     font-size: 1.5rem;
-    margin-top: 10%;
+    font-weight: 500;
+    color: $white;
+    margin-top: 20rem;
+    margin-bottom: 2rem;
 }
+  
