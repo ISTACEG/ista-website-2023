@@ -46,7 +46,19 @@ h1.title1 {
   }
 
   tbody tr:hover {
-    background-color: #555; /* Hover effect */
+    background-color: #555; 
+  }
+
+  tbody tr.gold {
+    color: #fde908; 
+  }
+
+  tbody tr.silver {
+    color: #aeadad; 
+  }
+
+  tbody tr.bronze {
+    color: #8a600c; 
   }
 }
 
@@ -70,12 +82,11 @@ h1.title1 {
   cursor: pointer;
   border-radius: 5px;
   font-size: 16px;
-  transition: background-color 0.3s ease; /* Smooth transition for hover */
+  transition: background-color 0.3s ease; 
 }
-
 .pagination-controls .prev:hover,
 .pagination-controls .next:hover {
-  background-color: #333; /* Slightly lighter on hover */
+  background-color: #333; 
 }
 
 .pagination-controls .prev:disabled,

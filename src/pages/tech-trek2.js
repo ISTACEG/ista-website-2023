@@ -27,7 +27,7 @@ function Techtrek2() {
       });
   }, []);
 
-  const dataToDisplay = data.slice(3); // Skip the first 3 rows
+  const dataToDisplay = data.slice(3); 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = dataToDisplay.slice(indexOfFirstRow, indexOfLastRow);
@@ -48,19 +48,33 @@ function Techtrek2() {
         <thead>
           <tr>
             {data.length > 0 &&
-              ["Name", "Week1", "Total"].map((header, index) => (
+              ["Position", "Name", "Week1", "Total"].map((header, index) => (
                 <th key={index}>{header}</th>
               ))}
           </tr>
         </thead>
         <tbody>
-          {currentRows.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              <td>{row[0]}</td>
-              <td>{row[7]}</td> 
-              <td>{row[7]}</td> 
-            </tr>
-          ))}
+          {currentRows.map((row, rowIndex) => {
+            const position = (currentPage - 1) * rowsPerPage + rowIndex + 1;
+            let rowClass = "";
+
+            if (position === 1) {
+              rowClass = "gold";
+            } else if (position === 2) {
+              rowClass = "silver";
+            } else if (position === 3) {
+              rowClass = "bronze";
+            }
+
+            return (
+              <tr key={rowIndex} className={rowClass}>
+                <td>{position}</td>
+                <td>{row[0]}</td>
+                <td>{row[7]}</td>
+                <td>{row[7]}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       <div className="pagination-controls">
