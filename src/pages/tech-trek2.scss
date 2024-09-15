@@ -20,10 +20,18 @@ p.text1{
     margin-top: 20rem;
     margin-bottom: 2rem;
 }
+
+h1.title1 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: $white;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
 .table {
     width: 100%;
     border-collapse: collapse;
-    margin: 6rem;
+    margin: 0.5rem;
     color: #fff;
     
     th, td {
