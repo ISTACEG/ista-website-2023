@@ -1,11 +1,10 @@
 @import "../UTILS/color.scss";
 @import "../UTILS/function.scss";
 
-div.text1 {
-    background-color: $primary;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+p.text1 {
     
-    padding: 0 pxe(16);
+    
+    padding: 0 pxe(50);
+    font-size: 1.5rem;
+    margin-top: 10%;
 }
