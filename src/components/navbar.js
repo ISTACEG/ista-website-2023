@@ -54,6 +54,7 @@ const Navbar = forwardRef((props, ref) => {
           <Link to="https://cache.istaceg.in/">Cache</Link>
           <Link to="/ipp23">i++</Link>
           <Link to="/#Itrix">ITrix</Link>
+          <Link to="/techtrek2">Tech Trek</Link>
           {/* <Link to="/#Ipp">I++</Link> */}
           <Link to="/#about">About</Link>
         </div>
