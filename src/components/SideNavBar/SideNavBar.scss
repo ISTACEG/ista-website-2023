@@ -1,0 +1,45 @@
+/* SideNavBar.scss */
+
+.SideNavBarContainer {
+    width: 250px; 
+    background-color: #0A2640; 
+    padding: 20px; 
+    border-right: 1px solid #ccc; 
+    height: 100vh; 
+    overflow-y: auto; 
+}
+
+.SideNavBarContainer h2 {
+    margin: 0 0 10px;
+    color: white; 
+}
+
+.SideNavBarContainer ul {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.SideNavBarContainer li {
+    padding: 10px 0; 
+    cursor: pointer; 
+    color: white;
+    transition: background-color 0.3s; 
+}
+
+.SideNavBarContainer li:hover {
+    background-color: #1d4f72; 
+}
+
+.SideNavBarContainer::-webkit-scrollbar {
+    width: 8px; 
+}
+
+.SideNavBarContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px; 
+}
+
+.SideNavBarContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

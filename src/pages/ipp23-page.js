@@ -1,4 +1,3 @@
-import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import "./ipp23-page.scss";
 import Cards from "../components/cards/cards";

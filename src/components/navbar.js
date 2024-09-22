@@ -20,7 +20,7 @@ const Navbar = forwardRef((props, ref) => {
   }, [offset]);
 
   const menuBtnClick = (e) => {
-    var openFlag = menubtnref.current.className.indexOf("open") == -1 ? 0 : 1;
+    var openFlag = menubtnref.current.className.indexOf("open") === -1 ? 0 : 1;
 
     if (!openFlag) {
       menubtnref.current.classList.add("open");
