@@ -52,6 +52,7 @@ const Navbar = forwardRef((props, ref) => {
         <div className="link-wrapper" ref={linkwrapperref}>
           <Link to="/">Home</Link>
           <Link to="https://cache.istaceg.in/">Cache</Link>
+          <Link to="/exp">Placement Experiences</Link>
           <Link to="/ipp23">i++</Link>
           <Link to="/#Itrix">ITrix</Link>
           <Link to="/techtrek2">Tech Trek</Link>
