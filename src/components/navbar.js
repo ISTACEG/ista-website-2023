@@ -20,7 +20,7 @@ const Navbar = forwardRef((props, ref) => {
   }, [offset]);
 
   const menuBtnClick = (e) => {
-    var openFlag = menubtnref.current.className.indexOf("open") == -1 ? 0 : 1;
+    var openFlag = menubtnref.current.className.indexOf("open") === -1 ? 0 : 1;
 
     if (!openFlag) {
       menubtnref.current.classList.add("open");
@@ -55,6 +55,7 @@ const Navbar = forwardRef((props, ref) => {
           <Link to="/ipp23">i++</Link>
           <Link to="/#Itrix">ITrix</Link>
           <Link to="/techtrek2">Tech Trek</Link>
+          <Link to="/experiences">Experiences</Link>
           {/* <Link to="/#Ipp">I++</Link> */}
           <Link to="/#about">About</Link>
         </div>

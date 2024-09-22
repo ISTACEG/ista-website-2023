@@ -110,7 +110,7 @@ function Team(props) {
   var aboutSectionRef = useRef();
 
   useEffect(() => {
-    if (location.hash == "#about") {
+    if (location.hash === "#about") {
       aboutSectionRef.current.scrollIntoView();
     } else {
       // window.scrollTo(0,0)
