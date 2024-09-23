@@ -21,7 +21,7 @@ body {
     display : flex;
     justify-content: center;
     margin-left : 0%;
-    margin-bottom : 100px;
+    margin-bottom: 1%;
     gap : 20px;
     align-items : center;
 }
@@ -140,3 +140,34 @@ body {
     border : 1px solid white;
     padding: 10px 10px;
 }
+
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.pagination button {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    background-color: #f8f8f8;
+    color: #333;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination button:hover {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+.pagination button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #007bff;
+}
+
