@@ -25,6 +25,7 @@ function Experiences() {
         const API_KEY = "AIzaSyAsunr59TCE3Qwb7p6YpRhtRNo4E-uZsJg";
         const spreadsheetId = "1BeY7DuBl7uBqTZGgvsAUXyTvDh-g6IXIRoA-tMkP7gg";
         const range = "Sheet1!A2:H47";
+
         axios
             .get(
                 `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${API_KEY}`
@@ -97,8 +98,8 @@ function Experiences() {
                             onClick={() => setSearchQuery(company)}
                             style={{ 
                                 padding: '10px', 
-                                backgroundColor: searchQuery === company && 'white', 
-                                color: searchQuery === company && 'black',
+                                backgroundColor: searchQuery === company && '#0A2640', 
+                                color: searchQuery === company ? "white" : 'black',
                                 display: 'inline-block',
                                 margin:"10px",
                                 borderRadius: "10px"
