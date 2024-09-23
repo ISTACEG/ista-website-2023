@@ -17,12 +17,11 @@ function ExperienceBox({ data }) {
     };
 
     return (
-        <div style={{ 
+        <div className="expBox" style={{ 
             border: '2px solid #ccc', 
             borderRadius: '10px', 
             padding: '20px', 
             margin: '20px', 
-            backgroundColor: '#1a1a2e', 
             textAlign: 'left', 
             position: 'relative',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Add shadow

@@ -3,6 +3,10 @@ body {
     padding: 0;
 }
 
+.expBox {
+    background: linear-gradient(135deg, #0A2640, #1263aa);
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -11,7 +15,7 @@ body {
 
 .ExperienceBody {
     flex: 1; 
-    background-color: #0A2640;
+    background-color: white;
     color: white;
     padding-top: 60px; 
     margin-top : 60px;
@@ -29,24 +33,23 @@ body {
 .form__group {
     position: relative;
     padding: 20px 0 0;
-    width: 500px;
+    width: 40%;
 }
   
 .form__field {
     font-family: inherit;
-    width: 500px;
+    width: 100%;
     border: none;
     border-bottom: 2px solid #9b9b9b;
     outline: 0;
     font-size: 17px;
-    color: #fff;
-    padding: 7px 0;
+    color: #1c1c1c;
     background: transparent;
     transition: border-color 0.2s;
 }
   
 .form__field::placeholder {
-    width : 500px;
+    width : 100%;
     color: transparent;
 }
   
@@ -80,7 +83,7 @@ body {
     display: block;
     transition: 0.2s;
     font-size: 17px;
-    color: #38caef;
+    color: #000000;
     font-weight: 700;
 }
 
@@ -171,3 +174,13 @@ body {
     box-shadow: 0 0 0 2px #007bff;
 }
 
+
+/* Mobile and Extra Small Devices */
+@media (max-width: 768px) {
+    .form__group {
+        width: 80%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
