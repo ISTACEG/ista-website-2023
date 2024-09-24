@@ -10,65 +10,70 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    min-height : 100vh;
+    min-height: 100vh;
+    width: 100%;
 }
 
 .ExperienceBody {
-    flex: 1; 
+    flex: 1;
     background-color: white;
     color: white;
-    padding-top: 60px; 
-    margin-top : 60px;
+    padding-top: 60px;
+    margin-top: 20px;
 }
 
-.inputBoxContainer{
-    display : flex;
+.inputBoxContainer {
+    display: flex;
     justify-content: center;
-    margin-left : 0%;
-    margin-bottom: 1%;
-    gap : 20px;
-    align-items : center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    gap: 20px;
+    align-items: center;
 }
 
 .form__group {
     position: relative;
-    padding: 20px 0 0;
+    padding: 15px 0 0;
     width: 40%;
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-  
+
 .form__field {
     font-family: inherit;
     width: 100%;
     border: none;
     border-bottom: 2px solid #9b9b9b;
     outline: 0;
-    font-size: 17px;
-    color: #1c1c1c;
+    font-size: 1.2rem;
+    color: #0A2640;
+    padding: 10px;
     background: transparent;
     transition: border-color 0.2s;
 }
-  
+
 .form__field::placeholder {
-    width : 100%;
     color: transparent;
 }
-  
+
 .form__field:placeholder-shown ~ .form__label {
-    font-size: 17px;
+    font-size: 1rem;
     cursor: text;
     top: 20px;
 }
-  
+
 .form__label {
     position: absolute;
     top: 0;
     display: block;
     transition: 0.2s;
-    font-size: 17px;
+    font-size: 1rem;
     color: #9b9b9b;
     pointer-events: none;
 }
-  
+
 .form__field:focus {
     padding-bottom: 6px;
     font-weight: 700;
@@ -76,75 +81,68 @@ body {
     border-image: linear-gradient(to right, #116399, #38caef);
     border-image-slice: 1;
 }
-  
+
 .form__field:focus ~ .form__label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 17px;
     color: #000000;
     font-weight: 700;
 }
 
-.form__field:required, .form__field:invalid {
+.form__field:required,
+.form__field:invalid {
     box-shadow: none;
 }
 
-.ExperienceDetails{
-    display : flex;
-    gap : 50px;
+.ExperienceDetails {
+    display: flex;
+    gap: 50px;
 }
 
 .EBFilters {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     margin-bottom: 30px;
-    gap: 100px; 
+    gap: 100px;
 }
 
 .ExperienceBoxBorder {
     border: 1px solid white;
     width: 350px;
     height: 250px;
-    padding: 10px; 
+    padding: 10px;
     display: flex;
-    flex-direction: column; 
-    justify-content: flex-start; 
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-
-.ExperienceBoxDetails{
-    padding-top:20px;
+.ExperienceBoxDetails {
+    padding-top: 20px;
 }
 
 .ExperienceBoxheading,
 .EBCompany,
 .EBJoiningYear {
-    text-align: left; 
-    margin: 5px 0; 
-    padding-left : 20px;
+    text-align: left;
+    margin: 5px 0;
+    padding-left: 20px;
 }
 
-.ExperienceBoxheading{
-    padding-bottom : 10px;
+.ExperienceBoxheading {
+    padding-bottom: 10px;
 }
 
-.ExperienceArticleContainer{
-    margin-left : 10px;
-    margin-top : 15%;
+.ExperienceArticleContainer {
+    margin-left: 10px;
+    margin-top: 15%;
     display: flex;
-    gap : 40px;
+    gap: 40px;
     align-items: center;
 }
 
-.ExperienceTypeContainer{
-    border : 1px solid white;
-    padding: 10px 10px;
+.ExperienceTypeContainer {
+    border: 1px solid white;
+    padding: 10px;
 }
-
-
 
 .pagination {
     display: flex;
@@ -153,7 +151,8 @@ body {
     margin: 1rem 0;
 }
 
-.pagination button {
+.pagination button,
+.pageButton {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 0.5rem 1rem;
@@ -164,22 +163,89 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.pagination button:hover {
+.pagination button:hover,
+.pageButton:hover {
     background-color: #e0e0e0;
     color: #000;
 }
 
-.pagination button:focus {
+.pagination button:focus,
+.pageButton:focus {
     outline: none;
     box-shadow: 0 0 0 2px #007bff;
+}
+
+.pageButton.active {
+    background-color: blue;
+    color: white;
+}
+
+.filterBar {
+    display: flex;
+    overflow-x: scroll;
+    background: transparent;
+    white-space: nowrap;
+    scrollbar-color: darkblue lightgray;
+    scrollbar-width: thin;
+}
+
+.filterBar::-webkit-scrollbar {
+    height: 8px;
+}
+
+.filterBar::-webkit-scrollbar-track {
+    background: lightgray;
+}
+
+.filterBar::-webkit-scrollbar-thumb {
+    background-color: darkblue;
+    border-radius: 10px;
+}
+
+.filterButton {
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.filterButton.active {
+    background-color: #0A2640;
+    color: white;
+}
+
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+}
+
+.EBContainer {
+    margin-top: 20px;
+}
+
+.rowWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.experienceBoxWrapper {
+    flex: 1 0 21%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 /* Mobile and Extra Small Devices */
 @media (max-width: 768px) {
     .form__group {
         width: 80%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 }

@@ -41,7 +41,6 @@ function Experiences() {
                     return [...row, downloadLink];
                 });
                 setData(updatedData);
-                console.log(updatedData)
                 const uniqueCompanies = [...new Set(updatedData.map(row => row[5]))];
                 setCompanies(uniqueCompanies);
                 setIsLoading(false);
@@ -83,33 +82,12 @@ function Experiences() {
                         <label htmlFor="name" className="form__label">Search by company name / candidate name </label>
                     </div>
                 </div>
-                <div className="filterBar" style={{ overflowX: 'scroll', background:"transparent", whiteSpace: 'nowrap', scrollbarColor: 'darkblue lightgray', scrollbarWidth: 'thin'}}>
-                    <style>
-                        {`
-                            .filterBar::-webkit-scrollbar {
-                                height: 8px;
-                            }
-                            .filterBar::-webkit-scrollbar-track {
-                                background: lightgray;
-                            }
-                            .filterBar::-webkit-scrollbar-thumb {
-                                background-color: darkblue;
-                                border-radius: 10px;
-                            }
-                        `}
-                    </style>
+                <div className="filterBar">
                     {companies.sort().map((company, index) => (
                         <button 
                             key={index} 
                             onClick={() => setSearchQuery(company)}
-                            style={{ 
-                                padding: '10px', 
-                                backgroundColor: searchQuery.toLowerCase() === company.toLowerCase() && '#0A2640', 
-                                color: searchQuery.toLowerCase() === company.toLowerCase() ? "white" : 'black',
-                                display: 'inline-block',
-                                margin:"10px",
-                                borderRadius: "10px"
-                            }}
+                            className={`filterButton ${searchQuery.toLowerCase() === company.toLowerCase() ? 'active' : ''}`}
                         >
                             {company}
                         </button>
@@ -117,14 +95,14 @@ function Experiences() {
                 </div>
                 <div className="ExperienceDetails">
                     {isLoading ? (
-                        <div style={{display:"flex", alignItems:"center", justifyContent:"center", width:"100%", height:"50vh"}}>
-                      <Riple color="#523ad6" size="large" text="" textColor="#ac1414" />  
-                      </div>
+                        <div className="loadingContainer">
+                            <Riple color="#523ad6" size="large" text="" textColor="#ac1414" />  
+                        </div>
                     ) : (
                         <div className="EBContainer">
-                            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                            <div className="rowWrapper">
                                 {currentRows.map((row, index) => (
-                                    <div key={index} style={{ flex: '1 0 21%', margin: '10px', display:"flex", justifyContent:"center" }}>
+                                    <div key={index} className="experienceBoxWrapper">
                                         <ExperienceBox data={row} />
                                     </div>
                                 ))}
@@ -134,10 +112,7 @@ function Experiences() {
                                     <button 
                                         key={i} 
                                         onClick={() => paginate(i + 1)}
-                                        style={{ 
-                                            backgroundColor: currentPage === i + 1 ? 'blue' : 'white', 
-                                            color: currentPage === i + 1 ? 'white' : 'black' 
-                                        }}
+                                        className={`pageButton ${currentPage === i + 1 ? 'active' : ''}`}
                                     >
                                         {i + 1}
                                     </button>
