@@ -45,13 +45,18 @@ function Experiences() {
                 setCompanies(uniqueCompanies);
                 setIsLoading(false);
                 localStorage.setItem('c_names', JSON.stringify(uniqueCompanies));
-                localStorage.setItem('exp', JSON.stringify(updatedData)); 
+                localStorage.setItem('exp', JSON.stringify(updatedData));
             })
             .catch((error) => {
                 console.error("Error fetching data from Google Sheets", error);
                 setIsLoading(false);
             });
     }, []);
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+        setCurrentPage(1); 
+    };
 
     const indexOfLastRow = currentPage * rowsPerPage;
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
@@ -77,7 +82,7 @@ function Experiences() {
                             placeholder="Enter Company Name" 
                             required="" 
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={handleSearchChange}
                         />
                         <label htmlFor="name" className="form__label">Search by company name / candidate name </label>
                     </div>
@@ -107,17 +112,19 @@ function Experiences() {
                                     </div>
                                 ))}
                             </div>
-                            { Math.ceil(filteredData.length / rowsPerPage) != 1 && <div className="pagination">
-                                {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, i) => (
-                                    <button 
-                                        key={i} 
-                                        onClick={() => paginate(i + 1)}
-                                        className={`pageButton ${currentPage === i + 1 ? 'active' : ''}`}
-                                    >
-                                        {i + 1}
-                                    </button>
-                                ))}
-                            </div>}
+                            { filteredData.length > rowsPerPage && (
+                                <div className="pagination">
+                                    {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, i) => (
+                                        <button 
+                                            key={i} 
+                                            onClick={() => paginate(i + 1)}
+                                            className={`pageButton ${currentPage === i + 1 ? 'active' : ''}`}
+                                        >
+                                            {i + 1}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
