@@ -11,6 +11,7 @@ function App() {
   return (
     <>
       <div className="App">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"></meta>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ipp23" element={<Ipp23Page />} />

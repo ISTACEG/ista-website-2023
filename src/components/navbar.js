@@ -25,10 +25,12 @@ const Navbar = forwardRef((props, ref) => {
     if (!openFlag) {
       menubtnref.current.classList.add("open");
       linkwrapperref.current.classList.add("open");
+      document.getElementById("cc1").classList.add("open");
       console.log("open");
     } else {
       menubtnref.current.classList.remove("open");
       linkwrapperref.current.classList.remove("open");
+      document.getElementById("cc1").classList.remove("open");
       console.log("close");
     }
   };
@@ -48,7 +50,7 @@ const Navbar = forwardRef((props, ref) => {
         </div>
       </div>
 
-      <div className="nav-container">
+      <div className="nav-container" id="cc1">
         <div className="link-wrapper" ref={linkwrapperref}>
           <Link to="/">Home</Link>
           <Link to="https://cache.istaceg.in/">Cache</Link>

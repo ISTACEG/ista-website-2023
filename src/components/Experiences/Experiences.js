@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../Experiences/Experiences.scss";
 import Navbar from "../navbar";
 import ExperienceBox from "./ExperienceBox";
+import { Riple } from "react-loading-indicators";
 import axios from "axios";
 
 function Experiences() {
@@ -9,6 +10,7 @@ function Experiences() {
     const [companies, setCompanies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
     const rowsPerPage = 12;
 
     function getDownloadLink(url) {
@@ -26,6 +28,7 @@ function Experiences() {
         const spreadsheetId = "1BeY7DuBl7uBqTZGgvsAUXyTvDh-g6IXIRoA-tMkP7gg";
         const range = "Sheet1!A2:H47";
 
+        setIsLoading(true);
         axios
             .get(
                 `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${API_KEY}`
@@ -41,9 +44,13 @@ function Experiences() {
                 console.log(updatedData)
                 const uniqueCompanies = [...new Set(updatedData.map(row => row[5]))];
                 setCompanies(uniqueCompanies);
+                setIsLoading(false);
+                localStorage.setItem('c_names', JSON.stringify(uniqueCompanies));
+                localStorage.setItem('exp', JSON.stringify(updatedData)); 
             })
             .catch((error) => {
                 console.error("Error fetching data from Google Sheets", error);
+                setIsLoading(false);
             });
     }, []);
 
@@ -58,7 +65,6 @@ function Experiences() {
     const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 
     return (
         <div className="container">
@@ -98,8 +104,8 @@ function Experiences() {
                             onClick={() => setSearchQuery(company)}
                             style={{ 
                                 padding: '10px', 
-                                backgroundColor: searchQuery === company && '#0A2640', 
-                                color: searchQuery === company ? "white" : 'black',
+                                backgroundColor: searchQuery.toLowerCase() === company.toLowerCase() && '#0A2640', 
+                                color: searchQuery.toLowerCase() === company.toLowerCase() ? "white" : 'black',
                                 display: 'inline-block',
                                 margin:"10px",
                                 borderRadius: "10px"
@@ -110,29 +116,35 @@ function Experiences() {
                     ))}
                 </div>
                 <div className="ExperienceDetails">
-                    <div className="EBContainer">
-                        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                            {currentRows.map((row, index) => (
-                                <div key={index} style={{ flex: '1 0 21%', margin: '10px' }}>
-                                    <ExperienceBox data={row} />
-                                </div>
-                            ))}
+                    {isLoading ? (
+                        <div style={{display:"flex", alignItems:"center", justifyContent:"center", width:"100%", height:"50vh"}}>
+                      <Riple color="#523ad6" size="large" text="" textColor="#ac1414" />  
+                      </div>
+                    ) : (
+                        <div className="EBContainer">
+                            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                                {currentRows.map((row, index) => (
+                                    <div key={index} style={{ flex: '1 0 21%', margin: '10px', display:"flex", justifyContent:"center" }}>
+                                        <ExperienceBox data={row} />
+                                    </div>
+                                ))}
+                            </div>
+                            { Math.ceil(filteredData.length / rowsPerPage) != 1 && <div className="pagination">
+                                {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, i) => (
+                                    <button 
+                                        key={i} 
+                                        onClick={() => paginate(i + 1)}
+                                        style={{ 
+                                            backgroundColor: currentPage === i + 1 ? 'blue' : 'white', 
+                                            color: currentPage === i + 1 ? 'white' : 'black' 
+                                        }}
+                                    >
+                                        {i + 1}
+                                    </button>
+                                ))}
+                            </div>}
                         </div>
-                        { Math.ceil(filteredData.length / rowsPerPage) != 1 && <div className="pagination">
-                            {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, i) => (
-                                <button 
-                                    key={i} 
-                                    onClick={() => paginate(i + 1)}
-                                    style={{ 
-                                        backgroundColor: currentPage === i + 1 ? 'blue' : 'white', 
-                                        color: currentPage === i + 1 ? 'white' : 'black' 
-                                    }}
-                                >
-                                    {i + 1}
-                                </button>
-                            ))}
-                        </div>}
-                    </div>
+                    )}
                 </div>
             </div>
         </div>
