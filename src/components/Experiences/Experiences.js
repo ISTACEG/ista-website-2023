@@ -54,7 +54,6 @@ function Experiences() {
     }, []);
 
     const handleSearchChange = (e) => {
-        setCurrentPage(1); 
         setSearchQuery(e.target.value);
     };
 
@@ -91,7 +90,10 @@ function Experiences() {
                     {companies.sort().map((company, index) => (
                         <button 
                             key={index} 
-                            onClick={() => setSearchQuery(company)}
+                            onClick={() => {
+                                setCurrentPage(1);
+                                setSearchQuery(company);
+                            }}
                             className={`filterButton ${searchQuery.toLowerCase() === company.toLowerCase() ? 'active' : ''}`}
                         >
                             {company}
