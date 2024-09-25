@@ -54,8 +54,8 @@ function Experiences() {
     }, []);
 
     const handleSearchChange = (e) => {
-        setSearchQuery(e.target.value);
         setCurrentPage(1); 
+        setSearchQuery(e.target.value);
     };
 
     const indexOfLastRow = currentPage * rowsPerPage;
