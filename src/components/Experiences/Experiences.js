@@ -25,8 +25,8 @@ function Experiences() {
 
     useEffect(() => {
         const API_KEY = "AIzaSyAsunr59TCE3Qwb7p6YpRhtRNo4E-uZsJg";
-        const spreadsheetId = "1BeY7DuBl7uBqTZGgvsAUXyTvDh-g6IXIRoA-tMkP7gg";
-        const range = "Sheet1!A2:H";
+        const spreadsheetId = "1wnqb43W0wI0zjZRDaG3rG5vpymJYFQinbPPVqUEacOQ";   
+        const range = "Form Responses 1!A2:H";
 
         setIsLoading(true);
         axios
@@ -41,6 +41,7 @@ function Experiences() {
                     return [...row, downloadLink];
                 });
                 setData(updatedData);
+                console.log(updatedData)
                 const uniqueCompanies = [...new Set(updatedData.map(row => row[5]))];
                 setCompanies(uniqueCompanies);
                 setIsLoading(false);
