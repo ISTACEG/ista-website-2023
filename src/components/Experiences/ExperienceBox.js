@@ -42,26 +42,36 @@ function ExperienceBox({ data }) {
                         overflow: 'hidden', // Hide overflow
                         textOverflow: 'ellipsis', // Show ellipsis if text overflows
                     }}>
-                        {data[2]}
+                        {data[2]} 
                     </h3>
                 </div>
                 <div style={{ marginBottom: '10px' }}>
-                    <h3 style={{ 
+                    <span style={{ 
                         fontSize: '1em', 
                         color: '#dddddd',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
+                        marginRight:"12px"
                     }}>
-                        {data[5]}
-                    </h3>
+                        {data[5]} 
+                    </span>
+                    <span style={{ 
+                        fontSize: '1em', 
+                        color: '#dddddd',
+                        whiteSpace: 'nowrap', // Prevent text wrapping
+                        overflow: 'hidden',
+                        opacity: '0.7',
+                    }}>
+                        | {data[9]}
+                    </span>
                 </div>
                 <div>
                     <h3 style={{ 
                         fontSize: '0.8em', 
                         color: '#bbbbbb',
                     }}>
-                        {2023}
+                        {data[8]}
                     </h3>
                 </div>
             </div>
