@@ -248,4 +248,13 @@ body {
     .form__group {
         width: 80%;
     }
+    .inputBoxContainer {
+        flex-direction: column;
+        row-gap: 0;
+    }
+    .inputBoxContainer > div {
+        flex : 1;
+        margin:0;
+        width: 80%;
+    }
 }

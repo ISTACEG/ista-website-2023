@@ -11,6 +11,8 @@ function Experiences() {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const [selectedYear, setSelectedYear] = useState("-1");
+    const [type, setType] = useState("All");
     const rowsPerPage = 12;
 
     function getDownloadLink(url) {
@@ -26,7 +28,7 @@ function Experiences() {
     useEffect(() => {
         const API_KEY = "AIzaSyAsunr59TCE3Qwb7p6YpRhtRNo4E-uZsJg";
         const spreadsheetId = "1wnqb43W0wI0zjZRDaG3rG5vpymJYFQinbPPVqUEacOQ";   
-        const range = "Form Responses 1!A2:H";
+        const range = "Form Responses 1!A2:J";
 
         setIsLoading(true);
         axios
@@ -60,8 +62,12 @@ function Experiences() {
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
 
     const filteredData = data.filter(row => 
-        row[2].toLowerCase().includes(searchQuery.toLowerCase()) || // candidate name
-        row[5].toLowerCase().includes(searchQuery.toLowerCase()) // company name
+        (   
+            row[2].toLowerCase().includes(searchQuery.toLowerCase()) || // candidate name
+            row[5].toLowerCase().includes(searchQuery.toLowerCase()) // company 
+        )  
+        && (selectedYear === "-1" || row[8] === selectedYear) 
+        && (type === "All" || row[9] === type)
     );
 
     const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
@@ -72,8 +78,20 @@ function Experiences() {
         <div className="container">
             <Navbar />
             <div className="ExperienceBody">
-                <div className="inputBoxContainer">
-                    <div className="form__group field">
+                <div className="inputBoxContainer" style={{padding:"0 10%"}}>
+                    <div className="form__group field" style={{flex: 3}}>
+                        <select 
+                            className="form__field" 
+                            value={type} 
+                            onChange={(e) => setType(e.target.value)}
+                        >
+                            <option value="All">All</option>
+                            <option value="Intern">Intern</option>
+                            <option value="Placement">Placement</option>
+                        </select>
+                        <label htmlFor="type" className="form__label">Select Type</label>
+                    </div>
+                    <div className="form__group field" style={{flex: 7, textAlign:"left"}}>
                         <input 
                             type="input" 
                             className="form__field" 
@@ -83,6 +101,19 @@ function Experiences() {
                             onChange={handleSearchChange}
                         />
                         <label htmlFor="name" className="form__label">Search by company name / candidate name </label>
+                    </div>
+                    <div className="form__group field" style={{flex: 3}}>
+                        <select 
+                            className="form__field" 
+                            value={selectedYear} 
+                            onChange={(e) => setSelectedYear(e.target.value)}
+                        >
+                            <option value="-1">All Year</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                        <label htmlFor="year" className="form__label">Select Year</label>
                     </div>
                 </div>
                 <div className="filterBar">
@@ -105,6 +136,13 @@ function Experiences() {
                             <Riple color="#523ad6" size="large" text="" textColor="#ac1414" />  
                         </div>
                     ) : (
+                        currentRows.length === 0 ?
+                            <div style={{ color:"red", width:"100%", marginTop:"4%" }}>
+                                No records found.
+                                <div>Filters : {searchQuery} {selectedYear != "-1" && selectedYear} {type != "All" && type}</div>
+                                <div>Try adjusting your filters.</div>
+                            </div>
+                        :
                         <div className="EBContainer">
                             <div className="rowWrapper">
                                 {currentRows.map((row, index) => (
