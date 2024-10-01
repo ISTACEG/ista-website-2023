@@ -27,7 +27,7 @@ function Experiences() {
 
     useEffect(() => {
         const API_KEY = "AIzaSyAsunr59TCE3Qwb7p6YpRhtRNo4E-uZsJg";
-        const spreadsheetId = "1wnqb43W0wI0zjZRDaG3rG5vpymJYFQinbPPVqUEacOQ";   
+        const spreadsheetId = "1wnqb43W0wI0zjZRDaG3rG5vpymJYFQinbPPVqUEacOQ";
         const range = "Form Responses 1!A2:J";
 
         setIsLoading(true);
@@ -55,19 +55,20 @@ function Experiences() {
     }, []);
 
     const handleSearchChange = (e) => {
+        setCurrentPage(1);
         setSearchQuery(e.target.value);
     };
 
     const indexOfLastRow = currentPage * rowsPerPage;
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
 
-    const filteredData = data.filter(row => 
-        (   
+    const filteredData = data.filter(row =>
+        (
             row[2].toLowerCase().includes(searchQuery.toLowerCase()) || // candidate name
             row[5].toLowerCase().includes(searchQuery.toLowerCase()) // company 
-        )  
-        && (selectedYear === "-1" || row[8] === selectedYear) 
-        && (type === "All" || row[9] === type)
+        )
+        && (selectedYear === "-1" || row[8] === selectedYear)
+        && (type === "All" || row[9].toLowerCase() === type.toLowerCase())
     );
 
     const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
@@ -78,48 +79,48 @@ function Experiences() {
         <div className="container">
             <Navbar />
             <div className="ExperienceBody">
-                <div className="inputBoxContainer" style={{padding:"0 10%"}}>
-                    <div className="form__group field" style={{flex: 3}}>
-                        <select 
-                            className="form__field" 
-                            value={type} 
-                            onChange={(e) => setType(e.target.value)}
+                <div className="input-box-container">
+                    <div className="form-group" style={{ flex: 3 }}>
+                        <select
+                            className="form-select"
+                            value={type}
+                            onChange={(e) => {setCurrentPage(1); setType(e.target.value)}}
                         >
-                            <option value="All">All</option>
+                            <option value="All">Select Type ( All )</option>
                             <option value="Intern">Intern</option>
                             <option value="Placement">Placement</option>
                         </select>
-                        <label htmlFor="type" className="form__label">Select Type</label>
+                        {/* <label htmlFor="type" className="form-label">Select Type</label> */}
                     </div>
-                    <div className="form__group field" style={{flex: 7, textAlign:"left"}}>
-                        <input 
-                            type="input" 
-                            className="form__field" 
-                            placeholder="Enter Company Name" 
-                            required="" 
+                    <div className="form-group" style={{ flex: 7 }}>
+                        <input
+                            type="text"
+                            className="form-input"
+                            placeholder="Enter Company Name / Candidate Name"
                             value={searchQuery}
                             onChange={handleSearchChange}
                         />
-                        <label htmlFor="name" className="form__label">Search by company name / candidate name </label>
+                        {/* <label htmlFor="name" className="form-label">Search by company name / candidate name</label> */}
                     </div>
-                    <div className="form__group field" style={{flex: 3}}>
-                        <select 
-                            className="form__field" 
-                            value={selectedYear} 
-                            onChange={(e) => setSelectedYear(e.target.value)}
+                    <div className="form-group" style={{ flex: 3 }}>
+                        <select
+                            className="form-select"
+                            value={selectedYear}
+                            onChange={(e) => {setCurrentPage(1);setSelectedYear(e.target.value)}}
                         >
                             <option value="-1">All Year</option>
                             <option value="2023">2023</option>
                             <option value="2024">2024</option>
                             <option value="2025">2025</option>
                         </select>
-                        <label htmlFor="year" className="form__label">Select Year</label>
+                        {/* <label htmlFor="year" className="form-label">Select Year</label> */}
                     </div>
                 </div>
+
                 <div className="filterBar">
                     {companies.sort().map((company, index) => (
-                        <button 
-                            key={index} 
+                        <button
+                            key={index}
                             onClick={() => {
                                 setCurrentPage(1);
                                 setSearchQuery(company);
@@ -133,38 +134,38 @@ function Experiences() {
                 <div className="ExperienceDetails">
                     {isLoading ? (
                         <div className="loadingContainer">
-                            <Riple color="#523ad6" size="large" text="" textColor="#ac1414" />  
+                            <Riple color="#523ad6" size="large" text="" textColor="#ac1414" />
                         </div>
                     ) : (
                         currentRows.length === 0 ?
-                            <div style={{ color:"red", width:"100%", marginTop:"4%" }}>
+                            <div style={{ color: "red", width: "100%", marginTop: "4%" }}>
                                 No records found.
                                 <div>Filters : {searchQuery} {selectedYear != "-1" && selectedYear} {type != "All" && type}</div>
                                 <div>Try adjusting your filters.</div>
                             </div>
-                        :
-                        <div className="EBContainer">
-                            <div className="rowWrapper">
-                                {currentRows.map((row, index) => (
-                                    <div key={index} className="experienceBoxWrapper">
-                                        <ExperienceBox data={row} />
-                                    </div>
-                                ))}
-                            </div>
-                            { filteredData.length > rowsPerPage && (
-                                <div className="pagination">
-                                    {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, i) => (
-                                        <button 
-                                            key={i} 
-                                            onClick={() => paginate(i + 1)}
-                                            className={`pageButton ${currentPage === i + 1 ? 'active' : ''}`}
-                                        >
-                                            {i + 1}
-                                        </button>
+                            :
+                            <div className="EBContainer">
+                                <div className="rowWrapper">
+                                    {currentRows.map((row, index) => (
+                                        <div key={index} className="experienceBoxWrapper">
+                                            <ExperienceBox data={row} />
+                                        </div>
                                     ))}
                                 </div>
-                            )}
-                        </div>
+                                {filteredData.length > rowsPerPage && (
+                                    <div className="pagination">
+                                        {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => paginate(i + 1)}
+                                                className={`pageButton ${currentPage === i + 1 ? 'active' : ''}`}
+                                            >
+                                                {i + 1}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                     )}
                 </div>
             </div>
