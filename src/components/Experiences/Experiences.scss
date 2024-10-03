@@ -320,3 +320,49 @@ input {
         width: auto;
     }
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.pageButton {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.pageButton:hover {
+    background-color: #ddd;
+}
+
+.pageButton.active {
+    color: #fff;
+}
+
+.pageButton[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 600px) {
+    .pageButton {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .pagination {
+        gap: 8px;
+        flex-direction: column;
+    }
+}

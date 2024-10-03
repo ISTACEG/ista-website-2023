@@ -84,7 +84,7 @@ function Experiences() {
                         <select
                             className="form-select"
                             value={type}
-                            onChange={(e) => {setCurrentPage(1); setType(e.target.value)}}
+                            onChange={(e) => { setCurrentPage(1); setType(e.target.value) }}
                         >
                             <option value="All">Select Type ( All )</option>
                             <option value="Intern">Intern</option>
@@ -106,7 +106,7 @@ function Experiences() {
                         <select
                             className="form-select"
                             value={selectedYear}
-                            onChange={(e) => {setCurrentPage(1);setSelectedYear(e.target.value)}}
+                            onChange={(e) => { setCurrentPage(1); setSelectedYear(e.target.value) }}
                         >
                             <option value="-1">All Year</option>
                             <option value="2023">2023</option>
@@ -154,17 +154,59 @@ function Experiences() {
                                 </div>
                                 {filteredData.length > rowsPerPage && (
                                     <div className="pagination">
-                                        {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, i) => (
-                                            <button
-                                                key={i}
-                                                onClick={() => paginate(i + 1)}
-                                                className={`pageButton ${currentPage === i + 1 ? 'active' : ''}`}
-                                            >
-                                                {i + 1}
-                                            </button>
-                                        ))}
+                                        <button
+                                            disabled={currentPage === 1}
+                                            onClick={() => paginate(currentPage - 1)}
+                                            className="pageButton"
+                                        >
+                                            Prev
+                                        </button>
+                                        <div>
+                                            {currentPage > 2 && (
+                                                <>
+                                                    <button onClick={() => paginate(1)} className="pageButton">
+                                                        1
+                                                    </button>
+                                                    <button className="pageButton">...</button>
+                                                </>
+                                            )}
+                                            {Array.from({ length: 3 }, (_, i) => {
+                                                const page = currentPage - 1 + i;
+                                                if (page > 0 && page <= Math.ceil(filteredData.length / rowsPerPage)) {
+                                                    return (
+                                                        <button
+                                                            key={page}
+                                                            onClick={() => paginate(page)}
+                                                            className={`pageButton ${currentPage === page ? 'active' : ''}`}
+                                                        >
+                                                            {page}
+                                                        </button>
+                                                    );
+                                                }
+                                                return null;
+                                            })}
+                                            {currentPage < Math.ceil(filteredData.length / rowsPerPage) - 1 && (
+                                                <>
+                                                    <button className="pageButton">...</button>
+                                                    <button
+                                                        onClick={() => paginate(Math.ceil(filteredData.length / rowsPerPage))}
+                                                        className="pageButton"
+                                                    >
+                                                        {Math.ceil(filteredData.length / rowsPerPage)}
+                                                    </button>
+                                                </>
+                                            )}
+                                        </div>
+                                        <button
+                                            disabled={currentPage === Math.ceil(filteredData.length / rowsPerPage)}
+                                            onClick={() => paginate(currentPage + 1)}
+                                            className="pageButton"
+                                        >
+                                            Next
+                                        </button>
                                     </div>
                                 )}
+
                             </div>
                     )}
                 </div>
