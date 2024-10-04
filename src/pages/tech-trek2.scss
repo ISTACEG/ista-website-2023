@@ -95,3 +95,55 @@ h1.title1 {
   color: #151515;
   cursor: not-allowed;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .table {
+    width: 100%; 
+    font-size: 0.9rem; 
+    margin: 1rem;
+  }
+
+  th, td {
+    padding: 8px; 
+  }
+
+  h1.title1 {
+    font-size: 1.5rem;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+  }
+
+  .pagination-controls {
+    width: 100%; 
+    justify-content: center; 
+  }
+
+  .pagination-controls .prev,
+  .pagination-controls .next {
+    font-size: 14px;
+    padding: 8px 15px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    font-size: 0.8rem; 
+  }
+
+  th, td {
+    padding: 6px; 
+  }
+
+  h1.title1 {
+    font-size: 1.2rem;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .pagination-controls .prev,
+  .pagination-controls .next {
+    font-size: 12px;
+    padding: 6px 10px; 
+  }
+}
