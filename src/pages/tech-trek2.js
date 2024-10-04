@@ -12,13 +12,13 @@ function Techtrek2() {
     console.log("techtrek2");
     const API_KEY = process.env.REACT_APP_API_KEY;
     const spreadsheetId = process.env.REACT_APP_SHEET_ID;
-    const range = "Sheet1!A1:H50";
+    const range = "Final!A1:E53";
     axios
       .get(
         `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${API_KEY}`
       )
       .then((response) => {
-        console.log(response.data.values);
+       // console.log(response.data.values);
         setData(response.data.values);
       })
       .catch((error) => {
@@ -26,7 +26,7 @@ function Techtrek2() {
       });
   }, []);
 
-  const dataToDisplay = data.slice(3); 
+  const dataToDisplay = data.slice(3).sort((a,b)=> b[4]-a[4]); 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = dataToDisplay.slice(indexOfFirstRow, indexOfLastRow);
@@ -43,11 +43,12 @@ function Techtrek2() {
     <div className="tech-trek2">
       <Navbar />
       <h1 className="title1">Tech Trek 2.0 Leaderboard</h1>
+      <div className="tablewrap">
       <table className="table">
         <thead>
           <tr>
             {data.length > 0 &&
-              ["Position", "Name", "Week1", "Total"].map((header, index) => (
+              ["Position", "Name","Reg no", "Week1","Week2", "Total"].map((header, index) => (
                 <th key={index}>{header}</th>
               ))}
           </tr>
@@ -69,13 +70,17 @@ function Techtrek2() {
               <tr key={rowIndex} className={rowClass}>
                 <td>{position}</td>
                 <td>{row[0]}</td>
-                <td>{row[7]}</td>
-                <td>{row[7]}</td>
+                <td>{row[1]}</td>
+                <td>{row[2]}</td>
+                <td>{row[3]}</td>
+                <td>{row[4]}</td>
+                
               </tr>
             );
           })}
         </tbody>
       </table>
+      </div>
       <div className="pagination-controls">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
