@@ -20,15 +20,17 @@ const Navbar = forwardRef((props, ref) => {
   }, [offset]);
 
   const menuBtnClick = (e) => {
-    var openFlag = menubtnref.current.className.indexOf("open") == -1 ? 0 : 1;
+    var openFlag = menubtnref.current.className.indexOf("open") === -1 ? 0 : 1;
 
     if (!openFlag) {
       menubtnref.current.classList.add("open");
       linkwrapperref.current.classList.add("open");
+      document.getElementById("cc1").classList.add("open");
       console.log("open");
     } else {
       menubtnref.current.classList.remove("open");
       linkwrapperref.current.classList.remove("open");
+      document.getElementById("cc1").classList.remove("open");
       console.log("close");
     }
   };
@@ -48,10 +50,11 @@ const Navbar = forwardRef((props, ref) => {
         </div>
       </div>
 
-      <div className="nav-container">
+      <div className="nav-container" id="cc1">
         <div className="link-wrapper" ref={linkwrapperref}>
           <Link to="/">Home</Link>
           <Link to="https://cache.istaceg.in/">Cache</Link>
+          <Link to="/experiences">Placement Experiences</Link>
           <Link to="/ipp23">i++</Link>
           <Link to="/#Itrix">ITrix</Link>
           <Link to="/techtrek2">Tech Trek</Link>
