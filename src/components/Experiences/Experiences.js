@@ -26,8 +26,8 @@ function Experiences() {
     }
 
     useEffect(() => {
-        const API_KEY = "AIzaSyAsunr59TCE3Qwb7p6YpRhtRNo4E-uZsJg";
-        const spreadsheetId = "1wnqb43W0wI0zjZRDaG3rG5vpymJYFQinbPPVqUEacOQ";
+        const API_KEY = process.env.ISTA_SHEET_API;
+        const spreadsheetId = process.env.EXP_SHEET_ID;
         const range = "Form Responses 1!A2:J";
 
         setIsLoading(true);
