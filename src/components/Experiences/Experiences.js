@@ -43,7 +43,6 @@ function Experiences() {
                     return [...row, downloadLink];
                 });
                 setData(updatedData);
-                console.log(updatedData)
                 const uniqueCompanies = [...new Set(updatedData.map(row => row[5]))];
                 setCompanies(uniqueCompanies);
                 setIsLoading(false);
