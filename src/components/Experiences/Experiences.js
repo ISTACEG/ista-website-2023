@@ -29,7 +29,6 @@ function Experiences() {
         const API_KEY = process.env.ISTA_SHEET_API;
         const spreadsheetId = process.env.EXP_SHEET_ID;
         const range = "Form Responses 1!A2:J";
-
         setIsLoading(true);
         axios
             .get(
@@ -39,7 +38,7 @@ function Experiences() {
                 const updatedData = response.data.values.map(row => {
                     const viewLink = row[6];
                     row[5] = row[5].toUpperCase().trim();
-                    const downloadLink = getDownloadLink(viewLink);
+                    const downloadLink = getDownloadLink(viewLink); // open link to downlink link
                     return [...row, downloadLink];
                 });
                 setData(updatedData);
