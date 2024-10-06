@@ -26,8 +26,8 @@ function Experiences() {
     }
 
     useEffect(() => {
-        const API_KEY = process.env.ISTA_SHEET_API;
-        const spreadsheetId = process.env.EXP_SHEET_ID;
+        const API_KEY = process.env.REACT_APP_ISTA_SHEET_API;
+        const spreadsheetId = process.env.REACT_APP_EXP_SHEET_ID;
         const range = "Form Responses 1!A2:J";
         setIsLoading(true);
         axios
