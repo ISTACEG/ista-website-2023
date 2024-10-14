@@ -41,6 +41,7 @@ function Experiences() {
                     const downloadLink = getDownloadLink(viewLink); // open link to downlink link
                     return [...row, downloadLink];
                 });
+                updatedData.sort(() => Math.random - 0.5)
                 setData(updatedData);
                 const uniqueCompanies = [...new Set(updatedData.map(row => row[5]))];
                 setCompanies(uniqueCompanies);
