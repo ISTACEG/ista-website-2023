@@ -79,7 +79,7 @@ function ExperienceBox({ data }) {
                 <div>
                     <Link to={data[6]} style={{ color: "#4da6ff", textDecoration: 'none', fontSize: '1em' }}>Read</Link>
                     <span style={{ margin: '0 10px' }}></span>
-                    <Link to={data[8]} style={{ color: "#4da6ff", textDecoration: 'none', fontSize: '1em' }}>
+                    <Link to={data[data.length - 1]} style={{ color: "#4da6ff", textDecoration: 'none', fontSize: '1em' }}>
                         <FaDownload />
                     </Link>
                 </div>
