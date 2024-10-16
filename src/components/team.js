@@ -61,10 +61,11 @@ var newTeamMembers = [
     imageUrl: "https://drive.google.com/open?id=1ZW4CDSFZPevlupdRtdt_nlm9Nvfpc9Nb"
   },
   {
+    // https://drive.google.com/file/d/18tucFxveQ7hHRLhY906djFOl2OYL4kSP/view?usp=sharing
     name: "Arun Karthick Saravanan",
     position: "Deputy Head",
     domain: "Marketing",
-    imageUrl: "https://drive.google.com/open?id=1TMJWL-zaL7aAEmk3RFZ4FMoAJPdB0cQN"
+    imageUrl: "https://drive.google.com/open?id=18tucFxveQ7hHRLhY906djFOl2OYL4kSP"
   },
   {
     name: "SRI DHARANI R",
@@ -305,7 +306,7 @@ function Team(props) {
 
   return (
     <div className="Team" ref={aboutSectionRef}>
-      <h1>Our Team</h1>
+      <h1>Meet Our Team</h1>
 
       <div className="team-wrapper">
         <div className="staff-sec">
@@ -337,6 +338,8 @@ function Team(props) {
             </div>
           ))}
         </div>
+
+        <h1 className="title">Heads</h1>
 
         <div
           className="itrix-sec"
@@ -371,6 +374,8 @@ function Team(props) {
           </div>
 
         </div>
+
+        <h1 className="title">Deputy Heads</h1>
 
         <div
           className="itrix-sec"

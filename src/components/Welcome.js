@@ -7,8 +7,8 @@ function Welcome() {
   return (
     <div className="Welcome">
       <div className="welcome-wrapper">
-        <h1>Welcome</h1>
-        <Ipp23 />
+        <h1 className="brand">ISTA</h1>
+        {/* <Ipp23 /> */}
         <div className="intro">
           We at Information Science and Technology Association, are a
           staff-student run body striving to work hard for the betterment of The
