@@ -1,15 +1,10 @@
-
-
 $primary: #0A2640;
-$secondary: #1C3D5B;
-$tertiary-green: #69E6A6;
-$tertiary-blue: #0DBBFC;
-$white: #ffffff;
-$black: #151515;
-$success-green: #14A44D;
-
-
-
+$secondary: #6c788a;
+$tertiary-green: #7FDBB6;
+$tertiary-blue: #3FC1C9;
+$white: #F4F4F9;
+$black: #2B2D42;
+$success-green: #28A745;
 
 :export {
     primary: $primary;
@@ -19,5 +14,4 @@ $success-green: #14A44D;
     white: $white;
     black: $black;
     success-green: $success-green;
-
 }
