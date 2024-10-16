@@ -15,25 +15,25 @@ var staffList = [
   },
 ];
 
-var keysHeads = [{
-  name: "Ibrahim Navas S",
-  position: "Treasurer",
-  domain: "",
-  imageUrl: "https://drive.google.com/open?id=1dFrSDKF14f2tYGUFXdXa7teeC2IyiqoJ"
-},
-{
-  // https://drive.google.com/file/d/1_cFkhyoRiXCllqT8uPOIKP3EFAcsizBM/view?usp=drive_link
-  name: "Sanmitha V S",
-  position: "Chair Person",
-  domain: "",
-  imageUrl: "https://drive.google.com/open?id=1_cFkhyoRiXCllqT8uPOIKP3EFAcsizBM"
-},
-{
-  name: "Aruna M",
-  position: "Overall Coordinator",
-  domain: "",
-  imageUrl: "https://drive.google.com/open?id=12HGdzX43_THU61OIyZgjVL8_zQ6YCIAn"
-}]
+var keysHeads = [
+  {
+    // https://drive.google.com/file/d/1_cFkhyoRiXCllqT8uPOIKP3EFAcsizBM/view?usp=drive_link
+    name: "Sanmitha V S",
+    position: "Chair Person",
+    domain: "",
+    imageUrl: "https://drive.google.com/open?id=1_cFkhyoRiXCllqT8uPOIKP3EFAcsizBM"
+  }, {
+    name: "Ibrahim Navas S",
+    position: "Treasurer",
+    domain: "",
+    imageUrl: "https://drive.google.com/open?id=1dFrSDKF14f2tYGUFXdXa7teeC2IyiqoJ"
+  },
+  {
+    name: "Aruna M",
+    position: "Overall Coordinator",
+    domain: "",
+    imageUrl: "https://drive.google.com/open?id=12HGdzX43_THU61OIyZgjVL8_zQ6YCIAn"
+  }]
 
 var newTeamMembers = [
   {
