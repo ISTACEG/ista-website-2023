@@ -15,6 +15,26 @@ var staffList = [
   },
 ];
 
+var keysHeads = [{
+  name: "Ibrahim Navas S",
+  position: "Treasurer",
+  domain: "",
+  imageUrl: "https://drive.google.com/open?id=1dFrSDKF14f2tYGUFXdXa7teeC2IyiqoJ"
+},
+{
+  // https://drive.google.com/file/d/1_cFkhyoRiXCllqT8uPOIKP3EFAcsizBM/view?usp=drive_link
+  name: "Sanmitha V S",
+  position: "Chair Person",
+  domain: "",
+  imageUrl: "https://drive.google.com/open?id=1_cFkhyoRiXCllqT8uPOIKP3EFAcsizBM"
+},
+{
+  name: "Aruna M",
+  position: "Overall Coordinator",
+  domain: "",
+  imageUrl: "https://drive.google.com/open?id=12HGdzX43_THU61OIyZgjVL8_zQ6YCIAn"
+}]
+
 var newTeamMembers = [
   {
     name: "Varun Karthik T",
@@ -87,25 +107,6 @@ var newTeamMembers = [
     position: "Deputy Head",
     domain: "Co-ordinators",
     imageUrl: "https://drive.google.com/open?id=1nqQ4qgl-fCoKs60QlIDUHRQXFT3Orh6R"
-  },
-  {
-    name: "Ibrahim Navas S",
-    position: "Treasurer",
-    domain: "",
-    imageUrl: "https://drive.google.com/open?id=1dFrSDKF14f2tYGUFXdXa7teeC2IyiqoJ"
-  },
-  {
-    // https://drive.google.com/file/d/1_cFkhyoRiXCllqT8uPOIKP3EFAcsizBM/view?usp=drive_link
-    name: "Sanmitha V S",
-    position: "Chair Person",
-    domain: "",
-    imageUrl: "https://drive.google.com/open?id=1_cFkhyoRiXCllqT8uPOIKP3EFAcsizBM"
-  },
-  {
-    name: "Aruna M",
-    position: "Overall Coordinator",
-    domain: "",
-    imageUrl: "https://drive.google.com/open?id=12HGdzX43_THU61OIyZgjVL8_zQ6YCIAn"
   },
   {
     name: "Lekha S",
@@ -259,6 +260,8 @@ function convertImageUrls(members) {
 
 var newTeamMembers2 = convertImageUrls(newTeamMembers);
 
+keysHeads = convertImageUrls(keysHeads);
+
 const keyPositions = newTeamMembers2.filter(member => {
   return ['Chair Person', 'Treasurer', 'Overall Coordinator', 'Head'].includes(member.position);
 });
@@ -271,7 +274,7 @@ const deputyHeads = newTeamMembers2.filter(member => {
 function Team(props) {
   const elemRef = useRef();
   const elemRef1 = useRef();
-  
+
 
   let location = useLocation();
   var aboutSectionRef = useRef();
@@ -323,6 +326,18 @@ function Team(props) {
           </div>
         </div>
 
+        <div className="staff-sec">
+          {keysHeads.map((itm, ind) => (
+            <div className="avatar-container">
+              <img src={itm.imageUrl} alt="" className="avatart-img" />
+              <div className="nm-pos-div">
+                <span className="name">{itm.name}</span>
+                <span className="position">{itm.position}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
         <div
           className="itrix-sec"
           ref={elemRef}
@@ -356,7 +371,7 @@ function Team(props) {
           </div>
 
         </div>
-        
+
         <div
           className="itrix-sec"
           ref={elemRef1}
@@ -390,7 +405,7 @@ function Team(props) {
           </div>
 
         </div>
-        
+
       </div>
     </div>
   );
