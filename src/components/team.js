@@ -306,7 +306,7 @@ function Team(props) {
 
   return (
     <div className="Team" ref={aboutSectionRef}>
-      <h1>Meet Our Team</h1>
+      <h1 className="title">Meet Our Team</h1>
 
       <div className="team-wrapper">
         <div className="staff-sec">

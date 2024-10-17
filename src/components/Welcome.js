@@ -1,5 +1,6 @@
 import "./Welcome.scss";
 import Ipp23 from "../components/ippupdate23/ipp23";
+import { Link } from "react-router-dom";
 
 function Welcome() {
   var svgbgcolor = "#0DBBFC";
@@ -32,8 +33,9 @@ function Welcome() {
             </a>
           </div>
         </div>
-
-        <button className="explore">Explore</button>
+        <Link to={"#Itrix"}>
+        <button className="explore"> Explore</button>
+        </Link>
       </div>
 
       <div className="bg">

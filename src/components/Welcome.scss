@@ -3,16 +3,15 @@
 
 .brand {
   font-family: 'Times New Roman', Times, serif;
-  font-size: 5rem !important;
+  font-size: 8rem !important;
   font-weight: bold;
   color: $primary;
-  margin: 20px 0;
+  margin: 3rem 0;
   text-transform: uppercase;
   letter-spacing: pxe(2);
   text-shadow: pxe(2) pxe(2) pxe(4) rgba(0, 0, 0, 0.3);
   margin-bottom: pxe(24);
   text-align: center;
-
   @media only screen and (max-width: 768px) {
     font-size: pxe(28);
     letter-spacing: pxe(1);
