@@ -42,12 +42,12 @@ var newTeamMembers = [
     domain: "Web Development",
     imageUrl: "https://drive.google.com/open?id=1RzdBbO03uy6tIdS37Cmi0RMTfUd2uu-x"
   },
-  {
-    name: "Hariharan P",
-    position: "Deputy Head",
-    domain: "Events",
-    imageUrl: "https://drive.google.com/open?id=1oxjsdl5o4Q67UDj4w2shocwTepd9O2ZE"
-  },
+  // {
+  //   name: "Hariharan P",
+  //   position: "Deputy Head",
+  //   domain: "Events",
+  //   imageUrl: "https://drive.google.com/open?id=1oxjsdl5o4Q67UDj4w2shocwTepd9O2ZE"
+  // },
   {
     name: "Shanjanaa G",
     position: "Head",
