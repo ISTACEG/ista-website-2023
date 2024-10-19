@@ -251,9 +251,16 @@ var newTeamMembers = [
 
 console.log(newTeamMembers.length)
 
+function toTitleCase(str) {
+  return str.toLowerCase().split(' ').map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join(' ');
+}
+
 function convertImageUrls(members) {
   return members.map(member => {
     const fileId = member.imageUrl.split('=')[1];
+    member.name = toTitleCase(member.name)
     member.imageUrl = `https://lh3.googleusercontent.com/d/${fileId}`;
     return member;
   });
