@@ -280,147 +280,63 @@ const deputyHeads = newTeamMembers2.filter(member => {
 
 
 function Team(props) {
-  const elemRef = useRef();
-  const elemRef1 = useRef();
-
-
-  let location = useLocation();
-  var aboutSectionRef = useRef();
-
-  useEffect(() => {
-    if (location.hash === "#about") {
-      aboutSectionRef.current.scrollIntoView();
-    } else {
-      // window.scrollTo(0,0)
-    }
-  }, [location]);
-
-  const mousenterfunc = (e) => {
-    elemRef.current.style.animationPlayState = "paused";
-  };
-
-  const mouseleavefunc = (e) => {
-    elemRef.current.style.animationPlayState = "running";
-  };
-
-  const mousenterfunc1 = (e) => {
-    elemRef1.current.style.animationPlayState = "paused";
-  };
-
-  const mouseleavefunc1 = (e) => {
-    elemRef1.current.style.animationPlayState = "running";
-  };
-
   return (
-    <div className="Team" ref={aboutSectionRef}>
-      <h1 className="title">Meet Our Team</h1>
+    <div className='team-section'>
+      <h1 className="meet-title">Meet Our Team</h1>
 
-      <div className="team-wrapper">
-        <div className="staff-sec">
-          <div className="avatar-container">
-            <img src={staffList[0].img} alt="" className="avatart-img" />
-            <div className="nm-pos-div">
-              <span className="name">{staffList[0].name}</span>
-              <span className="position">{staffList[0].position}</span>
-            </div>
+      {/* Row 1: Staff List */}
+      <div className='team-row'>
+        {staffList.map((member, index) => (
+          <div className='team-member' key={index}>
+            <img src={member.img} alt={member.name} loading="lazy" />
+            <h3>{member.name}</h3>
+            <p>{member.position}</p>
           </div>
+        ))}
+      </div>
 
-          <div className="avatar-container">
-            <img src={staffList[1].img} alt="" className="avatart-img" />
-            <div className="nm-pos-div">
-              <span className="name">{staffList[1].name}</span>
-              <span className="position">{staffList[1].position}</span>
-            </div>
+      {/* Row 2: Key Heads */}
+      <div className='team-row'>
+        {keysHeads.map((member, index) => (
+          <div className='team-member' key={index}>
+            <img src={member.imageUrl} alt={member.name} loading="lazy" />
+            <h3>{member.name}</h3>
+            <p>{member.position}</p>
           </div>
-        </div>
+        ))}
+      </div>
 
-        <div className="staff-sec">
-          {keysHeads.map((itm, ind) => (
-            <div className="avatar-container">
-              <img src={itm.imageUrl} alt="" className="avatart-img" />
-              <div className="nm-pos-div">
-                <span className="name">{itm.name}</span>
-                <span className="position">{itm.position}</span>
-              </div>
+      {/* Row 3: Heads - Horizontal Scrolling */}
+      <h2 className="sub-title">Heads</h2>
+      <div className='team-row scrollable-row'>
+        {newTeamMembers
+          .filter(member => member.position === 'Head')
+          .map((member, index) => (
+            <div className='team-member' key={index}>
+              <img src={member.imageUrl} alt={member.name} loading="lazy" />
+              <h3>{member.name}</h3>
+              <p>{member.domain}</p>
             </div>
           ))}
-        </div>
+      </div>
 
-        <h1 className="title">Heads</h1>
-
-        <div
-          className="itrix-sec"
-          ref={elemRef}
-          onMouseEnter={mousenterfunc}
-          onMouseLeave={mouseleavefunc}
-        >
-          <div className="avatar-caraosal-slider">
-            {keyPositions.map((itm, ind) => (
-              <div className="avatar-container" key={ind}>
-                <img src={itm.imageUrl} alt={"Image of  " + itm.name} className="avatart-img" />
-                <div className="nm-pos-div">
-                  <span className="name">{itm.name}</span>
-                  <span className="position">{itm.position}</span>
-                  <span className="domain">{itm.domain}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="avatar-caraosal-slider">
-            {keyPositions.map((itm, ind) => (
-              <div className="avatar-container" key={ind}>
-                <img src={itm.imageUrl} alt={"Image of  " + itm.name} className="avatart-img" />
-                <div className="nm-pos-div">
-                  <span className="name">{itm.name}</span>
-                  <span className="position">{itm.position}</span>
-                  <span className="domain">{itm.domain}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-
-        <h1 className="title">Deputy Heads</h1>
-
-        <div
-          className="itrix-sec"
-          ref={elemRef1}
-          onMouseEnter={mousenterfunc1}
-          onMouseLeave={mouseleavefunc1}
-        >
-          <div className="avatar-caraosal-slider">
-            {deputyHeads.map((itm, ind) => (
-              <div className="avatar-container" key={ind}>
-                <img src={itm.imageUrl} alt={"Image of  " + itm.name} className="avatart-img" />
-                <div className="nm-pos-div">
-                  <span className="name">{itm.name}</span>
-                  <span className="position">{itm.position}</span>
-                  <span className="domain">{itm.domain}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="avatar-caraosal-slider">
-            {deputyHeads.map((itm, ind) => (
-              <div className="avatar-container" key={ind}>
-                <img src={itm.imageUrl} alt={"Image of  " + itm.name} className="avatart-img" />
-                <div className="nm-pos-div">
-                  <span className="name">{itm.name}</span>
-                  <span className="position">{itm.position}</span>
-                  <span className="domain">{itm.domain}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-
+      {/* Row 4: Deputy Heads - Horizontal Scrolling */}
+      <h2 className="sub-title">Deputy Heads</h2>
+      <div className='team-row scrollable-row'>
+        {newTeamMembers
+          .filter(member => member.position === 'Deputy Head')
+          .map((member, index) => (
+            <div className='team-member' key={index}>
+              <img src={member.imageUrl} alt={member.name} loading="lazy" />
+              <h3>{member.name}</h3>
+              <p>{member.domain}</p>
+            </div>
+          ))}
       </div>
     </div>
   );
 }
 
 export default Team;
+
+

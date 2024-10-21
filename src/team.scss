@@ -1,0 +1,48 @@
+h1,
+h2 {
+    font-size: 4rem;
+    margin: 1%;
+}
+
+h3,
+p {
+    margin-bottom: 3%;
+}
+
+.team-section {
+    padding: 20px;
+    background-color: aliceblue;
+    text-align: center;
+}
+
+.team-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+
+.team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.scrollable-row {
+    display: flex;
+    overflow-x: hidden;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding: 10px 0;
+    width: auto;
+    white-space: nowrap;
+}
+
+.team-member {
+    text-align: center;
+    flex: 0 0 auto;
+}
