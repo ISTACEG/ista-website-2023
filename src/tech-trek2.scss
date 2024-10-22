@@ -1,0 +1,169 @@
+// @import "../UTILS/color.scss";
+// @import "../UTILS/function.scss";
+
+$primary: #113c3c;
+$secondary: #e5e5db;
+$accent: #ff1493;
+$white: #fffd82;
+
+div.tech-trek2 {
+    background-color: $primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 px(16); // Corrected the typo from "pxe" to "px"
+}
+
+p.text1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: $white;
+    margin-top: 20rem;
+    margin-bottom: 2rem;
+}
+
+h1.title1 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: $white;
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+}
+
+.tablewrap {
+    width: 100%; // Ensures the wrapper takes up full width
+    overflow-x: auto; // Adds horizontal scrolling for smaller screens
+    padding: 0 1rem;
+}
+
+.table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 2rem auto;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    th,
+    td {
+        border: 1px solid #444;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #333;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    tbody tr:hover {
+        background-color: #555;
+    }
+
+    tbody tr.gold {
+        color: #fde908;
+    }
+
+    tbody tr.silver {
+        color: #aeadad;
+    }
+
+    tbody tr.bronze {
+        color: #8a600c;
+    }
+}
+
+.pagination-controls {
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 80%;
+}
+
+.pagination-controls .prev,
+.pagination-controls .next {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background-color: #333;
+    border-color: #151515;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-controls .prev:hover,
+.pagination-controls .next:hover {
+    background-color: #333;
+}
+
+.pagination-controls .prev:disabled,
+.pagination-controls .next:disabled {
+    background-color: #cccccc;
+    color: #151515;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .table {
+        width: 100%;
+        font-size: 0.9rem;
+        margin: 1rem;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+
+    h1.title1 {
+        font-size: 1.5rem;
+        margin-top: 8rem;
+        margin-bottom: 1rem;
+    }
+
+    .pagination-controls {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .pagination-controls .prev,
+    .pagination-controls .next {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tablewrap {
+        overflow-x: auto; // Ensures the table scrolls horizontally on smaller screens
+        width: 100%;
+    }
+
+    .table {
+        font-size: 0.8rem;
+        width: 100%; // Ensures the table fits within the screen width
+    }
+
+    th,
+    td {
+        padding: 6px;
+    }
+
+    h1.title1 {
+        font-size: 1.2rem;
+        margin-top: 7rem;
+        margin-bottom: 1rem;
+    }
+
+    .pagination-controls .prev,
+    .pagination-controls .next {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}

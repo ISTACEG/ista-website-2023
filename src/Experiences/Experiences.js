@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../Experiences/Experiences.scss";
-import Navbar from "../navbar";
+import {Navbar} from "../home-page";
 import ExperienceBox from "./ExperienceBox";
 import { Riple } from "react-loading-indicators";
 import axios from "axios";
@@ -74,8 +74,9 @@ function Experiences() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="container">
-            <Navbar />
+        <div style={{ width: "1500px" }}>
+        <Navbar />
+        <div className="exp-container">
             <div className="ExperienceBody">
                 <div className="input-box-container">
                     <div className="form-group" style={{ flex: 3 }}>
@@ -98,7 +99,6 @@ function Experiences() {
                             value={searchQuery}
                             onChange={handleSearchChange}
                         />
-                        {/* <label htmlFor="name" className="form-label">Search by company name / candidate name</label> */}
                     </div>
                     <div className="form-group" style={{ flex: 3 }}>
                         <select
@@ -123,6 +123,7 @@ function Experiences() {
                                 setCurrentPage(1);
                                 setSearchQuery(company);
                             }}
+                            style={{fontWeight:"bold"}}
                             className={`filterButton ${searchQuery.toLowerCase() === company.toLowerCase() ? 'active' : ''}`}
                         >
                             {company}
@@ -209,6 +210,7 @@ function Experiences() {
                     )}
                 </div>
             </div>
+        </div>
         </div>
     );
 }

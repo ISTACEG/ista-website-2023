@@ -47,7 +47,7 @@ function ExperienceBox({ data }) {
                 </div>
                 <div style={{ marginBottom: '10px' }}>
                     <span style={{ 
-                        fontSize: '1em', 
+                        fontSize: '0.9em', 
                         color: '#dddddd',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',

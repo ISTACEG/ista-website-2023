@@ -1,16 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Nanum+Gothic+Coding&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-// :root {
-//   --background: #060608;
-//   --color: #FAFAFA;
-//   --primary: #61dafb;
-//   --secondary: #f9f9f9;
-//   --accent: #080808;
-// }
+.text-desc {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 900;
+  font-style: normal;
+}
 
 :root {
   --background: #000000; /* Deep black for bold contrast */
@@ -53,6 +54,7 @@ body {
 .stack {
   display: grid;
   grid-template-columns: 1fr;
+  z-index: -1;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap');
@@ -115,7 +117,9 @@ body {
   justify-content: space-between;
   padding: 1rem 2rem;
   align-items: center;
+  font-family: "Agdasima", sans-serif;
   color: white;
+  width: 100%;
 
   .navbar-logo {
     font-size: 2rem;
@@ -162,6 +166,7 @@ body {
   font-size: 2.5rem;
   margin: 2rem 0;
   color: var(--secondary);
+  font-family: "Agdasima", sans-serif;
 }
 .magazine-box {
   text-align: center;
@@ -174,8 +179,9 @@ body {
 
   h2 {
     margin-bottom: 1rem;
-    font-size: 2rem;
+    font-size: 4rem;
     color: var(--accent);
+    font-family: "Londrina Sketch", sans-serif;
   }
 
   p {
@@ -208,8 +214,23 @@ body {
   .title-head {
     font-size: 2rem;
   }
-  .navbar-links li a {
-    font-size: 0.9rem;
+
+  .magazine-box {
+    padding: 1rem;
+  }
+  .magazine-box h2 {
+    font-size: 3rem;
+  }
+  .magazine-box p {
+    font-size: 1rem;
+  }
+  .magazine-images {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  .magazine-images img {
+    max-width: 100%;
   }
 }
 
@@ -223,8 +244,25 @@ body {
   .navbar-links li a {
     font-size: 0.8rem;
   }
+  .navbar {
+    padding: 1rem;
+  }
+  .magazine-box {
+    padding: 0.5rem;
+  }
+  .magazine-box h2 {
+    font-size: 2.5rem;
+  }
+  .magazine-box p {
+    font-size: 0.9rem;
+  }
+  .magazine-images {
+    gap: 0.5rem;
+  }
+  .magazine-images img {
+    max-width: 100%;
+  }
 }
-
 
 .events-box {
   text-align: center;
@@ -237,8 +275,9 @@ body {
 
   h2 {
     margin-bottom: 1rem;
-    font-size: 2rem;
+    font-size: 4rem;
     color: var(--accent);
+    font-family: "Londrina Sketch", sans-serif;
   }
 
   .event-item {
@@ -271,5 +310,195 @@ body {
         line-height: 1.6;
       }
     }
+  }
+}
+
+
+.footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 40px 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  padding: 20px;
+}
+
+.footer-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #e74c3c;
+}
+
+.footer-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.footer-section.about {
+  max-width: 400px;
+}
+
+.footer-section.links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section.links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section.links ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-section.links ul li a:hover {
+  color: #e74c3c;
+}
+
+.footer-section.contact p {
+  margin-bottom: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #34495e;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-bottom p a {
+  color: #e74c3c;
+  text-decoration: none;
+}
+
+.footer-bottom p a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-item {
+    flex-direction: column;
+    gap: 1rem;  
+  }
+
+  .event-description h3, p {
+    text-align: center;
+  }
+
+  .footer-section {
+    max-width: 90%;
+    text-align: center;
+  }
+}
+
+
+/* General styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar-logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+}
+
+.navbar-links li {
+  margin: 0 10px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar-links.open {
+    display: flex;
+    transform: translateX(0);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(30px);
+  }
+
+  .navbar-links li {
+    margin: 20px 0;
+  }
+
+  .bar.open:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .bar.open:nth-child(2) {
+    opacity: 0;
+  }
+
+  .bar.open:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 }

@@ -4,19 +4,21 @@ import Home from "./home-page";
 // import ItrixPage from './pages/Itrix-page';
 // import Footer from "./components/footer";
 // import Ipp23Page from "./pages/ipp23-page";
-// import Techtrek2 from "./pages/tech-trek2";
-// import Experiences from "./components/Experiences/Experiences";
+import Techtrek2 from "./tech-trek2";
+import Experiences from "./Experiences/Experiences";
+import Resource from "./Resource"
 
 function App() {
   return (
-    <>
       <div className="App">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"></meta>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/resource" element={<Resource />} />
+          <Route path="/exp_view" element={<Experiences />} />
+          <Route path="/techtrek" element={<Techtrek2 />} />
         </Routes>
       </div>
-    </>
   );
 }
 
