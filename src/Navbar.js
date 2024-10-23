@@ -5,9 +5,8 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
   
     const toggleMenu = () => {
-      console.log("toggled")
       setIsOpen(!isOpen);
-    };
+    }
   
     return (
       <nav className="navbar">
@@ -22,7 +21,7 @@ const Navbar = () => {
           <li><a href="/exp_view" aria-label="Placement Experiences">Placement Experiences</a></li>
           <li><a href="/history" aria-label="Placement Experiences">Timeline</a></li>
           <li><a href="/resource" aria-label="Resources">Resources</a></li>
-          <li><a href="/#events" aria-label="Events">Events</a></li>
+          <li><a href="/#events" aria-label="Events">Fests</a></li>
           <li><a href="/#team" aria-label="Our Team">Our Team</a></li>
           <li><a href="/techtrek" aria-label="Tech Trek">Tech Trek</a></li>
           <li><a href="/#contact" aria-label="Contact">Contact</a></li>

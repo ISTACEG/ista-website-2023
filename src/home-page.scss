@@ -221,7 +221,7 @@ body {
   }
 }
 
-.events-box {
+.events-box, .infos-box {
   width: 80%;
 }
 
@@ -233,7 +233,7 @@ body {
     margin-left: 0%;
   }
 
-  .events-box,
+  .events-box, .infos-box
   .magazine-box {
     width: 95%;
   }
@@ -311,7 +311,7 @@ body {
   }
 }
 
-.events-box {
+.events-box, .infos-box {
   text-align: center;
   background-color: var(--secondary);
   padding: 1rem;
@@ -570,6 +570,20 @@ body {
     display: none !important;
   }
 
+  .infos-box {
+    width: 95%;
+  }
+
+  .infos-box-2 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #ch-2 {
+    display: flex;
+    flex-direction: column;
+  }
+
 }
 
 .material-section {
@@ -666,4 +680,37 @@ iframe {
 .announcement::before {
   font-size: 24px;
   margin-right: 8px;
+}
+
+
+.button {
+  margin-top: 0.925rem;
+  padding: 0.5rem 0.9375rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #602f56;
+  color: white;
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 1.4rem;
+  transition: letter-spacing linear 0.2s;
+}
+
+.button:hover {
+  background-color: #810a6a;
+  letter-spacing: 4px;
+}
+
+
+.infos-box-2 {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  font-size: 1.4rem;
+  color: #666;
+}
+
+
+.infos-box-child {
+  padding: 5%;
 }
