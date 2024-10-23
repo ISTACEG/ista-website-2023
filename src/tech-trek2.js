@@ -14,7 +14,7 @@ function Techtrek2() {
     console.log("techtrek2");
     const API_KEY = process.env.REACT_APP_API_KEY;
     const spreadsheetId = process.env.REACT_APP_SHEET_ID;
-    const range = "Final!A1:E53";
+    const range = "Final!A1:G75";
     axios
       .get(
         `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${API_KEY}`
@@ -30,7 +30,7 @@ function Techtrek2() {
       });
   }, []);
 
-  const dataToDisplay = data.slice(3).sort((a, b) => b[4] - a[4]);
+  const dataToDisplay = data.slice(3).sort((a, b) => b[6] - a[6]);
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = dataToDisplay.slice(indexOfFirstRow, indexOfLastRow);
@@ -56,7 +56,7 @@ function Techtrek2() {
             <thead>
               <tr>
                 {data.length > 0 &&
-                  ["Position", "Name", "Reg no", "Week1", "Week2", "Total"].map(
+                  ["Position", "Name", "Reg no", "Week1", "Week2", "Week3", "Week4", "Total"].map(
                     (header, index) => <th key={index}>{header}</th>
                   )}
               </tr>
@@ -82,6 +82,8 @@ function Techtrek2() {
                     <td>{row[2]}</td>
                     <td>{row[3]}</td>
                     <td>{row[4]}</td>
+                    <td>{row[5]}</td>
+                    <td>{row[6]}</td>
                   </tr>
                 );
               })}

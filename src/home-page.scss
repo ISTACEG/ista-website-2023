@@ -7,6 +7,14 @@
   box-sizing: border-box;
 }
 
+.running-desc {
+  font-size: 1.3em;
+}
+
+.event-description {
+  margin-left: 2%;
+}
+
 .text-desc {
   font-family: "Nanum Gothic Coding", monospace;
   font-weight: 900;
@@ -14,15 +22,15 @@
 }
 
 :root {
-  --background: #000000; /* Deep black for bold contrast */
-  --color: #fffd82; /* Bright white for clear readability */
-  --primary: #00ffff; /* Electric cyan for eye-catching appeal */
-  --secondary: #e5e5db; /* Bright yellow for vibrant energy */
-  --accent: #ff1493; /* Neon pink for a bold, standout accent */
+  --background: #1a1a1a;
+  --color: #fffd82;
+  --primary: #00ffff;
+  --secondary: #e5e5db;
+  --accent: #ff1493;
 }
 
-html, body {
-  width: 100%;
+html,
+body {
   height: 100%;
   font-family: 'Arial', sans-serif;
 }
@@ -30,7 +38,7 @@ html, body {
 body {
   display: flex;
   justify-content: center;
-  background: var(--background);
+  background-color: #242424;
 }
 
 .container {
@@ -38,9 +46,7 @@ body {
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
-  width: 100%;
   padding: 1rem;
-  min-height: 90vh;
   overflow-y: auto;
   padding: auto;
   align-items: center;
@@ -48,7 +54,6 @@ body {
 
 .right {
   text-align: center;
-  width: 100%;
 }
 
 .stack {
@@ -72,11 +77,16 @@ body {
   --clip-top: calc(var(--stack-height) * var(--index));
   --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
   clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
-  animation: stack 540ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+  animation: stack 540ms cubic-bezier(.46, .29, 0, 1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
 }
 
-.stack span:nth-child(odd) { --glitch-translate: 8px; }
-.stack span:nth-child(even) { --glitch-translate: -8px; }
+.stack span:nth-child(odd) {
+  --glitch-translate: 8px;
+}
+
+.stack span:nth-child(even) {
+  --glitch-translate: -8px;
+}
 
 @keyframes stack {
   0% {
@@ -84,15 +94,18 @@ body {
     transform: translateX(-50%);
     text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
   }
+
   60% {
     opacity: 0.5;
     transform: translateX(50%);
   }
+
   80% {
     transform: none;
     opacity: 1;
     text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
   }
+
   100% {
     text-shadow: none;
   }
@@ -103,12 +116,15 @@ body {
     text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
     transform: translate(var(--glitch-translate));
   }
+
   2% {
     text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
   }
-  4%, 100% {  
-    text-shadow: none; 
-    transform: none; 
+
+  4%,
+  100% {
+    text-shadow: none;
+    transform: none;
   }
 }
 
@@ -119,7 +135,6 @@ body {
   align-items: center;
   font-family: "Agdasima", sans-serif;
   color: white;
-  width: 100%;
 
   .navbar-logo {
     font-size: 2rem;
@@ -138,7 +153,7 @@ body {
       font-weight: bold;
       position: relative;
       transition: color 0.3s ease-in-out;
-      
+
       &:hover {
         color: var(--primary);
       }
@@ -168,6 +183,7 @@ body {
   color: var(--secondary);
   font-family: "Agdasima", sans-serif;
 }
+
 .magazine-box {
   text-align: center;
   background-color: var(--secondary);
@@ -175,7 +191,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
-  // max-width: 800px;
+  width: 80%;
 
   h2 {
     margin-bottom: 1rem;
@@ -205,12 +221,27 @@ body {
   }
 }
 
+.events-box {
+  width: 80%;
+}
+
 
 /* Media Queries for Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 668px) {
+
+  .event-description {
+    margin-left: 0%;
+  }
+
+  .events-box,
+  .magazine-box {
+    width: 95%;
+  }
+
   .stack span {
     font-size: 12rem;
   }
+
   .title-head {
     font-size: 2rem;
   }
@@ -218,19 +249,27 @@ body {
   .magazine-box {
     padding: 1rem;
   }
+
   .magazine-box h2 {
     font-size: 3rem;
   }
+
   .magazine-box p {
     font-size: 1rem;
   }
+
   .magazine-images {
     flex-direction: column;
     gap: 1rem;
     align-items: center;
   }
+
   .magazine-images img {
     max-width: 100%;
+  }
+
+  .running-desc {
+    font-size: 1em;
   }
 }
 
@@ -238,27 +277,35 @@ body {
   .stack span {
     font-size: 9rem;
   }
+
   .title-head {
     font-size: 1.75rem;
   }
+
   .navbar-links li a {
     font-size: 0.8rem;
   }
+
   .navbar {
     padding: 1rem;
   }
+
   .magazine-box {
     padding: 0.5rem;
   }
+
   .magazine-box h2 {
     font-size: 2.5rem;
   }
+
   .magazine-box p {
     font-size: 0.9rem;
   }
+
   .magazine-images {
     gap: 0.5rem;
   }
+
   .magazine-images img {
     max-width: 100%;
   }
@@ -267,7 +314,7 @@ body {
 .events-box {
   text-align: center;
   background-color: var(--secondary);
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
@@ -295,7 +342,6 @@ body {
 
     .event-description {
       flex: 1;
-      margin-left: 1.5rem;
       text-align: left;
 
       h3 {
@@ -313,8 +359,8 @@ body {
   }
 }
 
-
 .footer {
+  margin-top: 1cm;
   background-color: #2c3e50;
   color: #ecf0f1;
   padding: 40px 0;
@@ -325,13 +371,15 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  // max-width: 1200px;
+  /* max-width: 1200px;  Uncomment if you want to limit the width */
   margin: 0 auto;
+  max-width: 1200px; /* Add max-width for layout control */
 }
 
 .footer-section {
   flex: 1;
   padding: 20px;
+  min-width: 250px; /* Ensure sections don’t get too small */
 }
 
 .footer-section h2 {
@@ -395,7 +443,7 @@ body {
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 668px) {
   .footer-content {
     flex-direction: column;
     align-items: center;
@@ -403,23 +451,24 @@ body {
 
   .event-item {
     flex-direction: column;
-    gap: 1rem;  
+    gap: 1rem;
   }
 
-  .event-description h3, p {
+  .event-description h3,
+  p {
     text-align: center;
   }
 
   .footer-section {
-    max-width: 90%;
     text-align: center;
   }
 
-  .boxes {
+  #resource-box {
     display: flex;
+    width: 99%;
     flex-direction: column;
   }
-  
+
 }
 
 
@@ -467,7 +516,7 @@ body {
 }
 
 /* Mobile styles */
-@media (max-width: 768px) {
+@media (max-width: 668px) {
   .hamburger {
     display: flex;
   }
@@ -476,7 +525,7 @@ body {
     position: absolute;
     top: 60px;
     right: 0;
-    // width: 100%;
+    display: none;
     height: calc(100vh - 60px);
     flex-direction: column;
     align-items: center;
@@ -486,10 +535,13 @@ body {
   }
 
   .navbar-links.open {
-    display: flex;
+    width: 100%;
     transform: translateX(0);
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(30px);
+    background: rgba(29, 29, 29, 0.7);
+    backdrop-filter: blur(100px);
+    // margin: 2%;
+    border-radius: 5px;
+    z-index: 1;
   }
 
   .navbar-links li {
@@ -512,7 +564,12 @@ body {
     display: flex;
     flex-direction: column;
   }
-  
+
+
+  .close-test {
+    display: none !important;
+  }
+
 }
 
 .material-section {
@@ -527,13 +584,16 @@ body {
   display: flex;
   flex-direction: row;
   gap: 2%;
-  // width: 90%;
+  width: 99%;
+  justify-content: center;
 }
 
 .google-drive-folder {
   background-color: #1f1f1f;
   border-radius: 10px;
   padding: 20px;
+  height: 70vh;
+  width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -545,5 +605,65 @@ body {
 iframe {
   border: none;
   border-radius: 8px;
+  height: 100%;
+  width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+.styled-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 32px;
+  color: #333;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.styled-text strike {
+  color: red;
+}
+
+.highlight {
+  font-weight: bold;
+  display: block;
+}
+
+.announcement {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-size: 20px;
+  color: #bac1c8;
+  /* Elegant dark blue */
+  text-align: center;
+  // background-color: #f1f8ff; /* Light blue background */
+  padding: 15px 20px;
+  border-radius: 10px;
+  /* Smooth corners */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+  margin: 20px auto;
+  max-width: 600px;
+  /* Constrained width */
+}
+
+.announcement a {
+  color: #e74c3c;
+  /* Vibrant red link */
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  /* Border animation */
+  transition: border-bottom 0.3s ease;
+}
+
+.announcement a:hover {
+  border-bottom: 2px solid #e74c3c;
+  /* Underline effect on hover */
+}
+
+.announcement::before {
+  font-size: 24px;
+  margin-right: 8px;
 }

@@ -10,48 +10,16 @@ import Team from "./team"
 import Experiences from './Experiences/Experiences';
 import { useState } from 'react';
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    console.log("toggled")
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <nav className="navbar">
-      <div className="navbar-logo">ISTA</div>
-      <div className="hamburger" onClick={toggleMenu}>
-        <div className={isOpen ? "bar open" : "bar"}></div>
-        <div className={isOpen ? "bar open" : "bar"}></div>
-        <div className={isOpen ? "bar open" : "bar"}></div>
-      </div>
-      <ul className={isOpen ? "navbar-links open" : "navbar-links"}>
-        <li><a href="/" aria-label="Home" aria-current="page">Home</a></li>
-        <li><a href="/exp_view" aria-label="Placement Experiences">Placement Experiences</a></li>
-        <li><a href="/resource" aria-label="Resources">Resources</a></li>
-        <li><a href="#events" aria-label="Events">Events</a></li>
-        <li><a href="#team" aria-label="Our Team">Our Team</a></li>
-        <li><a href="/techtrek" aria-label="Tech Trek">Tech Trek</a></li>
-        <li><a href="#" aria-label="Contact">Contact</a></li>
-      </ul>
-    </nav>
-  );
-};
-
 const App = () => {
   return (
     <div>
       <div className="container">
-        {/* <p className="right text-desc">Information Science and Technology Association</p> */}
         <div className="stack" style={{ "--stacks": 3 }}>
           <span style={{ "--index": 0 }}>ISTA</span>
           <span style={{ "--index": 1 }}>ISTA</span>
           <span style={{ "--index": 2 }}>ISTA</span>
         </div>
-        {/* <p className='text-desc'>
-          Empowering innovation through technology and knowledge
-        </p> */}
+
         <TypeAnimation
           sequence={[
             // Same substring at the start will only be typed out once, initially
@@ -59,18 +27,16 @@ const App = () => {
             1000, // wait 1s before replacing "Mice" with "Hamsters"
             'Empowering innovation through technology and knowledge ',
             200,
-            'At ISTA, we help students prepare for interviews.',
-            300,
             "At ISTA, we work together to grow together.",
-            1000,
-            "At ISTA, we host events like I++ and ITRIX."
           ]}
-          className='text-desc'
+          className='text-desc running-desc'
           wrapper="span"
           speed={50}
-          style={{ fontSize: '2em', display: 'inline-block', textAlign: "center" }}
+          style={{ display: 'inline-block', textAlign: "center" }}
           repeat={Infinity}
         />
+
+        <p className='announcement'>I++ is coming soon.. Check it out here <a href=''>here</a></p>
       </div>
 
       <h1 className='title-head'>What We Do</h1>
@@ -105,9 +71,9 @@ const App = () => {
           </div>
         </section>
       </Zoom>
-      <div id='teams'>
+      <section id='team'>
         <Team />
-      </div>
+      </section>
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section about">
@@ -122,23 +88,21 @@ const App = () => {
               <li><a href="/resource" aria-label="Resources">Resources</a></li>
               <li><a href="#events" aria-label="Events">Events</a></li>
               <li><a href="#team" aria-label="Our Team">Our Team</a></li>
-              <li><a href="#" aria-label="Contact">Contact</a></li>
+              <li><a href="#contact" aria-label="Contact">Contact</a></li>
             </ul>
           </div>
           <div className="footer-section contact">
             <h2>Contact Us</h2>
-            <p className="text-desc">Email: info@ista.com</p>
-            <p className="text-desc">Phone: +123 456 7890</p>
+            <p className="text-desc">Email: ista@auist.com</p>
+            {/* <p className="text-desc">Phone: +123 456 7890</p> */}
           </div>
         </div>
         <div className="footer-bottom">
           <p className="text-desc">Designed & Developed by ISTA Web Team.</p>
           <br></br>
-          <p className="text-desc">&copy; 2023 ISTA. All rights reserved.</p>
         </div>
       </footer>
     </div>
   );
 };
-export { Navbar };
 export default App;

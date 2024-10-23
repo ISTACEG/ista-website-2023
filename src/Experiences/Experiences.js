@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../Experiences/Experiences.scss";
-import {Navbar} from "../home-page";
+import "./Experiences.scss";
 import ExperienceBox from "./ExperienceBox";
 import { Riple } from "react-loading-indicators";
 import axios from "axios";
@@ -136,7 +135,7 @@ function Experiences() {
                         </div>
                     ) : (
                         currentRows.length === 0 ?
-                            <div style={{ color: "red", width: "100%", marginTop: "4%" }}>
+                            <div style={{ color: "red", width: "100%", marginTop: "4%", textAlign:"center" }}>
                                 No records found.
                                 <div>Filters : {searchQuery} {selectedYear != "-1" && selectedYear} {type != "All" && type}</div>
                                 <div>Try adjusting your filters.</div>
