@@ -175,7 +175,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
-  max-width: 800px;
+  // max-width: 800px;
 
   h2 {
     margin-bottom: 1rem;
@@ -271,7 +271,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
-  max-width: 800px;
+  // max-width: 800px;
 
   h2 {
     margin-bottom: 1rem;
@@ -325,7 +325,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -414,6 +414,12 @@ body {
     max-width: 90%;
     text-align: center;
   }
+
+  .boxes {
+    display: flex;
+    flex-direction: column;
+  }
+  
 }
 
 
@@ -470,7 +476,7 @@ body {
     position: absolute;
     top: 60px;
     right: 0;
-    width: 100%;
+    // width: 100%;
     height: calc(100vh - 60px);
     flex-direction: column;
     align-items: center;
@@ -501,4 +507,43 @@ body {
   .bar.open:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
   }
+
+  .boxes {
+    display: flex;
+    flex-direction: column;
+  }
+  
+}
+
+.material-section {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #282c34;
+}
+
+.boxes {
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+  // width: 90%;
+}
+
+.google-drive-folder {
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.google-drive-folder h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+iframe {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

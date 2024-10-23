@@ -1,23 +1,21 @@
-import "./team.scss";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
+import "./team.scss";
 
 var staffList = [
   {
     img: "ISTA OB/Vani_IST.webp",
     name: "DR.K.Vani",
     position: "President",
-  },
-  {
+  }, {
     img: "ISTA OB/selviravindran.jpg",
     name: "DR.Selvi Ravindran",
     position: "Staff Treasurer",
-  },
+  }
 ];
 
 var keysHeads = [
   {
-    // https://drive.google.com/file/d/1_cFkhyoRiXCllqT8uPOIKP3EFAcsizBM/view?usp=drive_link
     name: "Sanmitha V S",
     position: "Chair Person",
     domain: "",
@@ -126,6 +124,12 @@ var newTeamMembers = [
     position: "Deputy Head",
     domain: "Marketing",
     imageUrl: "https://drive.google.com/open?id=1unJ1LQQ-hcufgBikYEpttN-bM08lpHzA"
+  },
+  {
+    name: "Hariharan I S",
+    position: "Head",
+    domain: "Web Development",
+    imageUrl: "https://drive.google.com/open?id=1NWZGU_iiYe5mKLRzKcwTbK9FBpOFp33V"
   },
   {
     name: "HEMACHANAR K",
@@ -281,7 +285,9 @@ const deputyHeads = newTeamMembers2.filter(member => {
 
 function Team(props) {
   return (
+
     <div className='team-section'>
+
       <h1 className="meet-title">Meet Our Team</h1>
 
       {/* Row 1: Staff List */}
@@ -338,5 +344,3 @@ function Team(props) {
 }
 
 export default Team;
-
-

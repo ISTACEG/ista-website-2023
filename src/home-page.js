@@ -42,7 +42,6 @@ const Navbar = () => {
 const App = () => {
   return (
     <div>
-      <Navbar />
       <div className="container">
         {/* <p className="right text-desc">Information Science and Technology Association</p> */}
         <div className="stack" style={{ "--stacks": 3 }}>

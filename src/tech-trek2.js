@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./tech-trek2.scss";
-import {Navbar} from "./home-page";
 import axios from "axios";
 import { Riple } from "react-loading-indicators";
 
@@ -46,7 +45,6 @@ function Techtrek2() {
 
   return (
     <div className="tech-trek2" style={{width:"1500px"}}>
-      <Navbar />
       <h1 className="title1">Tech Trek 2.0 Leaderboard</h1>
       {isLoading ? (
         <div className="loadingContainer">

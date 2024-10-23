@@ -7,10 +7,12 @@ import Home from "./home-page";
 import Techtrek2 from "./tech-trek2";
 import Experiences from "./Experiences/Experiences";
 import Resource from "./Resource"
+import Navbar from "./Navbar";
 
 function App() {
   return (
       <div className="App">
+        <Navbar />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"></meta>
         <Routes>
           <Route path="/" element={<Home />} />

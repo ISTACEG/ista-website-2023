@@ -74,8 +74,7 @@ function Experiences() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div style={{ width: "1500px" }}>
-        <Navbar />
+        <div>
         <div className="exp-container">
             <div className="ExperienceBody">
                 <div className="input-box-container">
