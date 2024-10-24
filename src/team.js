@@ -174,7 +174,7 @@ var newTeamMembers = [
   },  {
     name: "Mowniya T",
     position: "Deputy Head",
-    domain: "IR",
+    domain: "Industrial Relations",
     imageUrl: "https://drive.google.com/open?id=1rl5mnpCL9h7O_6QcSTHfoGQy-UyGfKi_"
   },
   {
