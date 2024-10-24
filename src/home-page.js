@@ -27,13 +27,13 @@ const App = () => {
             'Information Science and Technology Assosiation',
             1000,
             'Empowering innovation through technology and knowledge ',
-            200,
+            1000,
             "At ISTA, we work together to grow together.",
           ]}
           className='text-desc running-desc'
           wrapper="span"
           speed={50}
-          style={{ display: 'inline-block', textAlign: "center" }}
+          style={{ display: 'inline-block', textAlign: "center", height:"" }}
           repeat={Infinity}
         />
 
@@ -44,7 +44,9 @@ const App = () => {
       <Zoom triggerOnce>
         <div className='magazine-box'>
           <h2>Magazines</h2>
-          <p className="text-desc" >ISTA publishes a bi-annual magazine, 'The Technocrat,' which is a compilation of articles, poems, stories, and much more. It serves as a platform for students to showcase their talents and creativity.</p>
+          <p className="text-desc" >
+          Cache is the magazine created by the Information Science & Technology Association to engage with the IST Department in a creative and collaborative manner. This was initiated with the mindset of providing prodigious opportunities to all the students in the college who have an open interest for Information Technology. From interviews with respected faculty and articles on various achievements of student students, to creative enigmatic puzzles, games, memes and contests, Cache has it all. 
+          </p>
           <div className="magazine-images">
             <img src={magazineImage} alt='Cover of the February 2022 Edition of ISTA Magazine' loading="lazy" />
             <img src={magImage2} alt='Cover of the December 2021 Edition of ISTA Magazine' loading="lazy" />
@@ -59,7 +61,9 @@ const App = () => {
             <img src={IPPImage} alt='IPP Event Image' loading="lazy" />
             <div className="event-description">
               <h3>I++</h3>
-              <p className="text-desc" >The IPP is an annual event where students present their innovative projects in front of a panel of judges. It aims to encourage creativity and provide a platform for students to showcase their technical and problem-solving skills.</p>
+              <p className="text-desc" >
+              I++, the flagship intra college symposium which is organized by the industrious Information Science and Technology Association which the entire Anna University looks forward too. I++ is the perfect blend of brain-wracking workshops, technical events and non-technical events.
+              </p>
             </div>
           </div>
 
@@ -67,12 +71,14 @@ const App = () => {
             <img src={ItrixImage} alt='Itrix Event Image' loading="lazy" />
             <div className="event-description">
               <h3>Itrix</h3>
-              <p className="text-desc" >Itrix is a national-level technical symposium organized by ISTA. It features coding competitions, hackathons, and workshops, aimed at fostering technical excellence among participants from across the country.</p>
+              <p className="text-desc" >
+              ITRIX every year in the month of March, ITRIX is ISTA’s premium inter-college symposium at the Department of Information Science and Technology, College of Engineering, Guindy. With a footfall of nearly 4000 odd participants every year, we play our part in striving hard to bring all minds, from every nook and corner of the country under one roof to compete and success at a variety of technical and non-technical events.
+              </p>
             </div>
           </div>
         </section>
       </Zoom>
-      <Zoom>
+      <Zoom triggerOnce>
         <div className="infos-box">
           <h2>Others</h2>
           <div className='infos-box-2' id="ch-2">
@@ -114,8 +120,7 @@ const App = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p className="text-desc">Designed & Developed by ISTA Web Team.</p>
-          <br></br>
+          <p className="text-desc">Design & Developed by <a>ISTA Web Team.</a></p>
         </div>
       </footer>
     </div>

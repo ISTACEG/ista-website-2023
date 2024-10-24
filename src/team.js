@@ -240,7 +240,7 @@ var newTeamMembers = [
   {
     name: "Rishi Kumar U",
     position: "Deputy Head",
-    domain: "Co-ordinators",
+    domain: "Co-ordinator",
     imageUrl: "https://drive.google.com/open?id=1nqQ4qgl-fCoKs60QlIDUHRQXFT3Orh6R"
   },
   {

@@ -6,7 +6,6 @@ const folderId = "1eXHIXlAtWrE8I0v_AU_w-FvMmt-DcIrz"
 
 const GoogleDriveFolder = () => {
 
-
     return (
         <div className='material-section'>
             <div className='boxes' id="resource-box">
