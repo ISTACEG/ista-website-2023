@@ -133,13 +133,13 @@ var newTeamMembers = [
   {
     name: "HEMACHANAR K",
     position: "Deputy Head",
-    domain: "Placement",
+    domain: "Design",
     imageUrl: "https://drive.google.com/open?id=1IEtCJOtRTrK6PbPd7R3uexl8Pl_rspgD"
   },
   {
     name: "REVATHI R T",
     position: "Deputy Head",
-    domain: "Placement",
+    domain: "Design",
     imageUrl: "https://drive.google.com/open?id=17nmQdTdWa8XJlWpxJto0Zdan3xZuqMBm"
   },
   {
