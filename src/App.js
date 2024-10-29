@@ -8,11 +8,13 @@ import Techtrek2 from "./tech-trek2";
 import Experiences from "./Experiences/Experiences";
 import Resource from "./Resource"
 import History from "./History";
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from "./Navbar";
 
 function App() {
   return (
     <div className="App">
+      <Analytics />
       <Navbar />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"></meta>
       <Routes>

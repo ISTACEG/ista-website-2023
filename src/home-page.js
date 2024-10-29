@@ -63,6 +63,7 @@ const App = () => {
               <h3>I++</h3>
               <p className="text-desc" >
               I++, the flagship intra college symposium which is organized by the industrious Information Science and Technology Association which the entire Anna University looks forward too. I++ is the perfect blend of brain-wracking workshops, technical events and non-technical events.
+              <br /><a href="">Visit site..</a>
               </p>
             </div>
           </div>

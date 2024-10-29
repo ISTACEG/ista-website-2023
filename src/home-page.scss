@@ -662,9 +662,10 @@ iframe {
   /* Constrained width */
 }
 
-.announcement a {
+.announcement a, a {
   color: #e74c3c;
   /* Vibrant red link */
+  font-family: "Nanum Gothic Coding", monospace;
   text-decoration: none;
   font-weight: bold;
   border-bottom: 2px solid transparent;
