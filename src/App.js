@@ -22,6 +22,7 @@ function App() {
         <Route path="/resource" element={<Resource />} />
         <Route path="/history" element={<History />} />
         <Route path="/exp_view" element={<Experiences />} />
+        <Route path="/experiences" element={<Experiences />} />
         <Route path="/techtrek" element={<Techtrek2 />} />
       </Routes>
     </div>

@@ -26,7 +26,7 @@ function Experiences() {
 
     useEffect(() => {
         const API_KEY = process.env.REACT_APP_ISTA_SHEET_API;
-        const spreadsheetId = process.env.REACT_APP_EXP_SHEET_ID;
+        const spreadsheetId = "1iBy_1sicMPPzgWMLjzlzTHU4C8TaHFoNITkXo-RHgZs";
         const range = "Form Responses 1!A2:J";
         setIsLoading(true);
         axios
@@ -84,8 +84,10 @@ function Experiences() {
                             onChange={(e) => { setCurrentPage(1); setType(e.target.value) }}
                         >
                             <option value="All">Select Type ( All )</option>
-                            <option value="Intern">Intern</option>
-                            <option value="Placement">Placement</option>
+                            <option value="Summer Intern">Summer Intern</option>
+                            <option value="FTE">FTE</option>
+                            <option value="6 Months Intern + FTE">6 Month Intern + FTE</option>
+                            <option value="6 Months Intern Only">6 Month Intern Only</option>
                         </select>
                         {/* <label htmlFor="type" className="form-label">Select Type</label> */}
                     </div>
