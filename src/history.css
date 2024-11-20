@@ -22,3 +22,13 @@
       margin: 0;
     }
   }
+
+  .mobile-only {
+    display: none;
+  }
+  
+  @media (max-width: 768px) { /* Adjust the breakpoint as needed */
+    .mobile-only {
+      display: block;
+    }
+  }

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from "axios";
 import { type } from "@testing-library/user-event/dist/type";
 import { Link } from 'react-router-dom';
+import "./history.css"
 
 const items = [
   {
@@ -149,7 +150,7 @@ const VerticalAlternatingTimeline = () => {
           // Get the image dimensions to determine its orientation
           const image = new Image();
           image.src = ele.media_.source.url;
-     
+
 
           const isPortrait = image.height > image.width; // If height is greater than width, it's portrait
 
@@ -168,7 +169,10 @@ const VerticalAlternatingTimeline = () => {
                 width: "100%",
               }}
             >
-              <strong style={{ fontSize: "18px", marginBottom: "10px" }}>
+              <div className="mobile-only">
+                <strong>({ele.title})</strong>
+              </div>
+              <strong style={{ fontSize: "15px", marginBottom: "10px" }}>
                 {ele.cardTitle_}
               </strong>
 
