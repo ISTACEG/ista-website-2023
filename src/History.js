@@ -1,4 +1,9 @@
 import { Chrono } from "react-chrono";
+import { useEffect, useState } from 'react'
+import axios from "axios";
+import { type } from "@testing-library/user-event/dist/type";
+import { Link } from 'react-router-dom';
+
 const items = [
   {
     title: "Octomber 2024",
@@ -71,23 +76,175 @@ const items = [
 
 ];
 
+
 const VerticalAlternatingTimeline = () => {
+
+  const [list, setList] = useState([])
+
+  // {
+  //   title: "December 2023",
+  //   cardTitle: "Winners of Smart India Hackathon",
+  //   media: {
+  //     type: "IMAGE",
+  //     source: {
+  //       url: "https://cdn.app-sorteos.workers.dev/https://instagram.fmaa11-1.fna.fbcdn.net/v/t51.29350-15/413418305_279228991796586_8405419072191249998_n.heic?stp=dst-jpg_e35&_nc_ht=instagram.fmaa11-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=S6nGuB1RvXYQ7kNvgHX82rE&_nc_gid=c6c8461bb3f44be791f4d01fd2292d89&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=MzI2NTAwODE1ODg3NzM5OTI1Mg%3D%3D.3-ccb7-5&oh=00_AYDnXXdZ_IL5hUg2HrztxpTlfmYclb5STXWqSGk400a8bA&oe=671EA11D&_nc_sid=fc8dfb",
+  //     },
+  //   },
+  // }
+  function convertToDownloadLink(url) {
+    var fileId = url.match(/\/d\/([a-zA-Z0-9_-]+)/)?.[1];
+    return `https://lh3.googleusercontent.com/d/${fileId}`;
+  }
+
+  useEffect(() => {
+    const API_KEY = process.env.REACT_APP_ISTA_SHEET_API;
+    const spreadsheetId = "1NNeeCtCLFN6feP2mXLrShReEbhQTMRdLylb4xAKi8qg";
+    const range = "Sheet1!B2:F";
+    axios
+      .get(
+        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${API_KEY}`
+      )
+      .then((response) => {
+        console.log(response.data.values)
+        const updatedData = response.data.values.map(row => {
+          console.log(row)
+          return {
+            title: row[0],
+            cardTitle_: row[1],
+            cardDetailedText_: row[2],
+            media_: {
+              type: "IMAGE",
+              source: {
+                url: convertToDownloadLink(row[3])
+              }
+            }
+          }
+        });
+        setList(updatedData)
+      })
+      .catch((error) => {
+        console.error("Error fetching data from Google Sheets", error);
+      });
+  }, []);
+
   return (
-    <div style={{width: "80%", margin:"auto"}}>
+    <div style={{ width: "80%", margin: "auto" }}>
       <Chrono
-        items={items}
+        key={list.length}
+        items={[...list].reverse()}
         mode="VERTICAL_ALTERNATING"
-        itemWidth={150}
+        mediaSettings={{ fit: 'contain' }}
         hideControls={true}
         slideItemDuration={1000}
+        cardHeight={450}
         slideShow
         theme={{
           cardForeColor: "violet",
           titleColorActive: "white",
           titleColor: "white",
-          secondary:"#1a1a1a"
+          secondary: "#1a1a1a",
         }}
-      />
+      >
+        {[...list].reverse().map((ele, index) => {
+          // Get the image dimensions to determine its orientation
+          const image = new Image();
+          image.src = ele.media_.source.url;
+     
+
+          const isPortrait = image.height > image.width; // If height is greater than width, it's portrait
+
+          return (
+            <div
+              key={index}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+                backgroundColor: "#f9f9f9",
+                padding: "15px",
+                borderRadius: "8px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                width: "100%",
+              }}
+            >
+              <strong style={{ fontSize: "18px", marginBottom: "10px" }}>
+                {ele.cardTitle_}
+              </strong>
+
+              {/* Conditional layout based on image orientation */}
+              {isPortrait ? (
+                // Newspaper style layout if portrait
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row", // Horizontal layout
+                    alignItems: "flex-start",
+                    justifyContent: "flex-start",
+                    width: "100%",
+                  }}
+                >
+                  <img
+                    src={ele.media_.source.url}
+                    alt="media"
+                    style={{
+                      objectFit: "contain",
+                      width: "40%", // Adjust width of image (40% as an example)
+                      maxHeight: "300px",
+                      borderRadius: "5px",
+                      marginRight: "15px", // Space between image and text
+                    }}
+                  />
+
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      color: "#555",
+                      marginTop: "10px",
+                      textAlign: "justify",
+                      flex: 1, // Ensures the paragraph takes the remaining space
+                      maxWidth: "55%", // Keeps text to a reasonable size
+                    }}
+                  >
+                    {ele.cardDetailedText_}
+                  </p>
+                </div>
+              ) : (
+                // Default design for landscape images
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  <img
+                    src={ele.media_.source.url}
+                    alt="media"
+                    style={{
+                      width: "90%",
+                      objectFit: "contain",
+                      borderRadius: "5px",
+                    }}
+                  />
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      color: "#555",
+                      marginTop: "10px",
+                      textAlign: "justify"
+                    }}
+                  >
+                    {ele.cardDetailedText_}
+                  </p>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </Chrono>
+
     </div>
   );
 };
