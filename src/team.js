@@ -133,13 +133,13 @@ var newTeamMembers = [
   {
     name: "HEMACHANAR K",
     position: "Deputy Head",
-    domain: "Design",
+    domain: "Courses",
     imageUrl: "https://drive.google.com/open?id=1IEtCJOtRTrK6PbPd7R3uexl8Pl_rspgD"
   },
   {
     name: "REVATHI R T",
     position: "Deputy Head",
-    domain: "Design",
+    domain: "Courses",
     imageUrl: "https://drive.google.com/open?id=17nmQdTdWa8XJlWpxJto0Zdan3xZuqMBm"
   },
   {
@@ -193,7 +193,7 @@ var newTeamMembers = [
     name: "Dharaniraj V M",
     position: "Deputy Head",
     domain: "Internship",
-    imageUrl: "https://drive.google.com/open?id=1Gy5QY6h5xE-qbTX8hil4YmAT6-4HoN2j"
+    imageUrl: "https://drive.google.com/open?id=1_yHk-H5KFWRdbyyRU6t720c3ZxGGyQzn"
   },
   {
     name: "JOTHIRUBAN M",

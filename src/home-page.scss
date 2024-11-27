@@ -715,3 +715,14 @@ iframe {
 .infos-box-child {
   padding: 5%;
 }
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-links .social-icon {
+  width: 30px;
+  height: 30px;
+}

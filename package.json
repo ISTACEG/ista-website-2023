@@ -20,6 +20,7 @@
     "react-modern-drawer": "^1.4.0",
     "react-router-dom": "^6.8.2",
     "react-scripts": "^5.0.1",
+    "react-social-icons": "^6.18.0",
     "react-type-animation": "^3.2.0",
     "sass": "^1.69.1",
     "web-vitals": "^2.1.4",

@@ -12,9 +12,9 @@ function Techtrek2() {
   useEffect(() => {
     setIsLoading(true);
     console.log("techtrek2");
-    const API_KEY = process.env.REACT_APP_API_KEY;
-    const spreadsheetId = process.env.REACT_APP_SHEET_ID;
-    const range = "Final!A1:G75";
+    const API_KEY = "AIzaSyCct8pMa7alWAdLXikM6gxG5ObKT2hABtE";
+    const spreadsheetId = "1-D7-Tzdh1MAmTrcgTN_fd4nxP_2X4E91pbuPNIQpj-E";
+    const range = "Final!A4:G";
     axios
       .get(
         `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${API_KEY}`
@@ -22,9 +22,12 @@ function Techtrek2() {
       .then((response) => {
         // console.log(response.data.values);
         setData(response.data.values);
+        console.log("check 2")
+        console.log(response.data.values);
         setIsLoading(false);
       })
       .catch((error) => {
+        console.log("check 3")
         console.error("Error fetching data from Google Sheets", error);
         setIsLoading(false);
       });

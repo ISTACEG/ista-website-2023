@@ -4,6 +4,7 @@ import axios from "axios";
 import { type } from "@testing-library/user-event/dist/type";
 import { Link } from 'react-router-dom';
 import "./history.css"
+import { React } from 'react';
 
 const items = [
   {
@@ -150,7 +151,10 @@ const VerticalAlternatingTimeline = () => {
           // Get the image dimensions to determine its orientation
           const image = new Image();
           image.src = ele.media_.source.url;
-
+          image.onload = () => {
+            const isPortrait = image.height > image.width;
+            image.isPortrait = isPortrait
+          };
 
           const isPortrait = image.height > image.width; // If height is greater than width, it's portrait
 
@@ -177,7 +181,7 @@ const VerticalAlternatingTimeline = () => {
               </strong>
 
               {/* Conditional layout based on image orientation */}
-              {isPortrait ? (
+              {ele.isPortrait ? (
                 // Newspaper style layout if portrait
                 <div
                   style={{
@@ -248,9 +252,123 @@ const VerticalAlternatingTimeline = () => {
           );
         })}
       </Chrono>
-
     </div>
   );
 };
+
+function Entry({ list }) {
+
+  const [processedList, setProcessedList] = useState([]);
+
+  useEffect(() => {
+    const processImages = async () => {
+      const promises = list.reverse().map((ele) => {
+        return new Promise((resolve) => {
+          const image = new Image();
+          image.src = ele.media_.source.url;
+          console.log("got here")
+          image.onload = () => {
+            const isPortrait = image.height > image.width;
+            resolve({ ...ele, isPortrait });
+          };
+        });
+      });
+
+      console.log(promises)
+
+      const processed = await Promise.all(promises);
+      setProcessedList(processed);
+      console.log("processed")
+      console.log(processed)
+    };
+
+    processImages();
+  }, [list]);
+
+  return (
+    <div>
+      {processedList.map((ele, index) => (
+        <div
+          key={index}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+            backgroundColor: "#f9f9f9",
+            padding: "15px",
+            borderRadius: "8px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            width: "100%",
+          }}
+        >
+          {ele.isPortrait ? <div
+            style={{
+              display: "flex",
+              flexDirection: "row", // Horizontal layout
+              alignItems: "flex-start",
+              justifyContent: "flex-start",
+              width: "100%",
+            }}
+          >
+            <img
+              src={ele.media_.source.url}
+              alt="media"
+              style={{
+                objectFit: "contain",
+                width: "40%", // Adjust width of image (40% as an example)
+                maxHeight: "300px",
+                borderRadius: "5px",
+                marginRight: "15px", // Space between image and text
+              }}
+            />
+
+            <p
+              style={{
+                fontSize: "14px",
+                color: "#555",
+                marginTop: "10px",
+                textAlign: "justify",
+                flex: 1, // Ensures the paragraph takes the remaining space
+                maxWidth: "55%", // Keeps text to a reasonable size
+              }}
+            >
+              {ele.cardDetailedText_}
+            </p>
+          </div> :
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+              }}
+            >
+              <img
+                src={ele.media_.source.url}
+                alt="media"
+                style={{
+                  width: "90%",
+                  objectFit: "contain",
+                  borderRadius: "5px",
+                }}
+              />
+              <p
+                style={{
+                  fontSize: "14px",
+                  color: "#555",
+                  marginTop: "10px",
+                  textAlign: "justify"
+                }}
+              >
+                {ele.cardDetailedText_}
+              </p>
+            </div>
+          }
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export default VerticalAlternatingTimeline;
