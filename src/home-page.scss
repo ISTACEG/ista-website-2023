@@ -21,6 +21,8 @@
   font-style: normal;
 }
 
+
+
 :root {
   --background: #1a1a1a;
   --color: #fffd82;
@@ -149,7 +151,7 @@ body {
     li a {
       text-decoration: none;
       color: white;
-      font-size: 1.25rem;
+      font-size: 1.07rem;
       font-weight: bold;
       position: relative;
       transition: color 0.3s ease-in-out;
@@ -225,7 +227,9 @@ body {
   width: 80%;
 }
 
-
+#events .text-desc {
+  text-align: left;
+}
 /* Media Queries for Responsive Design */
 @media (max-width: 668px) {
 
@@ -283,7 +287,7 @@ body {
   }
 
   .navbar-links li a {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .navbar {
