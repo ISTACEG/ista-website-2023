@@ -151,7 +151,7 @@ const App = () => {
           </div>
         </section>
       </Zoom>
-      <Zoom triggerOnce>
+      {/* <Zoom triggerOnce>
         <section id="events" className="events-box">
           <h2>Placement Statistics</h2>
           <div className="event-item-1">
@@ -164,7 +164,6 @@ const App = () => {
               />
             </div>
             <div className="charts-row">
-              {/* Placements Chart */}
               <div className="chart-container-1">
                 <Pie
                   data={pieChartPlacementData}
@@ -200,7 +199,6 @@ const App = () => {
                 <p>Total Placements: {totalPlacements}</p>
               </div>
 
-              {/* Internships Chart */}
               <div className="chart-container-1">
                 <Pie
                   data={pieChartInternshipData}
@@ -240,7 +238,7 @@ const App = () => {
           <p>Note: This data only includes students from the IT Department.</p>
           <p>Last updated: {new Date().toLocaleDateString()}</p>
         </section>
-      </Zoom>
+      </Zoom> */}
       <Zoom triggerOnce>
         <div className="infos-box">
           <h2>Others</h2>
