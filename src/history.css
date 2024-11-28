@@ -26,6 +26,13 @@
   .mobile-only {
     display: none;
   }
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    color: var(--color);
+    font-family: "Londrina Sketch", sans-serif;
+  }
   
   @media (max-width: 768px) { /* Adjust the breakpoint as needed */
     .mobile-only {

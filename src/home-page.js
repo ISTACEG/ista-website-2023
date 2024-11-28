@@ -1,7 +1,7 @@
 import React from 'react';
 import './home-page.scss';
 import magazineImage from "./February-2022-Edition.png";
-import magImage2 from "./December-Edition-2021.png";
+import instanceImage from "./instance-image.png";
 import { TypeAnimation } from 'react-type-animation';
 import { useNavigate } from 'react-router-dom';
 import IPPImage from "./5.jpg";
@@ -11,11 +11,80 @@ import Team from "./team"
 import Experiences from './Experiences/Experiences';
 import { useState } from 'react';
 import { SocialIcon } from 'react-social-icons';
+import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title, CategoryScale } from "chart.js";
+import Select from "react-select";
+
+ChartJS.register(ArcElement, Tooltip, Legend, Title, CategoryScale);
+
+const data = {
+  placements: [
+    { companyName: "Amazon", noOfStudents: 10, batch: 2025 },
+    { companyName: "Google", noOfStudents: 8, batch: 2025 },
+    { companyName: "Microsoft", noOfStudents: 15, batch: 2024 },
+    { companyName: "Apple", noOfStudents: 12, batch: 2024 },
+    { companyName: "Facebook", noOfStudents: 5, batch: 2025 },
+    { companyName: "Tesla", noOfStudents: 7, batch: 2023 },
+  ],
+  internships: [
+    { companyName: "Amazon", noOfStudents: 8, batch: 2025 },
+    { companyName: "Google", noOfStudents: 12, batch: 2025 },
+    { companyName: "Microsoft", noOfStudents: 6, batch: 2024 },
+    { companyName: "Apple", noOfStudents: 9, batch: 2024 },
+    { companyName: "Facebook", noOfStudents: 4, batch: 2025 },
+    { companyName: "Tesla", noOfStudents: 3, batch: 2023 },
+  ],
+};
 
 const App = () => {
   const navigate = useNavigate();
+  const [selectedYear, setSelectedYear] = useState(2025);
+
+  // Filter data based on the selected year
+  const filteredPlacementData = data.placements.filter(
+    item => item.batch === selectedYear
+  );
+  const filteredInternshipData = data.internships.filter(
+    item => item.batch === selectedYear
+  );
+
+  // Prepare pie chart data
+  const prepareChartData = dataset => ({
+    labels: dataset.map(item => item.companyName),
+    datasets: [
+      {
+        data: dataset.map(item => item.noOfStudents),
+        backgroundColor: ["#ff6384", "#36a2eb", "#cc65fe", "#ffce56", "#ff8e72", "#c0c0c0"],
+        borderColor: "#fff",
+        borderWidth: 1,
+      },
+    ],
+  });
+
+  const pieChartPlacementData = prepareChartData(filteredPlacementData);
+  const pieChartInternshipData = prepareChartData(filteredInternshipData);
+
+  // Dropdown options
+  const yearOptions = [
+    { value: 2023, label: "2023" },
+    { value: 2024, label: "2024" },
+    { value: 2025, label: "2025" },
+  ];
+
+  // Handle year change from dropdown
+  const handleYearChange = selectedOption => {
+    setSelectedYear(selectedOption.value);
+  };
+
+  // Calculate totals
+  const calculateTotal = dataset =>
+    dataset.reduce((total, item) => total + item.noOfStudents, 0);
+
+  const totalPlacements = calculateTotal(filteredPlacementData);
+  const totalInternships = calculateTotal(filteredInternshipData);
+
   return (
-    <div>h
+    <div>
       <div className="container">
         <div className="stack" style={{ "--stacks": 3 }}>
           <span style={{ "--index": 0 }}>ISTA</span>
@@ -30,6 +99,7 @@ const App = () => {
             'Empowering innovation through technology and knowledge ',
             1000,
             "At ISTA, we work together to grow together.",
+            1000
           ]}
           className='text-desc running-desc'
           wrapper="span"
@@ -44,14 +114,14 @@ const App = () => {
       <h1 className='title-head'>What We Do</h1>
       <Zoom triggerOnce>
         <div className='magazine-box'>
-          <h2>Magazines</h2>
+          <h2>Magazines & Newsletters</h2>
           <p className="text-desc" >
-            Cache is the magazine created by the Information Science & Technology Association to engage with the IST Department in a creative and collaborative manner. This was initiated with the mindset of providing prodigious opportunities to all the students in the college who have an open interest for Information Technology. From interviews with respected faculty and articles on various achievements of student students, to creative enigmatic puzzles, games, memes and contests, Cache has it all.
-          <br /><a href="https://publications.istaceg.in/?tab=publications" target='_blank'>Visit site..</a>
+            Cache and instances are the magazines and newsletters created by the ISTA to engage with the IST Department in a creative and collaborative manner. This was initiated with the mindset of providing prodigious opportunities to all the students in the college who have an open interest for Information Technology. From interviews with respected faculty and articles on various achievements of student students, to creative enigmatic puzzles, games, memes and contests, Cache has it all.
+            <br /><a href="https://publications.istaceg.in/?tab=publications" target='_blank'>Visit site..</a>
           </p>
           <div className="magazine-images">
             <img src={magazineImage} alt='Cover of the February 2022 Edition of ISTA Magazine' loading="lazy" />
-            <img src={magImage2} alt='Cover of the December 2021 Edition of ISTA Magazine' loading="lazy" />
+            <img src={instanceImage} alt='Cover of the December 2021 Edition of ISTA Magazine' loading="lazy" />
           </div>
         </div>
       </Zoom>
@@ -79,6 +149,96 @@ const App = () => {
               </p>
             </div>
           </div>
+        </section>
+      </Zoom>
+      <Zoom triggerOnce>
+        <section id="events" className="events-box">
+          <h2>Placement Statistics</h2>
+          <div className="event-item-1">
+            <div className="dropdown-container-1">
+              <Select
+                options={yearOptions}
+                onChange={handleYearChange}
+                defaultValue={yearOptions.find(option => option.value === selectedYear)}
+                className="year-dropdown-1"
+              />
+            </div>
+            <div className="charts-row">
+              {/* Placements Chart */}
+              <div className="chart-container-1">
+                <Pie
+                  data={pieChartPlacementData}
+                  options={{
+                    responsive: true,
+                    plugins: {
+                      title: {
+                        display: true,
+                        text: `Placements Statistics for ${selectedYear}`,
+                      },
+                      legend: {
+                        display: true,
+                        labels: {
+                          generateLabels: chart => {
+                            const data = chart.data.datasets[0].data;
+                            return chart.data.labels.map((label, i) => ({
+                              text: `${label}: ${data[i]} students`,
+                              fillStyle: chart.data.datasets[0].backgroundColor[i],
+                            }));
+                          },
+                        },
+                      },
+                      tooltip: {
+                        enabled: true,
+                      },
+                    },
+                    animation: {
+                      animateScale: true,
+                      animateRotate: true,
+                    },
+                  }}
+                />
+                <p>Total Placements: {totalPlacements}</p>
+              </div>
+
+              {/* Internships Chart */}
+              <div className="chart-container-1">
+                <Pie
+                  data={pieChartInternshipData}
+                  options={{
+                    responsive: true,
+                    plugins: {
+                      title: {
+                        display: true,
+                        text: `Internships Statistics for ${selectedYear}`,
+                      },
+                      legend: {
+                        display: true,
+                        labels: {
+                          generateLabels: chart => {
+                            const data = chart.data.datasets[0].data;
+                            return chart.data.labels.map((label, i) => ({
+                              text: `${label}: ${data[i]} students`,
+                              fillStyle: chart.data.datasets[0].backgroundColor[i],
+                            }));
+                          },
+                        },
+                      },
+                      tooltip: {
+                        enabled: true,
+                      },
+                    },
+                    animation: {
+                      animateScale: true,
+                      animateRotate: true,
+                    },
+                  }}
+                />
+                <p>Total Internships: {totalInternships}</p>
+              </div>
+            </div>
+          </div>
+          <p>Note: This data only includes students from the IT Department.</p>
+          <p>Last updated: {new Date().toLocaleDateString()}</p>
         </section>
       </Zoom>
       <Zoom triggerOnce>

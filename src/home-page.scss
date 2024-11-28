@@ -726,3 +726,58 @@ iframe {
   width: 30px;
   height: 30px;
 }
+
+/* Dropdown Container */
+.dropdown-container-1 {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.year-dropdown-1 {
+  width: 200px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Charts Row */
+.charts-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Chart Container */
+.chart-container-1 {
+  width: 40%; /* Adjusts the width of each chart */
+  min-width: 300px; /* Ensures the charts don't shrink too much */
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.chart-container-1:hover {
+  transform: translateY(-5px); /* Adds a hover effect */
+}
+
+.chart-container-1 p {
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Note and Last Updated */
+.events-box p {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+}

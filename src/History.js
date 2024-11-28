@@ -130,7 +130,8 @@ const VerticalAlternatingTimeline = () => {
   }, []);
 
   return (
-    <div style={{ width: "80%", margin: "auto" }}>
+    <div style={{ width: "80%", margin: "auto", textAlign:"center" }}>
+      <h2>ISTA's Timeline</h2>
       <Chrono
         key={list.length}
         items={[...list].reverse()}
@@ -146,6 +147,7 @@ const VerticalAlternatingTimeline = () => {
           titleColor: "white",
           secondary: "#1a1a1a",
         }}
+        disableToolbar={true}
       >
         {[...list].reverse().map((ele, index) => {
           // Get the image dimensions to determine its orientation
