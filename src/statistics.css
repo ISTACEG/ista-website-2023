@@ -1,0 +1,201 @@
+/* General styling */  
+.special-1 h2, .special-1 h3 {
+  text-align: center;
+  margin-bottom: 2rem; /* Use rem for relative spacing */
+}
+
+/* Section container */
+
+/* Event Item */
+.special-1 .event-item-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem; /* Use rem for consistent padding across breakpoints */
+}
+
+/* Charts Row */
+.special-1 .charts-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem; /* Use rem for space between items */
+}
+
+@media (min-width: 1024px) {
+  .charts-row {
+      width: 100%;
+  }
+}
+
+
+.special-1 .chart-container-1 {
+  flex: 1;
+  min-width: 45%; /* Ensure it takes at least 30% of the container's width */
+  max-width: 55%; /* Adjusts the container size */
+  background: #f3f4f6;
+  border-radius: 1rem;
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.special-1 .chart-container-1 p {
+  margin: 1.5rem 0;
+  font-weight: bold;
+}
+
+/* Dropdown container */
+.special-1 .dropdown-container-1 {
+  margin-bottom: 2rem;
+}
+
+.special-1 .year-dropdown-1 {
+  width: 100%;
+  font-size: 1rem; /* Using rem for scalable font size */
+}
+
+.special-1 .year-dropdown-1 .css-1s2u09g-control {
+  border: 0.1rem solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: none;
+  font-size: 1rem;
+}
+
+.special-1 .year-dropdown-1 .css-1pahdxg-control {
+  border-color: #999;
+}
+
+/* Statistics Table */
+.special-1 .statistics-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+
+.special-1 .statistics-table th, .special-1 .statistics-table td {
+  border: 0.1rem solid #ddd;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.special-1 .statistics-table th {
+  background-color: #f3f3f3;
+  color: #555;
+}
+
+.special-1 .statistics-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.special-1 .statistics-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.special-1 .statistics-table td {
+  text-align: center;
+}
+
+.special-1 .statistics-table td:first-child {
+  text-align: left;
+}
+
+/* Buttons */
+.special-1 button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.special-1 button:hover {
+  background-color: #0056b3;
+}
+
+/* Pie Chart Styling */
+.special-1 .chart-container-1 canvas {
+  max-height: 60vh; /* Use viewport height for responsiveness */
+  margin: auto;
+}
+
+/* Notes and Footer */
+.special-1 p {
+  font-size: 1rem;
+  text-align: center;
+  color: #666;
+}
+
+.special-1 p:last-child {
+  font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .special-1 .charts-row {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem; /* Adjust spacing for smaller screens */
+  }
+
+  .special-1 .chart-container-1 {
+    min-width: 45%;
+    max-width: 98%; /* Allow chart to use more screen space */
+  }
+
+  .special-1 .event-item-1 {
+    padding: 2rem; /* Adjust padding for responsiveness */
+  }
+}
+
+@media (max-width: 768px) {
+  .special-1 .charts-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .special-1 .chart-container-1 {
+    min-width: 98%;
+    max-width: 100%; /* Allow containers to take full width on small screens */
+  }
+
+  .special-1 .dropdown-container-1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .special-1 .statistics-table th, .special-1 .statistics-table td {
+    font-size: 0.875rem; /* Adjust font size for smaller screens */
+  }
+
+  .special-1 button {
+    font-size: 0.875rem; /* Adjust button text size */
+    padding: 0.8rem 1.2rem; /* Adjust padding */
+  }
+
+  .special-1 p {
+    font-size: 0.875rem; /* Adjust paragraph text size */
+  }
+}
+
+@media (max-width: 380px) {
+  .special-1 h2, .special-1 h3 {
+    font-size: 1.25rem; /* Adjust heading size for smaller screens */
+  }
+
+  .special-1 .chart-container-1 {
+    min-width: 98%;
+    max-width: 100%;
+  }
+
+  .special-1 button {
+    font-size: 0.8rem; /* Further reduce button font size */
+    padding: 0.7rem 1rem;
+  }
+
+  .special-1 .statistics-table th, .special-1 .statistics-table td {
+    font-size: 0.75rem; /* Reduce table font size for smaller screens */
+  }
+}
