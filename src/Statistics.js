@@ -56,7 +56,7 @@ const DataSummaryTable = ({ title, data, total }) => {
 
 function Statistics() {
     const [pselectedYear, setPSelectedYear] = useState(2025);
-    const [iselectedYear, setISelectedYear] = useState(2026);
+    const [iselectedYear, setISelectedYear] = useState(2025);
     const [placementsData, setPlacementsData] = useState([]);
     const [lastUpdatedDate, setLastUpdatedDate] = useState("");
     const [internData, setInternData] = useState([]);
