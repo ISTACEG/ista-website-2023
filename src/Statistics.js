@@ -25,7 +25,7 @@ const DataSummaryTable = ({ title, data, total }) => {
                 <thead>
                     <tr>
                         <th style={{ textAlign: "left" }}>Company Name</th>
-                        <th>No. of Students</th>
+                        <th>No. of offers</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,13 +67,17 @@ function Statistics() {
 
     const prepareChartData = dataset => {
         const sortedData = dataset.sort((a, b) => b.noOfStudents - a.noOfStudents);
-        const top10 = sortedData.slice(0, 15);
-        const others = sortedData.slice(15);
+        // const top10 = sortedData.slice(0, 15);
+        // const others = sortedData.slice(15);
 
-        const othersTotal = others.reduce((total, item) => total + item.noOfStudents, 0);
+        // const othersTotal = others.reduce((total, item) => total + item.noOfStudents, 0);
 
-        const labels = [...top10.map(item => item.companyName), "Other Companies"];
-        const data = [...top10.map(item => item.noOfStudents), othersTotal];
+        // const labels = [...top10.map(item => item.companyName), "Other Companies"];
+        // const data = [...top10.map(item => item.noOfStudents), othersTotal];
+
+        const labels = [...sortedData.map(item => item.companyName)];
+        const data = [...sortedData.map(item => item.noOfStudents)];
+
 
         return {
             labels,
@@ -86,7 +90,9 @@ function Statistics() {
                         "#cccccc", "#f54291", "#42f554", "#4277f5", "#f5a742",
                         "#f54242", "#42f5e6", "#a742f5", "#e1f542", "#2a9df4",
                         "#d9534f", "#5bc0de", "#5cb85c", "#428bca", "#800080",
-                        "#ffa500", "#00ff7f", "#4682b4", "#dc143c", "#ffd700"
+                        "#ffa500", "#00ff7f", "#4682b4", "#dc143c", "#ffd700",
+                        "#ff4500", "#7cfc00", "#8a2be2", "#00ced1", "#ff1493",
+                        "#add8e6", "#daa520", "#deb887", "#00fa9a", "#b22222"
                     ],
                     borderColor: "#fff",
                     borderWidth: 1,
@@ -169,112 +175,116 @@ function Statistics() {
             });
     }, []);
 
- 
+
     return (
-        <section id="events" className="events-box special-1">
+        <section id="events" className="events-box special-1" style={{ overflow: "hidden" }}>
             <h2>Placement Statistics</h2>
             {loading ? <p className="loading">Loading...</p> :
-            <div className="event-item-1">
-                <div className="charts-row" style={{ textAlign: "left", alignItems: "self-start" }}>
-                    <div className="chart-container-1">
-                        <div className="dropdown-container-1">
-                            <Select
-                                options={pyearOptions}
-                                onChange={handleIYearChange}
-                                defaultValue={pyearOptions.find((option) => option.value === pselectedYear)}
-                                className="year-dropdown-1"
-                            />
-                        </div>
-                        <Pie
-                            data={pieChartPlacementData}
-                            options={{
-                                responsive: true,
-                                plugins: {
-                                    title: {
-                                        display: true,
-                                        text: `Placements Statistics for ${pselectedYear}`,
-                                        font: {
-                                            size: 15,
-                                        },
-                                    },
-                                    legend: {
-                                        position: 'bottom',
-                                        labels: {
-                                            boxWidth: 10,
+                <div className="event-item-1">
+                    <div className="charts-row" style={{ textAlign: "left", alignItems: "self-start" }}>
+                        <div className="chart-container-1">
+                            <div className="dropdown-container-1">
+                                <Select
+                                    options={pyearOptions}
+                                    onChange={handleIYearChange}
+                                    defaultValue={pyearOptions.find((option) => option.value === pselectedYear)}
+                                    className="year-dropdown-1"
+                                />
+                            </div>
+
+                            <Pie
+                                data={pieChartPlacementData}
+                                options={{
+                                    responsive: true,
+                                    plugins: {
+                                        title: {
+                                            display: true,
+                                            text: `Placements Statistics for ${pselectedYear}`,
                                             font: {
-                                                size: 12,
+                                                size: 15,
                                             },
-                                            padding: 10,
+                                        },
+                                        legend: {
+                                            fullSize: false,
+                                            position: 'bottom',
+                                            labels: {
+                                                boxWidth: 10,
+                                                font: {
+                                                    size: 10,
+                                                },
+                                                padding: 10,
+                                            },
+
+                                        },
+                                        tooltip: {
+                                            enabled: true,
                                         },
                                     },
-                                    tooltip: {
-                                        enabled: true,
+                                    animation: {
+                                        animateScale: true,
+                                        animateRotate: true,
                                     },
-                                },
-                                animation: {
-                                    animateScale: true,
-                                    animateRotate: true,
-                                },
-                            }}
-                            height={300}
-                            width={300}
-                        />
-                        <p>Total Placements: {totalPlacements}</p>
-                        <br />
-                        <DataSummaryTable title={"Placements Summary"} data={filteredPlacementData} total={totalPlacements} />
+                                }}
+                                width={400}
+                                height={400}
+                                style={{ margin: "auto" }}
+                            />
+                            <p>Total Placements: {totalPlacements}</p>
+                            <br />
+                            <DataSummaryTable title={"Placements Summary"} data={filteredPlacementData} total={totalPlacements} />
+                        </div>
+
+                        <div className="chart-container-1">
+                            <div className="dropdown-container-1">
+                                <Select
+                                    options={iyearOptions}
+                                    onChange={handleIYearChange}
+                                    defaultValue={iyearOptions.find((option) => option.value === iselectedYear)}
+                                    className="year-dropdown-1"
+                                />
+                            </div>
+                            <Pie
+                                data={pieChartInternshipData}
+                                options={{
+                                    responsive: true,
+                                    plugins: {
+                                        title: {
+                                            display: true,
+                                            text: `Internships Statistics for ${iselectedYear}`,
+                                            font: {
+                                                size: 15,
+                                            },
+                                        },
+                                        legend: {
+                                            position: 'bottom',
+                                            labels: {
+                                                boxWidth: 10,
+                                                font: {
+                                                    size: 12,
+                                                },
+                                                padding: 5,
+                                            },
+                                        },
+                                        tooltip: {
+                                            enabled: true,
+                                        },
+                                    },
+                                    animation: {
+                                        animateScale: true,
+                                        animateRotate: true,
+                                    },
+                                }}
+                                width={300}
+                                height={300}
+                            />
+                            <p>Total Internships: {totalInternships}</p>
+                            <DataSummaryTable title={"Internship Summary"} data={filteredInternshipData} total={totalInternships} />
+                        </div>
                     </div>
 
-                    <div className="chart-container-1">
-                        <div className="dropdown-container-1">
-                            <Select
-                                options={iyearOptions}
-                                onChange={handleIYearChange}
-                                defaultValue={iyearOptions.find((option) => option.value === iselectedYear)}
-                                className="year-dropdown-1"
-                            />
-                        </div>
-                        <Pie
-                            data={pieChartInternshipData}
-                            options={{
-                                responsive: true,
-                                plugins: {
-                                    title: {
-                                        display: true,
-                                        text: `Internships Statistics for ${iselectedYear}`,
-                                        font: {
-                                            size: 15,
-                                        },
-                                    },
-                                    legend: {
-                                        position: 'bottom',
-                                        labels: {
-                                            boxWidth: 10,
-                                            font: {
-                                                size: 12,
-                                            },
-                                            padding: 10,
-                                        },
-                                    },
-                                    tooltip: {
-                                        enabled: true,
-                                    },
-                                },
-                                animation: {
-                                    animateScale: true,
-                                    animateRotate: true,
-                                },
-                            }}
-                            width={300}
-                            height={300}
-                        />
-                        <p>Total Internships: {totalInternships}</p>
-                        <DataSummaryTable title={"Internship Summary"} data={filteredInternshipData} total={totalInternships} />
-                    </div>
-                </div>
-
-                <p>Note: This data only includes students from the IT Department from CEG Campus, Anna University.</p>
-                <p>Last updated: {lastUpdatedDate}</p>
-            </div>}
+                    <p>Note: This data only includes students from the IT Department from CEG Campus, Anna University.</p>
+                    <p>Last updated: {lastUpdatedDate}</p>
+                </div>}
         </section>
     );
 }

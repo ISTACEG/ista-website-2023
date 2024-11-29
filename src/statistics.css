@@ -4,6 +4,11 @@
   margin-bottom: 2rem; /* Use rem for relative spacing */
 }
 
+.pie-graph {
+  width: 90vw;
+  height: 90vh;
+}
+
 /* Section container */
 
 /* Event Item */
@@ -135,11 +140,21 @@
 
 /* Responsive design */
 @media (max-width: 1024px) {
+  .pie-graph {
+    width: 70vw;
+    height: 70vh;    
+  }
   .special-1 .charts-row {
     flex-direction: row;
     justify-content: center;
     gap: 1.5rem; /* Adjust spacing for smaller screens */
   }
+
+  .special-1 .dropdown-container-1 {
+    margin-bottom: 2rem;
+    transform: scaleX(0.8);
+  }
+  
 
   .special-1 .chart-container-1 {
     min-width: 45%;
@@ -166,6 +181,10 @@
     margin-bottom: 1.5rem;
   }
 
+  .special-1 .statistics-table {
+    transform: scaleX(0.8);
+  }
+
   .special-1 .statistics-table th, .special-1 .statistics-table td {
     font-size: 0.875rem; /* Adjust font size for smaller screens */
   }
@@ -181,6 +200,7 @@
 }
 
 @media (max-width: 380px) {
+  
   .special-1 h2, .special-1 h3 {
     font-size: 1.25rem; /* Adjust heading size for smaller screens */
   }
