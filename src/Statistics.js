@@ -103,7 +103,7 @@ function Statistics() {
     ];
 
     const iyearOptions = [
-        { value: 2026, label: "2026" },
+        { value: 2025, label: "2025" },
     ];
 
     const handlePYearChange = (selectedOption) => {
