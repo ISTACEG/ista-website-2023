@@ -131,7 +131,7 @@ var newTeamMembers = [
     imageUrl: "https://drive.google.com/open?id=1OOOQolXuqlsKFFkV8MB6ifF8Stvie5Fc"
   },
   {
-    name: "HEMACHANAR K",
+    name: "HEMACHANDAR K",
     position: "Deputy Head",
     domain: "Courses",
     imageUrl: "https://drive.google.com/open?id=1IEtCJOtRTrK6PbPd7R3uexl8Pl_rspgD"
