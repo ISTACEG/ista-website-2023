@@ -33,7 +33,7 @@ function Techtrek2() {
       });
   }, []);
 
-  const dataToDisplay = data.slice(3).sort((a, b) => b[6] - a[6]);
+  const dataToDisplay = data.sort((a, b) => b[6] - a[6]);
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = dataToDisplay.slice(indexOfFirstRow, indexOfLastRow);
