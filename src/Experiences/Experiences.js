@@ -107,6 +107,7 @@ function Experiences() {
                             onChange={(e) => { setCurrentPage(1); setSelectedYear(e.target.value) }}
                         >
                             <option value="-1">All Year</option>
+                            <option value="2023">2022</option>
                             <option value="2023">2023</option>
                             <option value="2024">2024</option>
                             <option value="2025">2025</option>
