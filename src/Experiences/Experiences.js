@@ -6,6 +6,7 @@ import axios from "axios";
 
 function Experiences() {
     const [data, setData] = useState([]);
+    const [passingYears, setPassingYears] = useState([]);
     const [companies, setCompanies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
@@ -42,6 +43,9 @@ function Experiences() {
                 });
                 setData(updatedData.sort(() => Math.random - 0.5));
                 const uniqueCompanies = [...new Set(updatedData.map(row => row[5]))];
+                var years = [...new Set(updatedData.map(row => row[8]))];
+                years.sort((a, b) => a - b);
+                setPassingYears(years);
                 setCompanies(uniqueCompanies);
                 setIsLoading(false);
             })
@@ -75,6 +79,11 @@ function Experiences() {
     return (
         <div>
         <div className="exp-container">
+        {isLoading ? (
+                        <div className="loadingContainer">
+                            <Riple color="#523ad6" size="large" text="" textColor="#ac1414" />
+                        </div>
+                    ) : (
             <div className="ExperienceBody">
                 <div className="input-box-container">
                     <div className="form-group" style={{ flex: 3 }}>
@@ -107,10 +116,11 @@ function Experiences() {
                             onChange={(e) => { setCurrentPage(1); setSelectedYear(e.target.value) }}
                         >
                             <option value="-1">All Year</option>
-                            <option value="2022">2022</option>
+                            {passingYears.map(yr => <option value={yr}>{yr}</option>)}
+                            {/* <option value="2022">2022</option>
                             <option value="2023">2023</option>
                             <option value="2024">2024</option>
-                            <option value="2025">2025</option>
+                            <option value="2025">2025</option> */}
                         </select>
                         {/* <label htmlFor="year" className="form-label">Select Year</label> */}
                     </div>
@@ -132,12 +142,8 @@ function Experiences() {
                     ))}
                 </div>
                 <div className="ExperienceDetails">
-                    {isLoading ? (
-                        <div className="loadingContainer">
-                            <Riple color="#523ad6" size="large" text="" textColor="#ac1414" />
-                        </div>
-                    ) : (
-                        currentRows.length === 0 ?
+
+                        {(currentRows.length === 0 ?
                             <div style={{ color: "red", width: "100%", marginTop: "4%", textAlign:"center" }}>
                                 No records found.
                                 <div>Filters : {searchQuery} {selectedYear != "-1" && selectedYear} {type != "All" && type}</div>
@@ -210,7 +216,7 @@ function Experiences() {
                             </div>
                     )}
                 </div>
-            </div>
+            </div>)}
         </div>
         </div>
     );
