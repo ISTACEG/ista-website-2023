@@ -24,7 +24,9 @@ const Navbar = () => {
           <li><a href="/resource" aria-label="Resources">Resources</a></li>
           <li><a href="/#events" aria-label="Events">Fests</a></li>
           <li><a href="/techtrek" aria-label="Tech Trek">Tech Trek</a></li>
+          <li><a href="/portal" aria-label="Grievances portal">Grievances portal</a></li>
           <li><a href="/#team" aria-label="Our Team">Our Team</a></li>
+
           {/* <li><a href="/#contact" aria-label="Contact">Contact</a></li> */}
         </ul>
       </nav>

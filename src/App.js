@@ -6,6 +6,9 @@ import Home from "./home-page";
 // import Ipp23Page from "./pages/ipp23-page";
 import Techtrek2 from "./tech-trek2";
 import Experiences from "./Experiences/Experiences";
+import Signin from "./portal/Signin";
+import Register from "./portal/Register";
+import Profile from "./portal/Profile";
 import Resource from "./Resource"
 import History from "./History";
 import { Analytics } from '@vercel/analytics/react';
@@ -24,6 +27,9 @@ function App() {
         <Route path="/exp_view" element={<Experiences />} />
         <Route path="/experiences" element={<Experiences />} />
         <Route path="/techtrek" element={<Techtrek2 />} />
+        <Route path="/portal" element={<Signin/>} />
+        <Route path="/portal/register" element={<Register/>} />
+        <Route path="/portal/profile" element={<Profile/>} />
       </Routes>
     </div>
   );
