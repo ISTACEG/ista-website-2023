@@ -151,3 +151,137 @@
         margin-right: 10px; 
     }
 }
+
+.profile-div {
+    margin: 50px 40px;
+  }
+  
+  .profile-left {
+
+    height: 550px;
+    background-color:  #e5e5db;
+    
+  }
+
+
+  .profile-account{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+
+    
+  }
+  
+  
+  .profile-icon{
+    margin-top: 10px;
+    font-size: 2.5rem;
+    color: #ff1493;
+  }
+
+  .account-logout{
+    background-color: rgb(61, 59, 59);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+    text-align: right;
+    padding: 20px;
+  }
+
+  .account-rollno{
+    border-color:rgb(139, 138, 138) ;
+    padding: 10px;
+    
+  }
+
+  .logout-button{
+   
+    border-color:rgb(139, 138, 138) ;
+    border-radius: 20%;
+    background-color: transparent;
+
+    font-size: 1rem;
+  }
+
+  .one-list-item{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    background-color: rgb(243, 244, 246);
+    border-radius: 20px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    font-family: "Nanum Gothic Coding", monospace;
+    font-weight: 800;
+    font-style: normal;
+
+  }
+  
+  .content-list{
+    flex:14;
+    padding: 10px;
+    
+    
+}
+
+.status-list-pending{
+    background-color: yellow;
+    color: red;
+    padding: 8px;
+    border-radius: 30px;
+    text-align: center;
+    flex:0.8
+}
+
+.status-list-approved{
+    background-color: green;
+    color: white;
+    padding: 8px;
+    border-radius: 30px;
+    text-align: center;
+    flex:0.8
+}
+.status-list-rejected{
+    background-color: red;
+    color: white;
+    padding: 8px;
+    border-radius: 30px;
+    text-align: center;
+    flex:0.8
+}
+
+.delete-list{
+    flex:0.2;
+    padding: 8px;
+    font-size: 1.5rem;
+    color:rgb(0, 0, 0);
+   
+}
+
+.add-list{
+    margin: 20px;
+}
+
+.addling-button{
+    font-size: 3rem;
+    border: none;
+   
+    text-align: center;
+   background: none;
+    
+    opacity: 80%;
+}
+  
+
+  
+  @media (max-width: 800px){
+    .profile-div {
+       
+      display: flex;
+      flex-direction: column;
+        
+         
+      }
+  }
