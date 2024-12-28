@@ -1,91 +1,85 @@
-import React from "react"
-import { useState } from "react";
+// Profile.js
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import './portal.scss'
-import { CgProfile } from "react-icons/cg";
-import {MdDelete} from "react-icons/md"
-import { FiPlusCircle } from "react-icons/fi";
 import { IoIosLogOut } from "react-icons/io";
-import {Tooltip} from 'react-tooltip';
-
+import { Tooltip } from "react-tooltip";
+import './portal.scss';
+import QRCode from "react-qr-code";
 
 
 export default function Profile() {
+    const [grievances, setGrievances] = useState([]);
+    const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true);
+    const token = document.cookie.split("=")[1];
+    useEffect(() => {
+        const token = document.cookie.split("=")[1];
+        fetch("http://localhost:4000/profile", {
+            headers: {
+                token
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.expired) {
+                    alert(data.message);
+                    window.location.href = "/portal";
+                }
+                if (data.success) {
+                    setUser(data.user);
+                    setGrievances(data.user.grievances);
+                    setLoading(false);
+                }
+            });
+    }
+        , []);
+    return (
+        <div className="profile-container">
+            <div className="profile-sidebar">
+                <div className="profile-header">
+                    {/* User details section */}
+                    <h3 className="profile-topic">Your ISTA Account</h3>
 
-   
-       
+                    <div style={{ height: "auto", margin: "0 auto", maxWidth: 104, width: "100%" }}>
+                        <QRCode
+                            size={256}
+                            style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                            value={"ippothiku onnu illa"}
+                            viewBox={`0 0 256 256`}
+                        />
+                    </div>
 
-  return (
-    <>
-    <div className='profile-div'>
-        
+                    <div className="profile-details">
+                        <h1 className="profile-welcome"></h1>
+                        <p className="profile-info">{user.roll} | {user.year}-th batch</p>
+                        <p className="profile-email">{user.roll}@student.annauniv.edu</p>
+                    </div>
 
-        <div className='profile-left'>
-            <div className='profile-account'>
-                
-                <h2 className='profile-icon1' data-tooltip-id="account-tooltip"
-                data-tooltip-content="2022115000" ><CgProfile/></h2>
-                <Tooltip id="account-tooltip" place="right" effect="solid" />
-                <Link to="/portal"><h2
-                className=" profile-icon1"
-                data-tooltip-id="logout-tooltip"
-                data-tooltip-content="Logout"
-            >
-                <IoIosLogOut />
-
-                
-            </h2>
-            </Link>
-            <Tooltip id="logout-tooltip" place="right" effect="solid" />
-
-                
-                
-            </div>
-            
-            <div className='list-of-grievances'>
-                <div>
-                <ul className="list-of-items">
-                    <li className="one-list-item">
-                        <div className="content-list">The href attribute is required for an anchor to be keyboard 
-                            accessible. Provide a valid, navigable address as the href value. If you cannot provide
-                             an href, but still need the element to resemble a link, use a button and change
-                              it with ap  Provide a valid, navigable address as the href value. If you cannot provide
-                             an href, but still need the element to resemble a link, use a button and change
-                              it with ap
-                        </div>
-                        <div className="status-list-pending">Pending</div>
-                        <div className="delete-list"><MdDelete/></div>
-                    </li>
-                    <li className="one-list-item">
-                        <div className="content-list">hello first</div>
-                        <div className="status-list-approved">Approved</div>
-                        
-                    </li>
-
-                    <li className="one-list-item">
-                        <div className="content-list">hello first</div>
-                        <div className="status-list-rejected">Rejected</div>
-                        <div className="delete-list"><MdDelete/></div>
-                        
-                    </li>
-                    
-                </ul>
                 </div>
 
-                <div className="adding-new">
-                    <div><input className="next-grievances"/></div>
-                    <div><button className="send-button">send</button></div>
+                {/* Grievances section */}
+                <div className="grievances-section">
+                    <h3 className="grievances-title">Your Grievances</h3>
+                    <ul className="grievances-list">
+                        <li className="grievance-item">
+                            <div className="grievance-head">Grievance Head 1</div>
+                            <div className="grievance-content">Content of grievance head 1</div>
+                            <div className="grievance-status pending">Pending</div>
+                        </li>
+                        <li className="grievance-item">
+                            <div className="grievance-head">Grievance Head 1</div>
+                            <div className="grievance-content">Content of grievance head 1</div>
+                            <div className="grievance-status approved">Approved</div>
+                        </li>
+                        <li className="grievance-item">
+                            <div className="grievance-head">Grievance Head 1</div>
+                            <div className="grievance-content">Content of grievance head 1</div>
+                            <div className="grievance-status rejected">Rejected</div>
+                            <div className="rejected-reason">Not related to departmental activity</div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        
-           
-            
-            
-            
-            
         </div>
-        
-    </div>
-    </>
-  )
+    );
 }
