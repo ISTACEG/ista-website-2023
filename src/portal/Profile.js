@@ -1,13 +1,18 @@
 import React from "react"
-import {  useState } from 'react'
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import './portal.scss'
 import { CgProfile } from "react-icons/cg";
 import {MdDelete} from "react-icons/md"
 import { FiPlusCircle } from "react-icons/fi";
 import { IoIosLogOut } from "react-icons/io";
+import {Tooltip} from 'react-tooltip';
+
+
 
 export default function Profile() {
 
+   
        
 
   return (
@@ -18,15 +23,27 @@ export default function Profile() {
         <div className='profile-left'>
             <div className='profile-account'>
                 
-                <h2 className='profile-icon'><CgProfile/></h2>
-            </div>
-            <div className="account-logout">
-                <h3 className="account-rollno">2022111111</h3>
-                <button className="logout-button"><IoIosLogOut/>LOGOUT</button>
+                <h2 className='profile-icon1' data-tooltip-id="account-tooltip"
+                data-tooltip-content="2022115000" ><CgProfile/></h2>
+                <Tooltip id="account-tooltip" place="right" effect="solid" />
+                <Link to="/portal"><h2
+                className=" profile-icon1"
+                data-tooltip-id="logout-tooltip"
+                data-tooltip-content="Logout"
+            >
+                <IoIosLogOut />
 
+                
+            </h2>
+            </Link>
+            <Tooltip id="logout-tooltip" place="right" effect="solid" />
+
+                
+                
             </div>
+            
             <div className='list-of-grievances'>
-
+                <div>
                 <ul className="list-of-items">
                     <li className="one-list-item">
                         <div className="content-list">The href attribute is required for an anchor to be keyboard 
@@ -53,12 +70,18 @@ export default function Profile() {
                     </li>
                     
                 </ul>
+                </div>
+
+                <div className="adding-new">
+                    <div><input className="next-grievances"/></div>
+                    <div><button className="send-button">send</button></div>
+                </div>
             </div>
         
            
-            <div className="add-list">
-                <button className="addling-button"><FiPlusCircle/></button>
-            </div>
+            
+            
+            
             
         </div>
         

@@ -106,7 +106,7 @@
     text-align: center;
     padding: 10px 30px; 
     margin-bottom:30px;
-    margin-top: 10px;
+    margin-top: 0px;
     background-color: #23a2a9; 
     border: none;
     border-radius: 5px;
@@ -154,34 +154,42 @@
   }
   
   .profile-left {
-
-    height: 550px;
+    max-height: 900px;
+    min-height: auto; 
+    height: auto;
     background-color:  #e5e5db;
     
   }
 
 
-  .profile-account{
+  .profile-account {
     display: flex;
     flex-direction: row;
-    justify-content: end;
-
-    
-  }
-  
-  
-  .profile-icon{
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 10px;
     margin-top: 10px;
+}
+
+.profile-icon1 {
     font-size: 2.5rem;
     color: #ff1493;
-  }
+}
+
+.profile-icon2 {
+    font-size: 2.5rem;
+    color: #ff1493;
+}
+
 
   .account-logout{
     background-color: rgb(61, 59, 59);
+    color:white;
     display: flex;
     flex-direction: column;
-    height: fit-content;
-    width: fit-content;
+   
+    width:fit-content;
+    height: 100%;
     text-align: right;
     padding: 20px;
   }
@@ -193,13 +201,56 @@
   }
 
   .logout-button{
-   
-    border-color:rgb(139, 138, 138) ;
-    border-radius: 20%;
+    color:white;
+   border: none;
     background-color: transparent;
 
-    font-size: 1rem;
+    font-size: 0.5rem;
   }
+
+
+  .list-of-grievances{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+  }
+
+  .adding-new {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    margin: 20px;
+  }
+  
+  .next-grievances {
+    border: none;
+    border-bottom: 2px solid #ff1493; 
+    background-color: transparent;
+    height: 50px;
+    width: 900px; 
+    font-family: "Nanum Gothic Coding", monospace;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .send-button {
+    padding: 10px 20px;
+    border-radius: 20%;
+    background-color: green;
+    color: white;
+    font-family: "Nanum Gothic Coding", monospace;
+    font-weight: 800;
+    font-style: normal;
+    cursor: pointer;
+  }
+
+  .next-grievances:hover,
+.next-grievances:focus {
+  border-bottom: 2px solid #ff1493; 
+  outline: none; 
+}
 
   .one-list-item{
     display: flex;
@@ -262,23 +313,33 @@
 }
 
 .addling-button{
-    font-size: 3rem;
+    font-size: 2rem;
     border: none;
-   
-    text-align: center;
+    font-size: 2.5rem;
+    color: #ff1493;
+    font-weight: 800;
+    font-style: normal;
+    text-align: left;
    background: none;
-    
-    opacity: 80%;
 }
   
 
   
-  @media (max-width: 800px){
-    .profile-div {
-       
-      display: flex;
-      flex-direction: column;
-        
-         
+  @media (max-width: 500px){
+    .one-list-item {
+       display: flex;
+       flex-direction: column;
+      }
+
+      .adding-new {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .next-grievances {
+        width: 300px; 
       }
   }
+
+ 
+
