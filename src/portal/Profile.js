@@ -42,7 +42,7 @@ export default function Profile() {
                 
             </div>
             
-            <div className='list-of-grievances'>
+            {/* <div className='list-of-grievances'>
                 <div>
                 <ul className="list-of-items">
                     <li className="one-list-item">
@@ -76,7 +76,7 @@ export default function Profile() {
                     <div><input className="next-grievances"/></div>
                     <div><button className="send-button">send</button></div>
                 </div>
-            </div>
+            </div> */}
         
            
             
