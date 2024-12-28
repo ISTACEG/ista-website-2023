@@ -23,7 +23,7 @@ function AdminGrievance() {
   const [isApproved, setIsApproved] = useState([false, false]);
   const [showIdentityClicked, setShowIdentityClicked] = useState([false, false]);
   const [rejectionReasons, setRejectionReasons] = useState(["", ""]);
-  const [isRejecting, setIsRejecting] = useState([false, false]); // Track if rejection is in progress
+  const [isRejecting, setIsRejecting] = useState([false, false]); 
 
   const handleApproveClick = (index) => {
     const updatedApproval = [...isApproved];
@@ -41,7 +41,6 @@ function AdminGrievance() {
     if (rejectionReasons[index].trim() === "") {
       alert("Please provide a reason for rejection");
     } else {
-      // Handle the rejection logic here (e.g., send the reason to the server)
       setIsRejecting((prev) => {
         const updatedRejecting = [...prev];
         updatedRejecting[index] = false;
@@ -84,7 +83,6 @@ function AdminGrievance() {
                 Reject
               </button>
 
-              {/* Conditionally show rejection input */}
               {isRejecting[index] && (
                 <div className="rejection-input">
                   <textarea
@@ -111,7 +109,7 @@ function AdminGrievance() {
                 className={`brutalist-card__button brutalist-card__button--mark ${
                   showIdentityClicked[index] ? "show-identity-clicked" : ""
                 }`}
-                onClick={() => handleShowIdentityClick(index)} // Pass the index for each card
+                onClick={() => handleShowIdentityClick(index)} 
               >
                 Show Identity Of The User
               </button>
