@@ -20,24 +20,35 @@ function AdminGrievance() {
     },
   ];
 
-  
   const [isApproved, setIsApproved] = useState([false, false]);
-
-  
   const [showIdentityClicked, setShowIdentityClicked] = useState([false, false]);
+  const [rejectionReasons, setRejectionReasons] = useState(["", ""]);
+  const [isRejecting, setIsRejecting] = useState([false, false]); // Track if rejection is in progress
 
-  
   const handleApproveClick = (index) => {
     const updatedApproval = [...isApproved];
     updatedApproval[index] = true;
     setIsApproved(updatedApproval);
   };
 
-  
   const handleShowIdentityClick = (index) => {
     const updatedState = [...showIdentityClicked];
     updatedState[index] = true;
     setShowIdentityClicked(updatedState);
+  };
+
+  const handleRejectClick = (index) => {
+    if (rejectionReasons[index].trim() === "") {
+      alert("Please provide a reason for rejection");
+    } else {
+      // Handle the rejection logic here (e.g., send the reason to the server)
+      setIsRejecting((prev) => {
+        const updatedRejecting = [...prev];
+        updatedRejecting[index] = false;
+        return updatedRejecting;
+      });
+      alert(`Rejected with reason: ${rejectionReasons[index]}`);
+    }
   };
 
   return (
@@ -62,9 +73,40 @@ function AdminGrievance() {
               >
                 {isApproved[index] ? "Approved" : "Approve"}
               </button>
-              <button className="brutalist-card__button brutalist-card__button--read">
+              <button
+                className="brutalist-card__button brutalist-card__button--read"
+                onClick={() => {
+                  const updatedRejecting = [...isRejecting];
+                  updatedRejecting[index] = true;
+                  setIsRejecting(updatedRejecting);
+                }}
+              >
                 Reject
               </button>
+
+              {/* Conditionally show rejection input */}
+              {isRejecting[index] && (
+                <div className="rejection-input">
+                  <textarea
+                    placeholder="Enter reason for rejection"
+                    value={rejectionReasons[index]}
+                    onChange={(e) => {
+                      const updatedReasons = [...rejectionReasons];
+                      updatedReasons[index] = e.target.value;
+                      setRejectionReasons(updatedReasons);
+                    }}
+                    className="Reject-textarea"
+                  />
+                  <button
+                    className="brutalist-card__button brutalist-card__button--reject"
+                    onClick={() => handleRejectClick(index)}
+                    disabled={rejectionReasons[index].trim() === ""}
+                  >
+                    Confirm Reject
+                  </button>
+                </div>
+              )}
+
               <button
                 className={`brutalist-card__button brutalist-card__button--mark ${
                   showIdentityClicked[index] ? "show-identity-clicked" : ""
