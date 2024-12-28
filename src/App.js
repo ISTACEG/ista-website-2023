@@ -13,6 +13,9 @@ import Resource from "./Resource"
 import History from "./History";
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from "./Navbar";
+import Allgrievance from "./portal/Allgrievance/Allgrievance";
+import GrievanceForm from "./portal/GrievanceForm/GrievanceForm";
+import AdminGrievance from "./portal/Admin/AdminGrievance";
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
         <Route path="/portal" element={<Signin/>} />
         <Route path="/portal/register" element={<Register/>} />
         <Route path="/portal/profile" element={<Profile/>} />
+        <Route path="/portal/Allgrievance/Allgrievance" element={<Allgrievance/>} />
+        <Route path="/portal/GrievanceForm/GrievanceForm" element={<GrievanceForm/>} />
+        <Route path="/portal/Admin/AdminGrievance" element={<AdminGrievance/>} />
       </Routes>
     </div>
   );
