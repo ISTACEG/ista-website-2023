@@ -16,6 +16,7 @@ import Navbar from "./Navbar";
 import Allgrievance from "./portal/Allgrievance/Allgrievance";
 import GrievanceForm from "./portal/GrievanceForm/GrievanceForm";
 import AdminGrievance from "./portal/Admin/AdminGrievance";
+import ForgetPassword from "./portal/Forgetpassword"
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
@@ -64,6 +65,7 @@ function App() {
         <Route path="/techtrek" element={<Techtrek2 />} />
         <Route path="/portal" element={<Signin/>} />
         <Route path="/portal/register" element={<Register/>} />
+        <Route path="/portal/forgot-password" element={<ForgetPassword />} />
         <Route path="/portal/profile" element={<PrivateRoute element={Profile} />} />
         <Route path="/portal/feed" element={<PrivateRoute element={Allgrievance} />} />
         <Route path="/portal/addGrievance" element={<PrivateRoute element={GrievanceForm} />} />

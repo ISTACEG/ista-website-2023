@@ -40,7 +40,7 @@ export default function Profile() {
                         <QRCode
                             size={256}
                             style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                            value={"ippothiku onnu illa"}
+                            value={user.roll + " - " + user.year}
                             viewBox={`0 0 256 256`}
                         />
                     </div>
@@ -52,16 +52,25 @@ export default function Profile() {
                     </div>
 
                 </div>
-
                 {/* Grievances section */}
+                {user.isAdmin && <button className="change-password-button" onClick={() => window.location.href = '/portal/Allgrievance'}>
+                    View New Grievances
+                </button>}
+                <button className="change-password-button" onClick={() => window.location.href = '/portal/forgot-password'}>
+                    Change Password
+                </button>
+                <button className="logout-button" onClick={() => window.location.href = '/portal/login'}>
+                    <IoIosLogOut style={{marginRight: "5px"}}/>
+                    Logout
+                </button>
                 <div className="grievances-section">
                     <h3 className="grievances-title">Your Grievances</h3>
                     <ul className="grievances-list">
                     {grievances.map(e => <li className="grievance-item">
                             <div className="grievance-head">{e.head}</div>
                             <div className="grievance-content">{e.content}</div>
-                            <div className="grievance-status pending">{e.status}</div>
-                            {e.status == "rejected" && <div className="rejected-reason">{e.rejectionMessage}</div>}
+                            <div className={"grievance-status " + e.status}>{e.status}</div>
+                            {e.status == "rejected" && <div className="rejected-reason">Reason : {!e.rejectionMessage ? "Not Mentioned" : e.rejectionMessage}</div>}
                         </li>)}
                     </ul>
                 </div>

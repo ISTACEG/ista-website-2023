@@ -61,10 +61,10 @@ function AllGrievance() {
     <div className="grievance-display-container">
         <div className="grievance-portal-nav">
             <div className="AllGrivance-button-container">
-                <Link to = "/portal/feed" className="AllGrivance-button"> All Grievance </Link>
+                <Link to = "/portal/feed" className="AllGrivance-button"> FEED </Link>
             </div>
             <div className="GrievanceForm-button-container">
-                <Link  to = "/portal/addGrievance" className="GrievanceForm-button">Grievance Form</Link>
+                <Link  to = "/portal/addGrievance" className="GrievanceForm-button">POST NEW</Link>
             </div>
         </div>
       <div className="grievance-display">

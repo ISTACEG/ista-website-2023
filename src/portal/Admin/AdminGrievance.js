@@ -71,7 +71,6 @@ function AdminGrievance() {
           token
         }
       })
-  
       alert(response.data.message);
     }
   };

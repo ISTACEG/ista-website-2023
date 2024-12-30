@@ -51,21 +51,23 @@
     margin-left : 50px;
 }
 
-.grievance-display{
+.grievance-display {
     display : flex;
     gap : 20px;
-    align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* card styling */
 .brutalist-card {
-    width: 320px;
+    min-width: 40%;
+    max-width: 82%;
     border: 4px solid #000;
     background-color: #fff;
-    padding: 1.5rem;
+    padding: 1%rem;
     box-shadow: 10px 10px 0 #000;
     font-family: "Arial", sans-serif;
+    align-self: self-start;
   }
   
   .brutalist-card__header {

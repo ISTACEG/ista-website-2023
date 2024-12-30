@@ -48,10 +48,7 @@ function GrievanceForm() {
       {/* Navigation Section */}
       <div className="grievance-portal-nav">
         <div className="AllGrivance-button-container">
-          <Link to="/portal/feed" className="AllGrivance-button"> Feed </Link>
-        </div>
-        <div className="GrievanceForm-button-container">
-          <Link to="/portal/addGrievance" className="GrievanceForm-button">Post a Grievance</Link>
+          <Link to="/portal/feed" className="AllGrivance-button"> FEED </Link>
         </div>
       </div>
 
