@@ -1,0 +1,41 @@
+.text-hist {
+    color: white
+}
+
+@media (max-width: 768px) {
+    /* For mobile devices, always apply landscape design */
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .card-content img {
+      width: 80%; /* Image takes up most of the width */
+      max-height: 200px;
+      margin-bottom: 15px;
+    }
+    .card-content p {
+      font-size: 14px;
+      color: #555;
+      text-align: justify;
+      margin: 0;
+    }
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    color: var(--color);
+    font-family: "Londrina Sketch", sans-serif;
+  }
+  
+  @media (max-width: 768px) { /* Adjust the breakpoint as needed */
+    .mobile-only {
+      display: block;
+    }
+  }
