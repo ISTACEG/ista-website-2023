@@ -16,6 +16,38 @@ import Navbar from "./Navbar";
 import Allgrievance from "./portal/Allgrievance/Allgrievance";
 import GrievanceForm from "./portal/GrievanceForm/GrievanceForm";
 import AdminGrievance from "./portal/Admin/AdminGrievance";
+import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import axios from "axios";
+
+const PrivateRoute = ({ element: Component }) => {
+  const [isAuthorized, setIsAuthorized] = useState(null); // null initially for loading state
+  const token = document.cookie.split("=")[1].split(";")[0] // Get token from cookies
+  useEffect(() => {
+      const checkAuthorization = async () => {
+          try {
+                const response = await axios.post("http://localhost:4000/auth/check", {}, {
+                  headers: {
+                    token: `${token}`
+                  }
+                });
+              setIsAuthorized(response.data.authorized); // Assuming your server responds with { authorized: true/false }
+          } catch (error) {
+              alert(error.message);
+              setIsAuthorized(false);
+          }
+      };
+      checkAuthorization();
+  }, [token]);
+
+  if (isAuthorized === null) {
+      // Show a loading spinner or placeholder while verifying
+      return <div>Loading...</div>;
+  }
+
+  return isAuthorized ? <Component /> : <Navigate to="/portal" />;
+};
+
 
 function App() {
   return (
@@ -32,10 +64,10 @@ function App() {
         <Route path="/techtrek" element={<Techtrek2 />} />
         <Route path="/portal" element={<Signin/>} />
         <Route path="/portal/register" element={<Register/>} />
-        <Route path="/portal/profile" element={<Profile/>} />
-        <Route path="/portal/Allgrievance/Allgrievance" element={<Allgrievance/>} />
-        <Route path="/portal/GrievanceForm/GrievanceForm" element={<GrievanceForm/>} />
-        <Route path="/portal/Admin/AdminGrievance" element={<AdminGrievance/>} />
+        <Route path="/portal/profile" element={<PrivateRoute element={Profile} />} />
+        <Route path="/portal/feed" element={<PrivateRoute element={Allgrievance} />} />
+        <Route path="/portal/addGrievance" element={<PrivateRoute element={GrievanceForm} />} />
+        <Route path="/portal/allGrievance" element={<PrivateRoute element={AdminGrievance} />} />
       </Routes>
     </div>
   );

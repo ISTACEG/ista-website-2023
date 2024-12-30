@@ -2,6 +2,7 @@ import React from 'react'
 import './portal.scss'
 import { Link } from "react-router-dom";
 import axios from 'axios';
+
 export default function Signin() {
   const handleLogin = () => {
     // validate fields and send roll and password to POST http://localhost:4000/auth/login/userLogin using await and async axios
@@ -20,9 +21,7 @@ export default function Signin() {
 
     axios.post('http://localhost:4000/auth/login/userLogin', loginData)
       .then(response => {
-        console.log(response.data);
         alert(response.data.message);
-        alert(response.data.token);
         document.cookie = `token=${response.data.token}`;
         if (response.data.success) {
         window.location.href = '/portal/feed';

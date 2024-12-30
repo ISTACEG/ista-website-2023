@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Allgrievance.css";
 import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
-
+import axios from 'axios'
 
 const isEven = (number) => number % 2 === 0;
 const isOdd = (number) => number % 2 === 1;
@@ -16,7 +16,8 @@ function AllGrievance() {
 
   
   const [userVotes, setUserVotes] = useState([null, null]);
-
+  const token = document.cookie.split("=")[1].split(";")[0];
+  
   
   const handleVote = (index, type) => {
     setVotes((prevVotes) =>
@@ -46,6 +47,23 @@ function AllGrievance() {
     );
   };
 
+  useEffect(() => {
+    // Fetch data from the backend
+    axios.get('http://localhost:4000/post/all_approved', {
+      headers: {
+        token: `${token}`
+      }
+    })
+    .then(response => {
+      console.log(response.data.posts);
+      setVotes(response.data.posts);
+    })
+    .catch(error => {
+      console.error(error);
+      alert(error.message);
+    });
+  }, []);
+
   return (
     <div className="grievance-display-container">
         <div className="grievance-portal-nav">
@@ -68,10 +86,10 @@ function AllGrievance() {
             </div>
             <div>
               <div className="brutalist-card__subject">
-                Subject : What is Handball?
+                Subject : {vote.head}
               </div>
               <div className="brutalist-card__message">
-                At the Handball Arena, we strive to create an exceptional experience for all users. Whether you're a player, coach, or fan, we are dedicated to providing a platform where you can stay updated with all the latest match information, results, and live streams
+                {vote.content}
               </div>
             </div>
             <div className="brutalist-card__actions">

@@ -1,29 +1,57 @@
 import React, { useState } from "react";
 import "./GrievanceForm.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function GrievanceForm() {
-  // State to track the selected identity option
   const [identity, setIdentity] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const token = document.cookie.split("=")[1].split(";")[0];
 
-  // Handler for radio button change
   const handleIdentityChange = (event) => {
     setIdentity(event.target.value);
   };
+
+  const handlePost = () => {
+    if (subject === "" || message === "" || identity == "") {
+      alert("Please fill all the fields");
+      return;
+    }
+    console.log(subject, message, identity, token);
+    axios.post("http://localhost:4000/post/new", {
+      head: subject,
+      content: message,
+      idRevealPreferance: identity,
+    }, {
+      headers: {
+      "Content-Type": "application/json",
+      "token": `${token}`,
+      }
+    })
+    .then((response) => {
+      if (response.data.success) {
+      alert("Grievance redirected to chairperson for review, once approved it will be posted in feed");
+      window.location.href = "/portal/profile";
+      } else {
+      alert("Error posting grievance");
+      }
+    })
+    .catch((error) => {
+      console.error("There was an error posting the grievance!", error);
+      alert("Error posting grievance");
+    });
+  }
 
   return (
     <>
       {/* Navigation Section */}
       <div className="grievance-portal-nav">
         <div className="AllGrivance-button-container">
-          <Link to="/portal/Allgrievance/Allgrievance" className="AllGrievance-button" style={{color : "white"}}>
-            All Grievance
-          </Link>
+          <Link to="/portal/feed" className="AllGrivance-button"> Feed </Link>
         </div>
         <div className="GrievanceForm-button-container">
-          <Link to="/portal/GrievanceForm/GrievanceForm" className="GrievanceForm-button">
-            Grievance Form
-          </Link>
+          <Link to="/portal/addGrievance" className="GrievanceForm-button">Post a Grievance</Link>
         </div>
       </div>
 
@@ -39,6 +67,7 @@ function GrievanceForm() {
               className="input"
               type="text"
               placeholder="Enter the Subject"
+              onChange={(e) => setSubject(e.target.value)}
               required
             />
 
@@ -46,6 +75,7 @@ function GrievanceForm() {
             <textarea
               className="textarea"
               placeholder="Enter in detail"
+              onChange={(e) => setMessage(e.target.value)}
               required
             />
 
@@ -101,11 +131,11 @@ function GrievanceForm() {
 
             {/* Buttons Section */}
             <div className="button-container">
-                <div className="reset-button-container">
-                    <button className="reset-button" id="reset-btn">
-                        Publish
-                    </button>
-                </div>
+              <div className="reset-button-container">
+                <button onClick={handlePost} className="reset-button" id="reset-btn">
+                  Publish
+                </button>
+              </div>
             </div>
           </div>
         </div>

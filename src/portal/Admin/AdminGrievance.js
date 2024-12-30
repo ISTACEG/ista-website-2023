@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AdminGrievance.css";
 import { CgProfile } from "react-icons/cg";
+import axios from "axios";
 
 function AdminGrievance() {
-  const cards = [
+  const [cards, setCards] = useState([
     {
       id: 0,
       username: "Username1",
@@ -18,17 +19,42 @@ function AdminGrievance() {
       message:
         "At the Handball Arena, we strive to create an exceptional experience for all users. Whether you're a player, coach, or fan, we are dedicated to providing a platform where you can stay updated with all the latest match information, results, and live streams.",
     },
-  ];
+  ]);
 
   const [isApproved, setIsApproved] = useState([false, false]);
   const [showIdentityClicked, setShowIdentityClicked] = useState([false, false]);
   const [rejectionReasons, setRejectionReasons] = useState(["", ""]);
-  const [isRejecting, setIsRejecting] = useState([false, false]); 
+  const [isRejecting, setIsRejecting] = useState([false, false]);
 
-  const handleApproveClick = (index) => {
-    const updatedApproval = [...isApproved];
-    updatedApproval[index] = true;
+  const token = document.cookie.split("=")[1].split(";")[0];
+  
+  useEffect(() => {
+    // Fetch data from the backend
+    axios.get('http://localhost:4000/admin/all_pending', {
+      headers: {
+        token: `${token}`
+      }
+    })
+    .then(response => {
+      console.log(response.data.posts);
+      setCards(response.data.posts);
+    })
+    .catch(error => {
+      console.error(error);
+      alert(error.message);
+    });
+  }, []);
+
+  const handleApproveClick = async (_id, index) => {
     setIsApproved(updatedApproval);
+    const response = await axios.post("http://localhost:4000/admin/approve/"+_id,{}, {
+      headers:{
+        token
+      }
+    })
+
+    alert(response.data.message);
+    // referesh the page here
   };
 
   const handleShowIdentityClick = (index) => {
@@ -37,16 +63,18 @@ function AdminGrievance() {
     setShowIdentityClicked(updatedState);
   };
 
-  const handleRejectClick = (index) => {
+  const handleRejectClick = async (_id, index) => {
     if (rejectionReasons[index].trim() === "") {
       alert("Please provide a reason for rejection");
     } else {
-      setIsRejecting((prev) => {
-        const updatedRejecting = [...prev];
-        updatedRejecting[index] = false;
-        return updatedRejecting;
-      });
-      alert(`Rejected with reason: ${rejectionReasons[index]}`);
+      setIsApproved(updatedApproval);
+      const response = await axios.post("http://localhost:4000/admin/reject/"+_id,{}, {
+        headers:{
+          token
+        }
+      })
+  
+      alert(response.data.message);
     }
   };
 
@@ -59,16 +87,16 @@ function AdminGrievance() {
               <div className="brutalist-card__icon">
                 <CgProfile style={{ color: "white" }} />
               </div>
-              <div className="brutalist-card__alert">{card.username}</div>
+              <div className="brutalist-card__alert">{card.postedBy}</div>
             </div>
             <div>
-              <div className="brutalist-card__subject">{card.subject}</div>
-              <div className="brutalist-card__message">{card.message}</div>
+              <div className="brutalist-card__subject">{card.head}</div>
+              <div className="brutalist-card__message">{card.content}</div>
             </div>
             <div className="brutalist-card__actions">
               <button
                 className="brutalist-card__button brutalist-card__button--mark"
-                onClick={() => handleApproveClick(index)} // Pass the index for each card
+                onClick={() => handleApproveClick(card._id, index)} // Pass the index for each card
               >
                 {isApproved[index] ? "Approved" : "Approve"}
               </button>
