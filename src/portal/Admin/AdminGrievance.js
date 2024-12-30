@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./AdminGrievance.css";
 import { CgProfile } from "react-icons/cg";
 import axios from "axios";
+import { BASE_URL } from "../../constants";
 
 function AdminGrievance() {
   const [cards, setCards] = useState([
@@ -22,35 +23,43 @@ function AdminGrievance() {
   ]);
 
   const [isApproved, setIsApproved] = useState([false, false]);
-  const [showIdentityClicked, setShowIdentityClicked] = useState([false, false]);
+  const [showIdentityClicked, setShowIdentityClicked] = useState([
+    false,
+    false,
+  ]);
   const [rejectionReasons, setRejectionReasons] = useState(["", ""]);
   const [isRejecting, setIsRejecting] = useState([false, false]);
 
   const token = document.cookie.split("=")[1].split(";")[0];
-  
+
   useEffect(() => {
     // Fetch data from the backend
-    axios.get('http://localhost:4000/admin/all_pending', {
-      headers: {
-        token: `${token}`
-      }
-    })
-    .then(response => {
-      console.log(response.data.posts);
-      setCards(response.data.posts);
-    })
-    .catch(error => {
-      console.error(error);
-      alert(error.message);
-    });
+    axios
+      .get(BASE_URL + "/admin/all_pending", {
+        headers: {
+          token: `${token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.posts);
+        setCards(response.data.posts);
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(error.message);
+      });
   }, []);
 
   const handleApproveClick = async (_id, index) => {
-    const response = await axios.post("http://localhost:4000/admin/approve/"+_id,{}, {
-      headers:{
-        token
+    const response = await axios.post(
+      BASE_URL + "/admin/approve/" + _id,
+      {},
+      {
+        headers: {
+          token,
+        },
       }
-    })
+    );
 
     alert(response.data.message);
     // referesh the page here
@@ -66,11 +75,15 @@ function AdminGrievance() {
     if (rejectionReasons[index].trim() === "") {
       alert("Please provide a reason for rejection");
     } else {
-      const response = await axios.post("http://localhost:4000/admin/reject/"+_id,{message:rejectionReasons[index]}, {
-        headers:{
-          token
+      const response = await axios.post(
+        BASE_URL + "/admin/reject/" + _id,
+        { message: rejectionReasons[index] },
+        {
+          headers: {
+            token,
+          },
         }
-      })
+      );
       alert(response.data.message);
     }
   };
@@ -134,7 +147,7 @@ function AdminGrievance() {
                 className={`brutalist-card__button brutalist-card__button--mark ${
                   showIdentityClicked[index] ? "show-identity-clicked" : ""
                 }`}
-                onClick={() => handleShowIdentityClick(index)} 
+                onClick={() => handleShowIdentityClick(index)}
               >
                 Show Identity Of The User
               </button>

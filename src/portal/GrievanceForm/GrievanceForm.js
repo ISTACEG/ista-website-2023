@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./GrievanceForm.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../constants";
 
 function GrievanceForm() {
   const [identity, setIdentity] = useState("");
@@ -19,36 +20,46 @@ function GrievanceForm() {
       return;
     }
     console.log(subject, message, identity, token);
-    axios.post("http://localhost:4000/post/new", {
-      head: subject,
-      content: message,
-      idRevealPreferance: identity,
-    }, {
-      headers: {
-      "Content-Type": "application/json",
-      "token": `${token}`,
-      }
-    })
-    .then((response) => {
-      if (response.data.success) {
-      alert("Grievance redirected to chairperson for review, once approved it will be posted in feed");
-      window.location.href = "/portal/profile";
-      } else {
-      alert("Error posting grievance");
-      }
-    })
-    .catch((error) => {
-      console.error("There was an error posting the grievance!", error);
-      alert("Error posting grievance");
-    });
-  }
+    axios
+      .post(
+        BASE_URL + "/post/new",
+        {
+          head: subject,
+          content: message,
+          idRevealPreferance: identity,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            token: `${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        if (response.data.success) {
+          alert(
+            "Grievance redirected to chairperson for review, once approved it will be posted in feed"
+          );
+          window.location.href = "/portal/profile";
+        } else {
+          alert("Error posting grievance");
+        }
+      })
+      .catch((error) => {
+        console.error("There was an error posting the grievance!", error);
+        alert("Error posting grievance");
+      });
+  };
 
   return (
     <>
       {/* Navigation Section */}
       <div className="grievance-portal-nav">
         <div className="AllGrivance-button-container">
-          <Link to="/portal/feed" className="AllGrivance-button"> FEED </Link>
+          <Link to="/portal/feed" className="AllGrivance-button">
+            {" "}
+            FEED{" "}
+          </Link>
         </div>
       </div>
 
@@ -57,7 +68,9 @@ function GrievanceForm() {
         <div className="form-container">
           <div className="form">
             <span className="heading">Grievance Form</span>
-            <span className="c1">Please forward any query or doubt in the portal</span>
+            <span className="c1">
+              Please forward any query or doubt in the portal
+            </span>
 
             {/* Subject Input */}
             <input
@@ -118,18 +131,25 @@ function GrievanceForm() {
             {/* Alert Box for Hide Identity */}
             {identity === "hide" && (
               <div className="alert-box">
-                Your identity will be kept hidden except the chairperson, who will not reveal your identity. Collecting identity is to prevent inappropriate content.
+                Your identity will be kept hidden except the chairperson, who
+                will not reveal your identity. Collecting identity is to prevent
+                inappropriate content.
               </div>
             )}
 
             <span className="c2">
-              Share your concerns and help us improve our campus experience. Your feedback is important to us!
+              Share your concerns and help us improve our campus experience.
+              Your feedback is important to us!
             </span>
 
             {/* Buttons Section */}
             <div className="button-container">
               <div className="reset-button-container">
-                <button onClick={handlePost} className="reset-button" id="reset-btn">
+                <button
+                  onClick={handlePost}
+                  className="reset-button"
+                  id="reset-btn"
+                >
                   Publish
                 </button>
               </div>
