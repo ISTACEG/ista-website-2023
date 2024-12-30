@@ -19,32 +19,25 @@ function AllGrievance() {
   const token = document.cookie.split("=")[1].split(";")[0];
   
   
-  const handleVote = (index, type) => {
-    setVotes((prevVotes) =>
-      prevVotes.map((vote, i) => {
-        if (i === index) {
-          const updatedVote = { ...vote };
-
-          
-          if (userVotes[index] === "up") {
-            updatedVote.up -= 1;
-          } else if (userVotes[index] === "down") {
-            updatedVote.down -= 1;
-          }
-
-          
-          updatedVote[type] += 1;
-
-          return updatedVote;
-        }
-        return vote;
-      })
-    );
-
-    
-    setUserVotes((prevUserVotes) =>
-      prevUserVotes.map((vote, i) => (i === index ? type : vote))
-    );
+  const handleVote = (postId, index, type) => {
+    const url = `http://localhost:4000/post/toggle_${type}/${postId}`;
+    axios.post(url, {}, {
+      headers: {
+        token: `${token}`
+      }
+    })
+    .then(response => {
+      const newVotes = [...votes];
+      newVotes[index].upvoteCount = response.data.upvoteCount;
+      newVotes[index].downvoteCount = response.data.downvoteCount;
+      newVotes[index].upvoted = response.data.upvoted;
+      newVotes[index].downvoted = response.data.downvoted;
+      setVotes(newVotes);
+    })
+    .catch(error => {
+      console.error(error);
+      alert(error.message);
+    });
   };
 
   useEffect(() => {
@@ -68,10 +61,10 @@ function AllGrievance() {
     <div className="grievance-display-container">
         <div className="grievance-portal-nav">
             <div className="AllGrivance-button-container">
-                <Link to = "/portal/Allgrievance/Allgrievance" className="AllGrivance-button"> All Grievance </Link>
+                <Link to = "/portal/feed" className="AllGrivance-button"> All Grievance </Link>
             </div>
             <div className="GrievanceForm-button-container">
-                <Link  to = "/portal/GrievanceForm/GrievanceForm" className="GrievanceForm-button">Grievance Form</Link>
+                <Link  to = "/portal/addGrievance" className="GrievanceForm-button">Grievance Form</Link>
             </div>
         </div>
       <div className="grievance-display">
@@ -81,8 +74,8 @@ function AllGrievance() {
               <div className="brutalist-card__icon">
                 <CgProfile style={{ color: "white" }} />
               </div>
-              {isEven(index) && <div className="brutalist-card__alert">Username</div>}
-              {isOdd(index) && <div className="brutalist-card__alert">Hidden</div>}
+              {vote.postedBy ? <div className="brutalist-card__alert">{vote.postedBy}</div> 
+              : <div className="brutalist-card__alert">Anonymous</div>}
             </div>
             <div>
               <div className="brutalist-card__subject">
@@ -95,15 +88,15 @@ function AllGrievance() {
             <div className="brutalist-card__actions">
               <button
                 className="brutalist-card__button brutalist-card__button--mark"
-                onClick={() => handleVote(index, "up")}
+                onClick={() => handleVote(vote._id, index, "upvote")}
               >
-                Up Vote ({vote.up})
+                Up Vote ({vote.upvoteCount})
               </button>
               <button
                 className="brutalist-card__button brutalist-card__button--read"
-                onClick={() => handleVote(index, "down")}
+                onClick={() => handleVote(vote._id, index, "downvote")}
               >
-                Down Vote ({vote.down})
+                Down Vote ({vote.downvoteCount})
               </button>
             </div>
           </div>

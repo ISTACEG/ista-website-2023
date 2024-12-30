@@ -46,7 +46,6 @@ function AdminGrievance() {
   }, []);
 
   const handleApproveClick = async (_id, index) => {
-    setIsApproved(updatedApproval);
     const response = await axios.post("http://localhost:4000/admin/approve/"+_id,{}, {
       headers:{
         token
@@ -67,8 +66,7 @@ function AdminGrievance() {
     if (rejectionReasons[index].trim() === "") {
       alert("Please provide a reason for rejection");
     } else {
-      setIsApproved(updatedApproval);
-      const response = await axios.post("http://localhost:4000/admin/reject/"+_id,{}, {
+      const response = await axios.post("http://localhost:4000/admin/reject/"+_id,{message:rejectionReasons[index]}, {
         headers:{
           token
         }
@@ -125,7 +123,7 @@ function AdminGrievance() {
                   />
                   <button
                     className="brutalist-card__button brutalist-card__button--reject"
-                    onClick={() => handleRejectClick(index)}
+                    onClick={() => handleRejectClick(card._id, index)}
                     disabled={rejectionReasons[index].trim() === ""}
                   >
                     Confirm Reject

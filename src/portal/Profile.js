@@ -11,9 +11,8 @@ export default function Profile() {
     const [grievances, setGrievances] = useState([]);
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
-    const token = document.cookie.split("=")[1];
+    const token = document.cookie.split("=")[1].split(";")[0];
     useEffect(() => {
-        const token = document.cookie.split("=")[1];
         fetch("http://localhost:4000/profile", {
             headers: {
                 token
@@ -21,13 +20,10 @@ export default function Profile() {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.expired) {
-                    alert(data.message);
-                    window.location.href = "/portal";
-                }
                 if (data.success) {
                     setUser(data.user);
-                    setGrievances(data.user.grievances);
+                    setGrievances(data.grievances);
+                    console.log(data.grievances);
                     setLoading(false);
                 }
             });
@@ -61,22 +57,12 @@ export default function Profile() {
                 <div className="grievances-section">
                     <h3 className="grievances-title">Your Grievances</h3>
                     <ul className="grievances-list">
-                        <li className="grievance-item">
-                            <div className="grievance-head">Grievance Head 1</div>
-                            <div className="grievance-content">Content of grievance head 1</div>
-                            <div className="grievance-status pending">Pending</div>
-                        </li>
-                        <li className="grievance-item">
-                            <div className="grievance-head">Grievance Head 1</div>
-                            <div className="grievance-content">Content of grievance head 1</div>
-                            <div className="grievance-status approved">Approved</div>
-                        </li>
-                        <li className="grievance-item">
-                            <div className="grievance-head">Grievance Head 1</div>
-                            <div className="grievance-content">Content of grievance head 1</div>
-                            <div className="grievance-status rejected">Rejected</div>
-                            <div className="rejected-reason">Not related to departmental activity</div>
-                        </li>
+                    {grievances.map(e => <li className="grievance-item">
+                            <div className="grievance-head">{e.head}</div>
+                            <div className="grievance-content">{e.content}</div>
+                            <div className="grievance-status pending">{e.status}</div>
+                            {e.status == "rejected" && <div className="rejected-reason">{e.rejectionMessage}</div>}
+                        </li>)}
                     </ul>
                 </div>
             </div>
