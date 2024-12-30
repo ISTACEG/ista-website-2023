@@ -52,7 +52,6 @@ export default function Profile() {
                     </div>
 
                 </div>
-                {/* Grievances section */}
                 {user.isAdmin && <button className="change-password-button" onClick={() => window.location.href = '/portal/Allgrievance'}>
                     View New Grievances
                 </button>}
@@ -74,6 +73,12 @@ export default function Profile() {
                         </li>)}
                     </ul>
                 </div>
+
+                <div className="feedback-container">
+      <a href="https://forms.gle/6jpdgAErigrwuuDm8" target="_blank" className="feedback-button">
+        Report a Bug or Share Feedback
+      </a>
+    </div>
             </div>
         </div>
     );

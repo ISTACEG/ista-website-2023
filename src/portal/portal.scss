@@ -394,3 +394,52 @@
   background-color: #2563eb;
   transform: scale(1.05);
 }
+
+/* FeedbackLink.css */
+
+/* Button Style */
+.feedback-button {
+  background-color: #007BFF;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.feedback-button:hover {
+  background-color: #0056B3;
+}
+
+/* Banner Style (Alternative) */
+.feedback-container {
+  color: #333333;
+  padding: 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.feedback-container a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Floating Button Style */
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.floating-button:hover {
+  background-color: #0056B3;
+}
