@@ -2,58 +2,64 @@ import React, { useEffect, useState } from "react";
 import "./AdminGrievance.css";
 import { CgProfile } from "react-icons/cg";
 import axios from "axios";
+import { BASE_URL } from "../../constants";
+import { useCookies } from "react-cookie";
+import toast from "react-hot-toast";
 
 function AdminGrievance() {
-  const [cards, setCards] = useState([
-    {
-      id: 0,
-      username: "Username1",
-      subject: "What is Handball?",
-      message:
-        "At the Handball Arena, we strive to create an exceptional experience for all users. Whether you're a player, coach, or fan, we are dedicated to providing a platform where you can stay updated with all the latest match information, results, and live streams.",
-    },
-    {
-      id: 1,
-      username: "Username2",
-      subject: "What is Handball?",
-      message:
-        "At the Handball Arena, we strive to create an exceptional experience for all users. Whether you're a player, coach, or fan, we are dedicated to providing a platform where you can stay updated with all the latest match information, results, and live streams.",
-    },
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+  const [cards, setCards] = useState([]);
+  const [isApproved, setIsApproved] = useState([]);
+  const [showIdentityClicked, setShowIdentityClicked] = useState([]);
+  const [rejectionReasons, setRejectionReasons] = useState([]);
+  const [isRejecting, setIsRejecting] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
+  const [noData, setNoData] = useState(false); // To handle empty fetch cases
 
-  const [isApproved, setIsApproved] = useState([false, false]);
-  const [showIdentityClicked, setShowIdentityClicked] = useState([false, false]);
-  const [rejectionReasons, setRejectionReasons] = useState(["", ""]);
-  const [isRejecting, setIsRejecting] = useState([false, false]);
+  const token = cookies.token;
 
-  const token = document.cookie.split("=")[1].split(";")[0];
-  
   useEffect(() => {
     // Fetch data from the backend
-    axios.get('http://localhost:4000/admin/all_pending', {
-      headers: {
-        token: `${token}`
-      }
-    })
-    .then(response => {
-      console.log(response.data.posts);
-      setCards(response.data.posts);
-    })
-    .catch(error => {
-      console.error(error);
-      alert(error.message);
-    });
-  }, []);
+    axios
+      .get(BASE_URL + "/admin/all_pending", {
+        headers: {
+          token: `${token}`,
+        },
+      })
+      .then((response) => {
+        if (response.data.posts.length === 0) {
+          setNoData(true); // No grievances
+        } else {
+          setCards(response.data.posts);
+          setIsApproved(new Array(response.data.posts.length).fill(false)); // Initialize approval state
+          setShowIdentityClicked(
+            new Array(response.data.posts.length).fill(false)
+          ); // Initialize show identity state
+          setRejectionReasons(new Array(response.data.posts.length).fill("")); // Initialize rejection reasons state
+          setIsRejecting(new Array(response.data.posts.length).fill(false)); // Initialize rejecting state
+        }
+        setLoading(false); // Data fetching is complete
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error(error.message);
+        setLoading(false); // Data fetching failed, stop loading
+      });
+  }, [token]);
 
   const handleApproveClick = async (_id, index) => {
-    const response = await axios.post("http://localhost:4000/admin/approve/"+_id,{}, {
-      headers:{
-        token
+    const response = await axios.post(
+      BASE_URL + "/admin/approve/" + _id,
+      {},
+      {
+        headers: {
+          token,
+        },
       }
-    })
+    );
 
-    alert(response.data.message);
-    // referesh the page here
+    toast.success(response.data.message);
+    location.reload();
   };
 
   const handleShowIdentityClick = (index) => {
@@ -64,16 +70,39 @@ function AdminGrievance() {
 
   const handleRejectClick = async (_id, index) => {
     if (rejectionReasons[index].trim() === "") {
-      alert("Please provide a reason for rejection");
+      toast.error("Please provide a reason for rejection");
     } else {
-      const response = await axios.post("http://localhost:4000/admin/reject/"+_id,{message:rejectionReasons[index]}, {
-        headers:{
-          token
+      const response = await axios.post(
+        BASE_URL + "/admin/reject/" + _id,
+        { message: rejectionReasons[index] },
+        {
+          headers: {
+            token,
+          },
         }
-      })
-      alert(response.data.message);
+      );
+      toast(response.data.message);
+      window.location.reload();
     }
   };
+
+  // If the data is loading, show a loading spinner or message
+  if (loading) {
+    return (
+      <h2 style={{ color: "white", textAlign: "center" }}>
+        Fetching latest from server....
+      </h2>
+    );
+  }
+
+  // If no data, show a message indicating there are no grievances
+  if (noData) {
+    return (
+      <h2 style={{ color: "white", textAlign: "center" }}>
+        No grievances pending.
+      </h2>
+    );
+  }
 
   return (
     <div className="grievance-display-container">
@@ -123,21 +152,11 @@ function AdminGrievance() {
                   <button
                     className="brutalist-card__button brutalist-card__button--reject"
                     onClick={() => handleRejectClick(card._id, index)}
-                    disabled={rejectionReasons[index].trim() === ""}
                   >
                     Confirm Reject
                   </button>
                 </div>
               )}
-
-              <button
-                className={`brutalist-card__button brutalist-card__button--mark ${
-                  showIdentityClicked[index] ? "show-identity-clicked" : ""
-                }`}
-                onClick={() => handleShowIdentityClick(index)} 
-              >
-                Show Identity Of The User
-              </button>
             </div>
           </div>
         ))}

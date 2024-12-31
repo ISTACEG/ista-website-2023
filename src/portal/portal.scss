@@ -443,3 +443,19 @@
 .floating-button:hover {
   background-color: #0056B3;
 }
+
+.loading-message,
+.no-posts-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+.loading-message {
+  font-style: italic;
+}
+
+.no-posts-message {
+  font-weight: bold;
+}
