@@ -1,0 +1,294 @@
+@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Nanum+Gothic+Coding&display=swap");
+
+* {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 900;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Grievance Navigation */
+.grievance-portal-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.AllGrivance-button-container,
+.GrievanceForm-button-container {
+  margin: 5px;
+}
+
+.AllGrivance-button,
+.GrievanceForm-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.AllGrivance-button:hover,
+.GrievanceForm-button:hover {
+  background-color: #0056b3;
+}
+
+/* Form Styling */
+.form-container-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.orange {
+  color: #0056b3;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  margin: 20px;
+  background-color: #001925;
+  padding: 20px;
+  border-left: 5px solid #0056b3;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 20px),
+    calc(100% - 20px) 100%,
+    0 100%
+  );
+}
+
+.heading {
+  display: block;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.c1,
+.c2 {
+  display: block;
+  color: #007bff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.form-container .form .input,
+.form-container .form .textarea {
+  color: #87a4b6;
+  width: 100%;
+  background-color: #002733;
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  border-left: 1px solid transparent;
+}
+
+.form-container .form .input:focus,
+.form-container .form .textarea:focus {
+  border-left: 5px solid #0056b3;
+}
+
+.form-container .form .textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-container .form .button-container .send-button,
+.form-container .form .button-container .reset-button {
+  flex-basis: 100%;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-container .form .button-container .send-button {
+  background: #0056b3;
+  color: #001925;
+}
+
+.form-container .form .button-container .send-button:hover {
+  background: transparent;
+  border: 1px solid #0056b3;
+  color: #0056b3;
+}
+
+.reset-button {
+  background: #06415c !important;
+  color: #ffffff !important;
+}
+
+.form-container .form .button-container .reset-button {
+  background: #001925;
+  color: #007bff;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    0 100%
+  );
+}
+
+.form-container .form .button-container .reset-button:hover {
+  background: #002e5f;
+  color: white;
+}
+
+/* Anonymous Option Styling */
+.Anonymous-option-container {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.Anonymous-heading {
+  margin-bottom: 10px;
+}
+
+.A-option-container {
+  display: flex;
+  gap: 10px;
+  margin-left: 0;
+  flex-wrap: wrap;
+}
+
+.radio-button-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.radio-button__label {
+  font-size: 14px;
+}
+
+/* Alert Box Styling */
+.alert-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 650px;
+  text-align: center;
+  color: white;
+  margin-bottom: 15px;
+  background-color: #007bff;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .grievance-portal-nav {
+    gap: 10px;
+  }
+
+  .AllGrivance-button,
+  .GrievanceForm-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .form-container {
+    padding: 15px;
+  }
+
+  .heading {
+    font-size: 1.1rem;
+  }
+
+  .c1,
+  .c2 {
+    font-size: 0.8rem;
+  }
+
+  .form-container .form .textarea {
+    height: 120px;
+  }
+
+  .button-container {
+    gap: 5px;
+  }
+
+  .form-container .form .button-container .send-button,
+  .form-container .form .button-container .reset-button {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .radio-button__label {
+    font-size: 12px;
+  }
+
+  .alert-box {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grievance-portal-nav {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .form-container {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .heading {
+    font-size: 1rem;
+  }
+
+  .c1,
+  .c2 {
+    font-size: 0.75rem;
+  }
+
+  .form-container .form .textarea {
+    height: 100px;
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  .radio-button-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .alert-box {
+    font-size: 12px;
+  }
+}
