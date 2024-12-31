@@ -10,7 +10,6 @@ export default function Signin() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
 
   const handleLogin = () => {
-    // validate fields and send roll and password to POST http://localhost:4000/auth/login/userLogin using await and async axios
     const roll = document.querySelector('input[type="text"]').value;
     const password = document.querySelector('input[type="password"]').value;
 

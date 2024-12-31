@@ -1,9 +1,10 @@
-import React from 'react'
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './portal.scss'
-import axios from 'axios';
-import toast from 'react-hot-toast';
+import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./portal.scss";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { BASE_URL } from "../constants";
 
 export default function Register() {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -11,24 +12,24 @@ export default function Register() {
   const [roll, setRoll] = useState("");
 
   const handleClick = () => {
-
     toast.loading("sending OTP to your mail...");
-    axios.post('http://localhost:4000/auth/register/generateOtp', { roll })
-      .then(response => {
-        toast.dismiss()
+    axios
+      .post(BASE_URL + "/auth/register/generateOtp", { roll })
+      .then((response) => {
+        toast.dismiss();
         toast.success(response.data.message);
         if (response.data.verified) {
           // he is already verified guy
           toast("you are already verified. Please login");
-          window.location.href = '/portal';
+          window.location.href = "/portal";
         } else {
           setIsDisabled(false);
           setTimer(60);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         toast.dismiss();
-        toast.error(error.message)
+        toast.error(error.message);
         setIsDisabled(false);
         setTimer(60);
       });
@@ -48,36 +49,38 @@ export default function Register() {
   };
 
   const handleVerify = () => {
-    const otp = document.getElementById('otp').value;
+    const otp = document.getElementById("otp").value;
     toast.loading("Verifying OTP...");
-    axios.post('http://localhost:4000/auth/register/verifyOtp', { roll, otp })
-      .then(response => {
+    axios
+      .post(BASE_URL + "/auth/register/verifyOtp", { roll, otp })
+      .then((response) => {
         toast.dismiss();
         toast.success(response.data.message);
       })
-      .catch(error => {
+      .catch((error) => {
         toast.dismiss();
-        toast.error('An error occurred. Please try again.');
-      })
-  }
+        toast.error("An error occurred. Please try again.");
+      });
+  };
 
-  const handleRegister = () => { 
-    const password = document.getElementById('password').value;
+  const handleRegister = () => {
+    const password = document.getElementById("password").value;
     toast.loading("trying to register...");
-    axios.post('http://localhost:4000/auth/register/addDetails', { roll, password })
-      .then(response => {
-        toast.dismiss()
+    axios
+      .post(BASE_URL + "/auth/register/addDetails", { roll, password })
+      .then((response) => {
+        toast.dismiss();
         toast.success(response.data.message);
         if (response.data.success) {
-          window.location.href = '/portal';
+          window.location.href = "/portal";
         }
       })
-      .catch(error => {
-        toast.dismiss()
-        console.error('Error:', error);
-        toast.error('An error occurred. Please try again.');
-      })
-  }
+      .catch((error) => {
+        toast.dismiss();
+        console.error("Error:", error);
+        toast.error("An error occurred. Please try again.");
+      });
+  };
 
   return (
     <>
@@ -85,35 +88,53 @@ export default function Register() {
         <h2>Create a ISTA Account</h2>
 
         <div class="user-box">
-          <input type="text" name="" required value={roll} onChange={(e) => setRoll(e.target.value)} autoComplete='chrome-off' />
+          <input
+            type="text"
+            name=""
+            required
+            value={roll}
+            onChange={(e) => setRoll(e.target.value)}
+            autoComplete="chrome-off"
+          />
           <label>Roll No</label>
         </div>
         <div class="user-box">
-          <input type="text" name="" required value={roll + "@student.annauniv.edu"} />
+          <input
+            type="text"
+            name=""
+            required
+            value={roll + "@student.annauniv.edu"}
+          />
           <label>Mail</label>
         </div>
 
-        <Link className={`login-button-inbtw ${isDisabled ? 'disabled' : ''}`}
+        <Link
+          className={`login-button-inbtw ${isDisabled ? "disabled" : ""}`}
           onClick={!isDisabled ? handleClick : null}
           style={{
-            pointerEvents: isDisabled ? 'none' : 'auto',
+            pointerEvents: isDisabled ? "none" : "auto",
             opacity: isDisabled ? 0.5 : 1,
           }}
         >
-          {isDisabled ? `Wait ${timer}s` : 'GET OTP'}
+          {isDisabled ? `Wait ${timer}s` : "GET OTP"}
         </Link>
         <div class="user-box">
-          <input type="password" name="" id='otp' required="" autoComplete='new-password' />
+          <input
+            type="password"
+            name=""
+            id="otp"
+            required=""
+            autoComplete="new-password"
+          />
           <label>Enter OTP</label>
         </div>
         <Link className="login-button-inbtw" onClick={handleVerify}>
           VERIFY OTP
         </Link>
         <div class="user-box">
-          <input type="password" id="password" name="" required/>
+          <input type="password" id="password" name="" required />
           <label>Password</label>
         </div>
-
 
         <Link onClick={handleRegister} className="login-button">
           REGISTER
@@ -126,5 +147,5 @@ export default function Register() {
         </div>
       </div>
     </>
-  )
+  );
 }
