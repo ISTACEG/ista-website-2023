@@ -10,9 +10,41 @@ import { BiUpvote } from "react-icons/bi";
 import { BiDownvote } from "react-icons/bi";
 import { BiSolidUpvote } from "react-icons/bi";
 import { BiSolidDownvote } from "react-icons/bi";
+import { FaAlignJustify } from "react-icons/fa";
 
 const isEven = (number) => number % 2 === 0;
 const isOdd = (number) => number % 2 === 1;
+
+const TruncateText = ({ text, wordLimit }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const words = text.split(" ");
+  const isLongText = words.length > wordLimit;
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+  };
+  return (
+    <div>
+      {isExpanded || !isLongText
+        ? text
+        : words.slice(0, wordLimit).join(" ") + "..."}
+      {isLongText && (
+        <button
+          className="read-more-button"
+          onClick={handleToggle}
+          style={{
+            marginLeft: "8px",
+            cursor: "pointer",
+            background: "none",
+            border: "none",
+            color: "#007bff",
+          }}
+        >
+          {isExpanded ? "Read Less" : "Read More"}
+        </button>
+      )}
+    </div>
+  );
+};
 
 function AllGrievance() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
@@ -44,7 +76,8 @@ function AllGrievance() {
       })
       .catch((error) => {
         console.error(error);
-        toast.error(error.message);
+        console.log(error);
+        toast.error(error.response.data.message);
       });
   };
 
@@ -135,7 +168,9 @@ function AllGrievance() {
               <div className="brutalist-card__subject">
                 Subject : {vote.head}
               </div>
-              <div className="brutalist-card__message">{vote.content}</div>
+              <div className="brutalist-card__message">
+                <TruncateText text={vote.content} wordLimit={46} />
+              </div>
             </div>
             <div className="brutalist-card__actions">
               <button

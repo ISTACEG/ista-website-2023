@@ -5,6 +5,7 @@ import axios from "axios";
 import { BASE_URL } from "../../constants";
 import { useCookies } from "react-cookie";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 function AdminGrievance() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
@@ -95,17 +96,26 @@ function AdminGrievance() {
     );
   }
 
-  // If no data, show a message indicating there are no grievances
-  if (noData) {
-    return (
-      <h2 style={{ color: "white", textAlign: "center" }}>
-        No grievances pending.
-      </h2>
-    );
-  }
-
   return (
     <div className="grievance-display-container">
+      <div className="grievance-portal-nav">
+        <div className="AllGrivance-button-container">
+          <Link to="/portal/feed" className="AllGrivance-button">
+            {" "}
+            GO TO FEED{" "}
+          </Link>
+        </div>
+        <div className="GrievanceForm-button-container">
+          <Link to="/portal/profile" className="GrievanceForm-button">
+            PROFILE
+          </Link>
+        </div>
+      </div>
+      {noData && (
+        <h2 style={{ color: "white", textAlign: "center" }}>
+          No grievances pending.
+        </h2>
+      )}
       <div className="grievance-display">
         {cards.map((card, index) => (
           <div className="brutalist-card" key={card.id}>

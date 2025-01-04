@@ -459,3 +459,51 @@
 .no-posts-message {
   font-weight: bold;
 }
+
+/* Style for the dropdown container */
+.dropdown-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Style for the dropdown input field */
+.dropdown-container input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 0;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+  cursor: not-allowed;
+}
+
+/* Style for the actual dropdown select element */
+.dropdown-container select {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-top: 5px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Style for the dropdown options */
+.dropdown-container select option {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Hover effect for the select options */
+.dropdown-container select option:hover {
+  background-color: #029db0;
+}

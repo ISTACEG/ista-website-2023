@@ -39,7 +39,7 @@ export default function Signin() {
       .catch((error) => {
         toast.dismiss();
         console.error(error);
-        toast.error(error.message);
+        toast.error(error.response.data.message);
       });
   };
   return (

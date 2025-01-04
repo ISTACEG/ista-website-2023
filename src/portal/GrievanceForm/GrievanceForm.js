@@ -54,7 +54,7 @@ function GrievanceForm() {
       .catch((error) => {
         toast.dismiss(toastId);
         console.error("There was an error posting the grievance!", error);
-        toast.error("Error posting grievance");
+        toast.error(error.response.data.message);
       });
   };
 

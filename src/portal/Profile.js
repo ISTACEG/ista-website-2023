@@ -6,6 +6,7 @@ import "./portal.scss";
 import QRCode from "react-qr-code";
 import { useCookies } from "react-cookie";
 import { BASE_URL } from "../constants";
+import toast from "react-hot-toast";
 
 export default function Profile() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
@@ -30,6 +31,7 @@ export default function Profile() {
       })
       .catch((error) => {
         console.error("Error fetching profile data:", error);
+        toast.error(error.response.data.message);
         setLoading(false); // Set loading to false in case of error
       });
   }, [token]);
@@ -65,9 +67,10 @@ export default function Profile() {
           <div className="profile-details">
             <h1 className="profile-welcome"></h1>
             <p className="profile-info">
-              {user.roll} | {user.year}-th batch
+              {user.roll} |{" "}
+              {user.year != -1 ? user.year + "-th batch" : "faculty Account"}
             </p>
-            <p className="profile-email">{user.roll}@student.annauniv.edu</p>
+            <p className="profile-email">{user.student_mail}</p>
           </div>
         </div>
         {user.isAdmin && (
