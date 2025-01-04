@@ -10,13 +10,29 @@ export default function Register() {
   const [isDisabled, setIsDisabled] = useState(false);
   const [timer, setTimer] = useState(60);
   const [roll, setRoll] = useState("");
+
   const [domain, setDomain] = useState("");
+
+  const validateRollNumber = (roll) => {
+    const regex = /^[2][0-2][0-9]{2}115[0-9]{3}$/; // Roll number format: 2021 or 2022 or 2023, followed by 115, and then 3 digits
+    return regex.test(roll);
+  };
+
   const handleClick = () => {
     if (!domain) {
       toast.error("Please select an email domain.");
       return;
     }
 
+    // Check if the roll number contains digits only (if it doesn't, assume it's a name)
+    if (roll && /^\d+$/.test(roll)) {
+      // Only validate if roll contains numbers
+      if (!validateRollNumber(roll)) {
+        toast.error("Please enter a valid roll number.");
+        return;
+      }
+    }
+    // Skip validation if it's a name or invalid roll number format
     toast.loading("sending OTP to your mail...");
     axios
       .post(BASE_URL + "/auth/register/generateOtp", {
