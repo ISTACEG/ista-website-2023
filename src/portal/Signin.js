@@ -35,10 +35,38 @@ export default function Signin() {
   return (
     <div class="parent-box">
       <div class="login-box">
+<<<<<<< Updated upstream
         <h2>Login to your ISTA Account</h2>
         <div class="user-box">
           <input type="text" name="" required="" autoComplete='chrome-off' />
           <label>Roll No</label>
+=======
+        <h2>Login</h2>
+        <form>
+            <div class="user-box">
+            <input type="text" name="" required="" />
+            <label>Roll No</label>
+            </div>
+            <div class="user-box">
+            <input type="password" name="" required="" />
+            <label>Password</label>
+            </div>
+            
+        </form>
+        <div className="below-login">
+                <Link to="/portal/forgot-password" className="below-login-link">
+                Forgot password?
+                </Link>
+                <Link to="/portal/register" className="below-login-link">
+                Register if first time ?
+                </Link>
+            </div>
+        <Link to="/portal/Allgrievance/Allgrievance" className="login-button">
+                LOGIN
+            </Link>
+            
+        
+>>>>>>> Stashed changes
         </div>
         <div class="user-box">
           <input type="password" name="" required="" autoComplete='new-password' />

@@ -104,12 +104,30 @@ function AdminGrievance() {
               <div className="brutalist-card__message">{card.content}</div>
             </div>
             <div className="brutalist-card__actions">
+<<<<<<< Updated upstream
               <button
                 className="brutalist-card__button brutalist-card__button--mark"
                 onClick={() => handleApproveClick(card._id, index)} // Pass the index for each card
               >
                 {isApproved[index] ? "Approved" : "Approve"}
               </button>
+=======
+              {!isApproved[index] ? (
+                <button
+                  className="brutalist-card__button brutalist-card__button--mark"
+                  onClick={() => handleApproveClick(index)}
+                >
+                  Approve
+                </button>
+              ) : (
+                <a
+                  href="/portal/Allgrievance/Allgrievance"
+                  className="brutalist-card__button brutalist-card__button--feeds"
+                >
+                  Go to Feeds
+                </a>
+              )}
+>>>>>>> Stashed changes
               <button
                 className="brutalist-card__button brutalist-card__button--read"
                 onClick={() => {

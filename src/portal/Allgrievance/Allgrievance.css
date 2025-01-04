@@ -177,6 +177,11 @@
     color: #fff;
     box-shadow: 7px 7px 0 #004280;
   }
+
+  .VoteIcon{
+    display : flex;
+    justify-content: center;
+  }
   
   .brutalist-card__button--read:hover {
     background-color: #ff0000;

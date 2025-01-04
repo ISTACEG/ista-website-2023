@@ -9,6 +9,7 @@ export default function Register() {
   const [timer, setTimer] = useState(60);
   const [roll, setRoll] = useState("");
 
+<<<<<<< Updated upstream
   const handleClick = () => {
     axios.post('http://localhost:4000/auth/register/generateOtp', { roll })
       .then(response => {
@@ -29,6 +30,12 @@ export default function Register() {
       });
     setIsDisabled(true);
     let countdown = 60;
+=======
+    const handleClick = () => {
+        alert('OTP is being sent to the student email.Student please check you email spam if you have received any email');
+        setIsDisabled(true); 
+        let countdown = 60;
+>>>>>>> Stashed changes
 
     const interval = setInterval(() => {
       countdown -= 1;
