@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./portal.scss";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../constants";
 
 export default function Register() {
   const [isDisabled, setIsDisabled] = useState(false);
