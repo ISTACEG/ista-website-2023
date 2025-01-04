@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Allgrievance.css";
 import { CgProfile } from "react-icons/cg";
+import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
@@ -97,13 +98,26 @@ function AllGrievance() {
                 className="brutalist-card__button brutalist-card__button--mark"
                 onClick={() => handleVote(vote._id, index, "upvote")}
               >
-                Up Vote ({vote.upvoteCount})
+                <div className="VoteIcon">
+                  <div><AiOutlineLike style={{ marginRight: "5px" }} /></div>
+                  <div>Up Vote ({vote.upvoteCount})</div>
+                </div>
               </button>
               <button
                 className="brutalist-card__button brutalist-card__button--read"
                 onClick={() => handleVote(vote._id, index, "downvote")}
               >
-                Down Vote ({vote.downvoteCount})
+                <div className="VoteIcon">
+                  <div><AiOutlineDislike style={{ marginRight: "5px" }} /></div>
+                  <div>Down Vote ({vote.downvoteCount})</div>
+                </div>
+
+              </button>
+              <button
+                className="brutalist-card__button brutalist-card__button--read"
+                onClick={() => handleVote(vote._id, index, "downvote")}
+              >
+                Delete
               </button>
             </div>
           </div>

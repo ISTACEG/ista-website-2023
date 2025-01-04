@@ -17,7 +17,7 @@ const Navbar = () => {
           <div className={isOpen ? "bar open" : "bar"}></div>
         </div>
         <ul className={isOpen ? "navbar-links open" : "navbar-links close-test"}>
-          <li><a href="/" aria-label="Home" aria-current="page">Home</a></li>
+          {/* <li><a href="/" aria-label="Home" aria-current="page">Home</a></li> */}
           <li><a href="/experiences" aria-label="Placement Experiences">Placement Experiences</a></li>
           <li><a href="https://publications.istaceg.in/?tab=publications" target="_blank" aria-label="Tech Trek">Publications</a></li>
           <li><a href="/history" aria-label="Placement Experiences">Timeline</a></li>
