@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Nanum+Gothic+Coding&display=swap");
+
+* {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Grievance Navigation */
+.grievance-portal-nav {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.AllGrivance-button-container,
+.GrievanceForm-button-container {
+  margin: 0 10px;
+}
+
+.AllGrivance-button,
+.GrievanceForm-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.AllGrivance-button:hover,
+.GrievanceForm-button:hover {
+  background-color: #0056b3;
+}
+
+/* Grievance Display */
+.grievance-display-container {
+  margin-left: 50px;
+}
+
+.grievance-display {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Card Styling */
+.brutalist-card {
+  min-width: 40%;
+  max-width: 82%;
+  border: 4px solid #000;
+  background-color: #fff;
+  padding: 1%rem;
+  box-shadow: 10px 10px 0 #000;
+  font-family: "Arial", sans-serif;
+  align-self: self-start;
+  margin-bottom: 20px; /* Add some space between cards */
+}
+
+.brutalist-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #000;
+  padding-bottom: 1rem;
+}
+
+.brutalist-card__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  padding: 0.5rem;
+}
+
+.brutalist-card__icon svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: #fff;
+}
+
+.brutalist-card__subject {
+  font-weight: 900;
+  color: #000;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.brutalist-card__alert {
+  font-weight: 900;
+  color: #000;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.brutalist-card__message {
+  margin-top: 1rem;
+  color: #000;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  border-bottom: 2px solid #000;
+  padding-bottom: 1rem;
+  font-weight: 600;
+}
+
+.brutalist-card__actions {
+  margin-top: 1rem;
+}
+
+.brutalist-card__button {
+  display: flex; /* Use Flexbox */
+  align-items: center; /* Vertically center the items */
+  justify-content: center; /* Horizontally center the items */
+  width: 100%;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 3px solid #000;
+  background-color: #fff;
+  color: #000;
+  position: relative;
+  transition: all 0.2s ease;
+  box-shadow: 5px 5px 0 #000;
+  overflow: hidden;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.brutalist-card__button--read {
+  background-color: #000;
+  color: #fff;
+}
+
+.brutalist-card__button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: all 0.6s;
+}
+
+.brutalist-card__button:hover::before {
+  left: 100%;
+}
+
+.brutalist-card__button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 #000;
+}
+
+.brutalist-card__button--mark:hover {
+  background-color: #296fbb;
+  border-color: #296fbb;
+  color: #fff;
+  box-shadow: 7px 7px 0 #004280;
+}
+
+.brutalist-card__button--read:hover {
+  background-color: #ff0000;
+  border-color: #ff0000;
+  color: #fff;
+  box-shadow: 7px 7px 0 #800000;
+}
+
+.brutalist-card__button:active {
+  transform: translate(5px, 5px);
+  box-shadow: none;
+}
+
+.upvote-true,
+.downvote-true {
+  background-color: #4f2067 !important;
+  border-color: #1e0d20 !important;
+  color: #fff !important;
+  box-shadow: 7px 7px 0 #004280 !important;
+}
+
+@media (max-width: 1024px) {
+  .grievance-portal-nav {
+    display: flex;
+    flex-direction: column;
+  }
+}
