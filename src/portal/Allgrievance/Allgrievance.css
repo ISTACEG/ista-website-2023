@@ -166,7 +166,7 @@
 
 @media (max-width: 768px) {
   .brutalist-card__button {
-    font-size: 1.5rem; /* Increase icon size on mobile */
+    font-size: 1.1rem; /* Increase icon size on mobile */
   }
 
   /* Hide text on small screens and show only the icon */
@@ -175,7 +175,7 @@
   }
 
   .brutalist-card__button svg {
-    font-size: 1.5rem; /* Adjust icon size */
+    font-size: 1.1rem; /* Adjust icon size */
   }
 }
 
