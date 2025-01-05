@@ -215,9 +215,7 @@ function AllGrievance() {
               )}
             </div>
             <div>
-              <div className="brutalist-card__subject">
-                Subject: {vote.head}
-              </div>
+              <div className="brutalist-card__subject">{vote.head}</div>
               <div className="brutalist-card__message">
                 <TruncateText text={vote.content} wordLimit={46} />
               </div>
