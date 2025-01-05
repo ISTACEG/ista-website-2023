@@ -8,8 +8,6 @@ import { useCookies } from "react-cookie";
 import toast from "react-hot-toast";
 import { BiUpvote } from "react-icons/bi";
 import { BiDownvote } from "react-icons/bi";
-import { BiSolidUpvote } from "react-icons/bi";
-import { BiSolidDownvote } from "react-icons/bi";
 import { FaAlignJustify } from "react-icons/fa";
 
 const isEven = (number) => number % 2 === 0;
@@ -50,8 +48,9 @@ function AllGrievance() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [votes, setVotes] = useState([{ up: 0, down: 0 }]);
   const [userVotes, setUserVotes] = useState([null, null]);
-  const [loading, setLoading] = useState(true); // For loading state
-  const [error, setError] = useState(null); // For error handling
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [role, setRole] = useState("user");
   const token = cookies.token;
 
   const handleVote = (postId, index, type) => {
@@ -76,15 +75,55 @@ function AllGrievance() {
       })
       .catch((error) => {
         console.error(error);
-        console.log(error);
         toast.error(error.response.data.message);
       });
   };
 
+  const handleMarkAsResolved = (postId) => {
+    const url = `${BASE_URL}/post/mark_as_resolved/${postId}`;
+    axios
+      .post(
+        url,
+        {},
+        {
+          headers: {
+            token: `${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        toast.success("Post marked as resolved!");
+      })
+      .catch((error) => {
+        toast.error("Error marking post as resolved.");
+      });
+  };
+
+  const handleRemoveFromFeed = (postId) => {
+    const url = `${BASE_URL}/post/remove_from_feed/${postId}`;
+    axios
+      .post(
+        url,
+        {},
+        {
+          headers: {
+            token: `${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        const updatedVotes = votes.filter((vote) => vote._id !== postId);
+        setVotes(updatedVotes);
+        toast.success("Post removed from feed!");
+      })
+      .catch((error) => {
+        toast.error("Error removing post from feed.");
+      });
+  };
+
   useEffect(() => {
-    // Fetch data from the backend
-    setLoading(true); // Set loading to true at the start
-    setError(null); // Reset any previous errors
+    setLoading(true);
+    setError(null);
     axios
       .get(BASE_URL + "/post/all_approved", {
         headers: {
@@ -94,14 +133,15 @@ function AllGrievance() {
       .then((response) => {
         if (response.data.posts && response.data.posts.length > 0) {
           setVotes(response.data.posts);
+          setRole(response.data.role);
         } else {
-          setVotes([]); // Set empty array if no posts are found
+          setVotes([]);
         }
-        setLoading(false); // Set loading to false after the request is complete
+        setLoading(false);
       })
       .catch((error) => {
-        setLoading(false); // Set loading to false in case of error
-        setError(error.message); // Store the error message
+        setLoading(false);
+        setError(error.message);
         toast.error(error.message);
       });
   }, [token]);
@@ -125,8 +165,7 @@ function AllGrievance() {
   if (votes.length === 0) {
     return (
       <div className="empty-data-container">
-        <p>No grievances found.</p>{" "}
-        {/* Display message when no data is available */}
+        <p>No grievances found.</p>
       </div>
     );
   }
@@ -136,8 +175,7 @@ function AllGrievance() {
       <div className="grievance-portal-nav">
         <div className="AllGrivance-button-container">
           <Link to="/portal/feed" className="AllGrivance-button">
-            {" "}
-            FEED{" "}
+            FEED
           </Link>
         </div>
         <div className="GrievanceForm-button-container">
@@ -166,7 +204,7 @@ function AllGrievance() {
             </div>
             <div>
               <div className="brutalist-card__subject">
-                Subject : {vote.head}
+                Subject: {vote.head}
               </div>
               <div className="brutalist-card__message">
                 <TruncateText text={vote.content} wordLimit={46} />
@@ -177,15 +215,11 @@ function AllGrievance() {
                 className={`upvote-${vote.upvoted} brutalist-card__button brutalist-card__button--mark`}
                 onClick={() => handleVote(vote._id, index, "upvote")}
                 style={{
-                  display: "inline-flex", // Align items inline (horizontally)
-                  alignItems: "center", // Vertically center the items
+                  display: "inline-flex",
+                  alignItems: "center",
                 }}
               >
-                <BiUpvote
-                  style={{
-                    margin: "5px", // Space between icon and text
-                  }}
-                />
+                <BiUpvote style={{ margin: "5px" }} />
                 {vote.upvoteCount} Up Votes
               </button>
 
@@ -193,17 +227,42 @@ function AllGrievance() {
                 className={`downvote-${vote.downvoted} brutalist-card__button brutalist-card__button--read`}
                 onClick={() => handleVote(vote._id, index, "downvote")}
                 style={{
-                  display: "inline-flex", // Align items inline (horizontally)
-                  alignItems: "center", // Vertically center the items
+                  display: "inline-flex",
+                  alignItems: "center",
                 }}
               >
-                <BiDownvote
-                  style={{
-                    margin: "5px", // Space between icon and text
-                  }}
-                />
+                <BiDownvote style={{ margin: "5px" }} />
                 {vote.downvoteCount} Down Votes
               </button>
+
+              {/* Add these buttons if the user is admin */}
+              {role != "admin" && (
+                <>
+                  <button
+                    className="brutalist-card__button brutalist-card__button--resolved"
+                    onClick={() => handleMarkAsResolved(vote._id, index)}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <FaAlignJustify style={{ margin: "5px" }} />
+                    Mark as Resolved
+                  </button>
+
+                  <button
+                    className="brutalist-card__button brutalist-card__button--remove"
+                    onClick={() => handleRemoveFromFeed(vote._id, index)}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <FaAlignJustify style={{ margin: "5px" }} />
+                    Remove from Feed
+                  </button>
+                </>
+              )}
             </div>
           </div>
         ))}
