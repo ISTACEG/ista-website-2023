@@ -1,9 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Nanum+Gothic+Coding&display=swap");
-
 * {
-  font-family: "Nanum Gothic Coding", monospace;
-  font-weight: 900;
   font-style: normal;
   margin: 0;
   padding: 0;
@@ -11,7 +6,6 @@
 }
 
 .grievance-display-container {
-  margin-left: 20px;
   padding: 10px;
 }
 
@@ -29,48 +23,9 @@
   background-color: #fff;
   padding: 1rem;
   box-shadow: 10px 10px 0 #000;
-  font-family: "Arial", sans-serif;
   width: 100%;
   max-width: 400px;
   margin-bottom: 20px;
-}
-
-.brutalist-card__header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #000;
-  padding-bottom: 1rem;
-}
-
-.brutalist-card__icon {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #000;
-  padding: 0.5rem;
-}
-
-.brutalist-card__icon svg {
-  height: 1.5rem;
-  width: 1.5rem;
-  fill: #fff;
-}
-
-.brutalist-card__subject {
-  font-weight: 900;
-  color: #000;
-  font-size: 1rem;
-  text-transform: uppercase;
-}
-
-.brutalist-card__alert {
-  font-weight: 900;
-  color: #000;
-  font-size: 1.3rem;
-  text-transform: uppercase;
 }
 
 .brutalist-card__message {
@@ -90,17 +45,11 @@
 .brutalist-card__button {
   display: block;
   width: 100%;
-  padding: 0.75rem;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
   border: 3px solid #000;
   background-color: #fff;
   color: #000;
   position: relative;
   transition: all 0.2s ease;
-  box-shadow: 5px 5px 0 #000;
   overflow: hidden;
   text-decoration: none;
   margin-bottom: 1rem;
@@ -133,21 +82,21 @@
 
 .brutalist-card__button:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0 #000;
+  box-shadow: 5px 5px 0 #000;
 }
 
 .brutalist-card__button--mark:hover {
   background-color: #296fbb;
   border-color: #296fbb;
   color: #fff;
-  box-shadow: 7px 7px 0 #004280;
+  box-shadow: 5px 5px 0 #004280;
 }
 
 .brutalist-card__button--read:hover {
   background-color: #ff0000;
   border-color: #ff0000;
   color: #fff;
-  box-shadow: 7px 7px 0 #800000;
+  box-shadow: 5px 5px 0 #800000;
 }
 
 .brutalist-card__button:active {
@@ -172,7 +121,6 @@
 /* Media Queries for Mobile Responsiveness */
 @media (max-width: 768px) {
   .grievance-display-container {
-    margin-left: 10px;
     padding: 5px;
   }
 
@@ -209,7 +157,6 @@
 
 @media (max-width: 480px) {
   .grievance-display-container {
-    margin-left: 5px;
     padding: 5px;
   }
 

@@ -7,6 +7,11 @@ import { BASE_URL } from "../../constants";
 import { useCookies } from "react-cookie";
 import toast from "react-hot-toast";
 import { BiUpvote } from "react-icons/bi";
+import { FaThumbsUp } from "react-icons/fa";
+import { FaThumbsDown } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { GoVerified } from "react-icons/go";
+
 import { BiDownvote } from "react-icons/bi";
 import { FaAlignJustify } from "react-icons/fa";
 
@@ -80,7 +85,7 @@ function AllGrievance() {
   };
 
   const handleMarkAsResolved = (postId) => {
-    const url = `${BASE_URL}/post/mark_as_resolved/${postId}`;
+    const url = `${BASE_URL}/admin/mark_as_resolved/${postId}`;
     axios
       .post(
         url,
@@ -93,14 +98,15 @@ function AllGrievance() {
       )
       .then((response) => {
         toast.success("Post marked as resolved!");
+        window.location.reload();
       })
       .catch((error) => {
-        toast.error("Error marking post as resolved.");
+        toast.error(error.response.data.message);
       });
   };
 
   const handleRemoveFromFeed = (postId) => {
-    const url = `${BASE_URL}/post/remove_from_feed/${postId}`;
+    const url = `${BASE_URL}/admin/remove/${postId}`;
     axios
       .post(
         url,
@@ -117,7 +123,7 @@ function AllGrievance() {
         toast.success("Post removed from feed!");
       })
       .catch((error) => {
-        toast.error("Error removing post from feed.");
+        toast.error(error.response.data.message);
       });
   };
 
@@ -133,6 +139,7 @@ function AllGrievance() {
       .then((response) => {
         if (response.data.posts && response.data.posts.length > 0) {
           setVotes(response.data.posts);
+          console.log(response.data);
           setRole(response.data.role);
         } else {
           setVotes([]);
@@ -172,21 +179,26 @@ function AllGrievance() {
 
   return (
     <div className="grievance-display-container">
-      <div className="grievance-portal-nav">
-        <div className="AllGrivance-button-container">
-          <Link to="/portal/feed" className="AllGrivance-button">
-            FEED
-          </Link>
+      <div className="sticky-header-container">
+        <div className="query-corner-container">
+          <h1 className="query-corner-title">Query Corner</h1>
         </div>
-        <div className="GrievanceForm-button-container">
-          <Link to="/portal/addGrievance" className="GrievanceForm-button">
-            POST NEW
-          </Link>
-        </div>
-        <div className="GrievanceForm-button-container">
-          <Link to="/portal/profile" className="GrievanceForm-button">
-            PROFILE
-          </Link>
+        <div className="grievance-portal-nav">
+          <div className="AllGrivance-button-container">
+            <Link to="/portal/feed" className="AllGrivance-button">
+              FEED
+            </Link>
+          </div>
+          <div className="GrievanceForm-button-container">
+            <Link to="/portal/addGrievance" className="GrievanceForm-button">
+              POST NEW
+            </Link>
+          </div>
+          <div className="GrievanceForm-button-container">
+            <Link to="/portal/profile" className="GrievanceForm-button">
+              PROFILE
+            </Link>
+          </div>
         </div>
       </div>
       <div className="grievance-display">
@@ -219,7 +231,7 @@ function AllGrievance() {
                   alignItems: "center",
                 }}
               >
-                <BiUpvote style={{ margin: "5px" }} />
+                <FaThumbsUp style={{ margin: "5px" }} />
                 {vote.upvoteCount} Up Votes
               </button>
 
@@ -231,12 +243,12 @@ function AllGrievance() {
                   alignItems: "center",
                 }}
               >
-                <BiDownvote style={{ margin: "5px" }} />
+                <FaThumbsDown style={{ margin: "5px" }} />
                 {vote.downvoteCount} Down Votes
               </button>
 
               {/* Add these buttons if the user is admin */}
-              {role != "admin" && (
+              {role == "admin" && (
                 <>
                   <button
                     className="brutalist-card__button brutalist-card__button--resolved"
@@ -246,7 +258,13 @@ function AllGrievance() {
                       alignItems: "center",
                     }}
                   >
-                    <FaAlignJustify style={{ margin: "5px" }} />
+                    <GoVerified
+                      style={{
+                        margin: "5px",
+                        fontSize: "1.5rem",
+                        color: "green",
+                      }}
+                    />
                     Mark as Resolved
                   </button>
 
@@ -258,8 +276,14 @@ function AllGrievance() {
                       alignItems: "center",
                     }}
                   >
-                    <FaAlignJustify style={{ margin: "5px" }} />
-                    Remove from Feed
+                    <MdDelete
+                      style={{
+                        margin: "5px",
+                        fontSize: "1.5rem",
+                        color: "red",
+                      }}
+                    />{" "}
+                    Remove
                   </button>
                 </>
               )}

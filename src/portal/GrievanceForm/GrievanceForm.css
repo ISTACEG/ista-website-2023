@@ -2,8 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Nanum+Gothic+Coding&display=swap");
 
 * {
-  font-family: "Nanum Gothic Coding", monospace;
-  font-weight: 900;
   font-style: normal;
   margin: 0;
   padding: 0;
@@ -204,6 +202,14 @@
   background-color: #007bff;
   padding: 10px;
   border-radius: 20px;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+.c2 {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 /* Media Queries for Mobile Responsiveness */

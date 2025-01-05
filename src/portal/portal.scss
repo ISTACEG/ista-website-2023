@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 .parent-box {
   padding-top: 5%;
+  font-family: "Raleway", serif;
 }
 
 .login-box {
@@ -167,7 +169,6 @@
   display: flex;
   height: 100vh; // Full height of the screen
   color: #fff;
-  font-family: 'Arial', sans-serif;
 }
 
 .profile-sidebar {

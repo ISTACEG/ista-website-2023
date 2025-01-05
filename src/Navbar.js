@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./home-page.scss";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,18 +11,15 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">ISTA</div>
+      <Link to="/" className="navbar-logo" style={{ color: "white" }}>
+        ISTA
+      </Link>
       <div className="hamburger" onClick={toggleMenu}>
         <div className={isOpen ? "bar open" : "bar"}></div>
         <div className={isOpen ? "bar open" : "bar"}></div>
         <div className={isOpen ? "bar open" : "bar"}></div>
       </div>
       <ul className={isOpen ? "navbar-links open" : "navbar-links close-test"}>
-        <li>
-          <a href="/" aria-label="Home" aria-current="page">
-            Home
-          </a>
-        </li>
         <li>
           <a href="/experiences" aria-label="Placement Experiences">
             Placement Experiences
@@ -58,7 +56,7 @@ const Navbar = () => {
         </li>
         <li>
           <a href="/portal/feed" aria-label="Grievances portal">
-            Grievances portal
+            Query Corner
           </a>
         </li>
         <li>
