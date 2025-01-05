@@ -115,7 +115,14 @@
 @media (max-width: 1024px) {
   .grievance-portal-nav {
     display: flex;
-    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 512px) {
+  .grievance-portal-nav {
+    display: flex;
+    gap: 20px;
   }
 }
 
@@ -181,7 +188,7 @@
   background-color: #2b2a2a;
   border-radius: 10px 15px;
   margin: auto;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /* Container for the title */
@@ -211,7 +218,7 @@
   gap: 50px;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 2px;
 }
 
 /* Navigation Button Styling */

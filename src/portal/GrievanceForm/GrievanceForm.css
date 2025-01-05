@@ -263,7 +263,6 @@
 
 @media (max-width: 480px) {
   .grievance-portal-nav {
-    flex-direction: column;
     gap: 5px;
   }
 
