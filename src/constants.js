@@ -1,5 +1,4 @@
-export const BASE_URL = "https://w7h8fc-4000.csb.app"
-  // "https://ista-backend-fmdgc9exdxa6cpe7.centralindia-01.azurewebsites.net";
+export const BASE_URL = "https://ista-backend-fmdgc9exdxa6cpe7.centralindia-01.azurewebsites.net";
 export function timeAgo(timestamp) {
     const now = new Date();
     console.log(typeof timestamp)

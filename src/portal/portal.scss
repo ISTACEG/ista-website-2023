@@ -256,23 +256,33 @@
 
 .grievance-status {
   font-size: 0.9rem;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 2%;
+  border-radius: 7px 12px;
   display: inline-block;
 }
 
 .grievance-status.pending {
-  background-color: #f59e0b;
+  background-color: #f59e0b; /* Orange */
   color: #fff;
 }
 
 .grievance-status.approved {
-  background-color: #10b981;
+  background-color: #10b981; /* Green */
   color: #fff;
 }
 
 .grievance-status.rejected {
-  background-color: #ef4444;
+  background-color: #ef4444; /* Red */
+  color: #fff;
+}
+
+.grievance-status.removed {
+  background-color: #92400e; /* Gray */
+  color: #fff;
+}
+
+.grievance-status.resolved {
+  background-color: #3b82f6; /* Blue */
   color: #fff;
 }
 
