@@ -214,9 +214,9 @@ function AllGrievance() {
               ) : (
                 <div className="brutalist-card__alert">Anonymous</div>
               )}
-              <div style={{marginLeft: "auto", width:"auto"}}>
-                {timeAgo(vote.takenAt)}
-                </div>
+              <div style={{ marginLeft: "auto", width: "auto" }}>
+                {vote.takenAt ? timeAgo(vote.takenAt) : ""}
+              </div>
             </div>
             <div>
               <div className="brutalist-card__subject">{vote.head}</div>
