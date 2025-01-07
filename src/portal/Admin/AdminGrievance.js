@@ -3,6 +3,7 @@ import "./AdminGrievance.css";
 import { CgProfile } from "react-icons/cg";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
+import { timeAgo } from "../../constants";
 import { useCookies } from "react-cookie";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
@@ -124,6 +125,7 @@ function AdminGrievance() {
                 <CgProfile style={{ color: "white" }} />
               </div>
               <div className="brutalist-card__alert">{card.postedBy}</div>
+              <div>{timeAgo(card.postedAt)} </div>
             </div>
             <div>
               <div className="brutalist-card__subject">{card.head}</div>

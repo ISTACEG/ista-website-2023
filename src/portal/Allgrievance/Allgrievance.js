@@ -4,6 +4,7 @@ import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
+import { timeAgo } from "../../constants";
 import { useCookies } from "react-cookie";
 import toast from "react-hot-toast";
 import { BiUpvote } from "react-icons/bi";
@@ -213,6 +214,9 @@ function AllGrievance() {
               ) : (
                 <div className="brutalist-card__alert">Anonymous</div>
               )}
+              <div style={{marginLeft: "auto", width:"auto"}}>
+                {timeAgo(vote.takenAt)}
+                </div>
             </div>
             <div>
               <div className="brutalist-card__subject">{vote.head}</div>
