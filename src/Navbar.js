@@ -54,11 +54,11 @@ const Navbar = () => {
             Tech Trek
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="/portal/feed" aria-label="Grievances portal">
             Query Corner
           </a>
-        </li>
+        </li> */}
         <li>
           <a href="/#team" aria-label="Our Team">
             Our Team
