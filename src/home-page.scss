@@ -661,7 +661,7 @@ iframe {
   /* Smooth corners */
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   /* Subtle shadow for depth */
-  margin: 20px auto;
+  margin: 40px auto;
   max-width: 600px;
   /* Constrained width */
 }
@@ -785,3 +785,52 @@ iframe {
   color: #555;
   text-align: center;
 }
+
+.announcement {
+  background: rgba(0, 0, 0, 0.7);
+  color: #0ff; /* Neon cyan */
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px 40px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 15px #0ff, 0 0 30px rgba(0, 255, 255, 0.5);
+  animation: flicker 1.5s infinite alternate;
+  display: inline-block;
+}
+
+.announcement strong {
+  color: #ff007f; /* Neon pink */
+  text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
+  animation: glowText 1.5s infinite alternate;
+}
+
+.announcement a {
+  color: #ffea00; /* Neon yellow */
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 12px;
+  background: rgba(255, 234, 0, 0.2);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0 0 8px #ffea00;
+}
+
+.announcement a:hover {
+  background: #ffea00;
+  color: black;
+  box-shadow: 0 0 12px #ffea00;
+}
+
+@keyframes glowText {
+  0% { text-shadow: 0 0 5px #ff007f, 0 0 15px #ff007f; }
+  100% { text-shadow: 0 0 15px #ff007f, 0 0 25px #ff007f; }
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+

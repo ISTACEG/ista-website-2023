@@ -11,6 +11,7 @@ import Team from "./team"
 import Experiences from './Experiences/Experiences';
 import { useState } from 'react';
 import { SocialIcon } from 'react-social-icons';
+import { ImTarget } from "react-icons/im";
 
 import Statistics from './Statistics';
 
@@ -42,8 +43,14 @@ const App = () => {
           style={{ display: 'inline-block', textAlign: "center", height: "" }}
           repeat={Infinity}
         />
-
-        {/* <p className='announcement'> <div style={{textAlign:"left"}}><strike style={{letterSpacing:"2px", fontSize:"0.825rem"}}>WINTER </strike><p><strong>I++ </strong>is coming.. Check it out <a href='http://ipp.istaceg.in' target='_blank'>here</a></p></div></p> */}
+        <div class="announcement">
+          <div class="fire"></div>
+          <div class="fire"></div>
+          <div class="fire"></div>
+          <p><strong>Itrix'25</strong> is coming.. Check it out <a href="http://itrix.istaceg.in" target="_blank">here</a><br />
+          </p><br />
+          <p style={{display:"flex", alignItems:"center", justifyContent:"center", gap:"10px"}}><ImTarget /> March 21, 22 & 23</p>
+        </div>
       </div>
 
       <h1 className='title-head'>What We Do</h1>
@@ -81,6 +88,7 @@ const App = () => {
               <h3>Itrix</h3>
               <p className="text-desc" >
                 ITRIX every year in the month of March, ITRIX is ISTA’s premium inter-college symposium at the Department of Information Science and Technology, College of Engineering, Guindy. With a footfall of nearly 4000 odd participants every year, we play our part in striving hard to bring all minds, from every nook and corner of the country under one roof to compete and success at a variety of technical and non-technical events.
+                <br /><a href="https://itrix.istaceg.in" target='_blank'>Visit site..</a>
               </p>
             </div>
           </div>
