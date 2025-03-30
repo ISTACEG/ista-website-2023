@@ -47,9 +47,8 @@ const App = () => {
           <div class="fire"></div>
           <div class="fire"></div>
           <div class="fire"></div>
-          <p style={{lineHeight:"150%"}}><strong>Itrix'25</strong> is coming.. Check it out <a href="http://itrix.istaceg.in" target="_blank">here</a><br />
-          </p><br />
-          <p style={{display:"flex", alignItems:"center", justifyContent:"center", gap:"10px"}}><ImTarget /> March 21, 22 & 23</p>
+          <p style={{lineHeight:"150%"}}><strong>Itrix'25</strong> is over bruh.. <br />Missed it ? Check it out <a href="https://drive.google.com/drive/folders/1NlvRTw5UaZsAa56HdRy-uYdK9GX2-lh0?usp=sharing" target="_blank">here</a><br />
+          </p>
         </div>
       </div>
 
