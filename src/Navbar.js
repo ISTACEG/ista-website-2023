@@ -50,8 +50,8 @@ const Navbar = () => {
           </a>
           <ul className={dropdownOpen ? "dropdown-menu open" : "dropdown-menu"}>
             <li><a href="/resource/academic">Academic Resources</a></li>
-            <li><a href="/resource/placement">Placement Training Resources</a></li>
-            <li><a href="/resource/ml">ML Resources</a></li>
+            <li><a href="/resource/placement">Placement Resources</a></li>
+            <li><a href="/resource/ml">ML/DL Resources</a></li>
           </ul>
         </li>
         <li>
