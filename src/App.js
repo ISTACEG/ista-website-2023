@@ -81,8 +81,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/resource" element={<Resource />} />
-        <Route path="/placement-resource" element={<PlacementResource />} />
-        <Route path="/ml-resource" element={<MlResource />} />
+        <Route path="/resource/academic" element={<Resource />} />
+        <Route path="/resource/placement" element={<PlacementResource />} />
+        <Route path="/resource/ml" element={<MlResource />} />
         <Route path="/history" element={<History />} />
         <Route path="/exp_view" element={<Experiences />} />
         <Route path="/experiences" element={<Experiences />} />

@@ -4,9 +4,14 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
   };
 
   return (
@@ -39,10 +44,15 @@ const Navbar = () => {
             Timeline
           </a>
         </li>
-        <li>
-          <a href="/resource" aria-label="Resources">
-            Resources
+        <li className="dropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+          <a href="#" className="dropbtn" aria-label="Resources" onClick={toggleDropdown}>
+            Resources ▾
           </a>
+          <ul className={dropdownOpen ? "dropdown-menu open" : "dropdown-menu"}>
+            <li><a href="/resource/academic">Academic Resources</a></li>
+            <li><a href="/resource/placement">Placement Training Resources</a></li>
+            <li><a href="/resource/ml">ML Resources</a></li>
+          </ul>
         </li>
         <li>
           <a href="/#events" aria-label="Events">
@@ -54,18 +64,11 @@ const Navbar = () => {
             Tech Trek
           </a>
         </li>
-        {/* <li>
-          <a href="/portal/feed" aria-label="Grievances portal">
-            Query Corner
-          </a>
-        </li> */}
         <li>
           <a href="/#team" aria-label="Our Team">
             Our Team
           </a>
         </li>
-
-        {/* <li><a href="/#contact" aria-label="Contact">Contact</a></li> */}
       </ul>
     </nav>
   );
