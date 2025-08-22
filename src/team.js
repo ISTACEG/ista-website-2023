@@ -229,7 +229,7 @@ var newTeamMembers = [
     name: "SRI DHARANI R",
     position: "Deputy Head",
     domain: "Web Development",
-    imageUrl: "https://drive.google.com/open?id=1sXSfw6HC4p5kiTYN4B5z7rEIUtFFrUSE"
+    imageUrl: "https://drive.google.com/open?id=1qxPgomTtdBwxmTCFH_S3WIe_HvsF7ptL"
   },
   {
     name: "Varun Karthik T",
