@@ -44,7 +44,7 @@ var newTeamMembers = [
     name: "Harish M",
     position: "Head",
     domain: "Events",
-    imageUrl: "https://drive.google.com/open?id=1mY8RtmYeR7-ST1pK6jEOG9j40IQ4nmSj",
+    imageUrl: "https://drive.google.com/open?id=1ZuJ0CG39E0vjALwK4qjizwDZWLi7JBp6",
   },
   {
     name: "Abinaya S M",
@@ -83,7 +83,7 @@ var newTeamMembers = [
     name: "Girish Sai D",
     position: "Head",
     domain: "Marketing and Media ",
-    imageUrl: "https://drive.google.com/open?id=1HIPK4_VpEcDxXvRuCMibT6clyAkzpiMw",
+    imageUrl: "https://drive.google.com/open?id=1WHmDxqyX9Uq8aDIC_xWDK47eHmtXSncP",
   },
   {
     name: "Abishek R",
@@ -139,7 +139,7 @@ var newTeamMembers = [
     name: "Naziya Kouser H",
     position: "Head",
     domain: "Courses",
-    imageUrl: "https://drive.google.com/open?id=179WvaqJjbMa84qpF9Ocxd3-9rWPgqPOj",
+    imageUrl: "https://drive.google.com/open?id=1jC7Gn5PT7dBY9eaUU8EWByLlXFP21JOi",
   },
   {
     name: "Abharna Shree M",
@@ -152,7 +152,7 @@ var newTeamMembers = [
     name: "Sarumathi S",
     position: "Head",
     domain: "Contents",
-    imageUrl: "https://drive.google.com/open?id=1gFiHDCE2a6il7uIi61R09Z-XDG8Mqydk",
+    imageUrl: "https://drive.google.com/open?id=1H_vIgmwifI8ONsENE2MwXbUaVihIAdGY",
   },
   {
     name: "Jayashree J",
@@ -277,7 +277,7 @@ var newTeamMembers = [
     name: "Praveena R",
     position: "Deputy Head",
     domain: "Design",
-    imageUrl: "https://drive.google.com/open?id=1C2b10dJbdm1Of8cb4FEF4vrFiRVYC-Ua",
+    imageUrl: "https://drive.google.com/open?id=14eQCkH71Z-nncRf9aMYnq2pyw05R3K_-",
   },
   {
     name: "Divakar D",
@@ -343,7 +343,7 @@ var newTeamMembers = [
     name: "Sethumadhavan A S",
     position: "Deputy Head",
     domain: "Placements",
-    imageUrl: "https://drive.google.com/open?id=1RYcVEv0bsXZq7IEU3Nt1BOe66GAvud2b",
+    imageUrl: "https://drive.google.com/open?id=1aj4xqYfMJKl8hEW-fRKyor0-D132Ukjq",
   },
   {
     name: "Naveen O T",
