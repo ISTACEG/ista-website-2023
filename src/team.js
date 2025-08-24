@@ -361,7 +361,7 @@ var newTeamMembers = [
     name: "Sarathkumar R",
     position: "Deputy Head",
     domain: "Internship",
-    imageUrl: "https://drive.google.com/open?id=1PNlligIy2nZfpc562ZWczm02AJRAs8RU",
+    imageUrl: "https://drive.google.com/open?id=14-q9AZUIrYPKZME9fl2C1_X09_Fp412b",
   },
   {
     name: "Jeevesh V",
