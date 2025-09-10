@@ -30,7 +30,7 @@ const App = () => {
 
         <TypeAnimation
           sequence={[
-            'Information Science and Technology Assosiation',
+            'Information Science and Technology Association',
             1000,
             'Empowering innovation through technology and knowledge ',
             1000,
