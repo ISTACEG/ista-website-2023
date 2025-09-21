@@ -62,7 +62,7 @@ var newTeamMembers = [
     name: "Razeen",
     position: "Head",
     domain: "Events",
-    imageUrl: "https://drive.google.com/open?id=13dQV2fV2x4dX794MTcEsjUFjEu3SMViZ",
+    imageUrl: "https://drive.google.com/open?id=1H_z9jFABP2pd6EbJP0wHadpws_jrpJIZ",
   },
 
   
