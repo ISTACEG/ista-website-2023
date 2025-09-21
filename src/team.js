@@ -4,13 +4,13 @@ import "./team.scss";
 
 var staffList = [
   {
-    img: "ISTA OB/Vani_IST.webp",
-    name: "DR.K.Vani",
+    img: "ISTA OB/Viji_maam.png",
+    name: "Dr. M. Vijayalakshmi",
     position: "President",
   },
   {
-    img: "ISTA OB/selviravindran.jpg",
-    name: "DR.Selvi Ravindran",
+    img: "ISTA OB/Vidhya maam.png",
+    name: "Dr. K. Vidya",
     position: "Staff Treasurer",
   },
 ];
